@@ -3,10 +3,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <!-- アイコン設定 -->
-<link rel="icon" href="./img/cost_logo_64.ico">
+<!-- <link rel="icon" href="./img/cost_logo_64.ico"> -->
 
 <!-- iPhoneのアイコン設定 -->
-<link rel="apple-touch-icon" href="./img/lutan_logo_64.ico">
+<!-- <link rel="apple-touch-icon" href="./img/lutan_logo_64.ico"> -->
 
 <!-- トークン -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
