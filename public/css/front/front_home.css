@@ -3,7 +3,7 @@
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	background: #D02B20;
+	background: #B34D36;
 	z-index: 9999999;
 	text-align:center;
 	color:#fff;
@@ -16,11 +16,9 @@
 	transform: translate(-50%, -50%);
 }
 
-/*========= 画面遷移のためのCSS ===============*/
-
-/*画面遷移アニメーション*/
+/*========= 画面遷移アニメーション ===============*/
 body{
-    background:#D02B20;/*遷移アニメーションと同じ色を指定*/
+    background:#B34D36;/*遷移アニメーションと同じ色を指定*/
 }
 
 body.appear{
@@ -35,7 +33,7 @@ body.appear{
 	left: 0;
 	border-width: 0px;/*開始はボーダーの太さは0*/
 	border-style:solid;
-    border-color: #D02B20;/*拡大する四角の色*/
+    border-color: #B34D36;/*拡大する四角の色*/
 	animation-duration:.5s;
 	animation-fill-mode:forwards;
 }
@@ -74,3 +72,182 @@ body.appear #container{
         opacity: 1;
     }
 }
+
+/*========= video全面表示 ===============*/
+.video-container {
+    margin: 0 auto;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.video-wrap {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    /* background: url(img/video.jpg) no-repeat center center/cover; */
+}
+
+video {
+    min-width: 100%;
+    min-height: 100vh;
+    position: absolute;
+}
+
+/*画面サイズが変わっても常に動画の中央が表示されるようにする*/
+/*動画よりも画面が横に長くなるとき用*/
+@media (aspect-ratio: 16/9), (min-aspect-ratio: 16/9) {
+    video {
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    }
+}
+
+/*動画よりも画面が縦に長くなるとき用*/
+@media (max-aspect-ratio: 16/9) {
+    video {
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    }
+}
+
+/* 動画背景をグレー */
+.overlay::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    content: "";
+}
+
+/*========= 動画にドットフィルターをかける ===============*/
+.movie {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.movie::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: radial-gradient(#111 50%, transparent 31%), radial-gradient(#111 50%, transparent 31%);
+    background-size: 4px 4px;
+    background-position: 0 0, 2px 2px;
+}
+
+/*========= 動画上の文字設定 ===============*/
+.top_video_box{
+    /* 文字の間隔 */
+    letter-spacing: 0.3rem;
+    /*要素の配置*/
+    position:absolute;
+    /*要素を天地中央寄せ*/
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    /* 文字色 */
+    color:#fff;
+    /* 文字の太さ */
+    font-weight: bold;
+    /* 文字の位置 */
+    text-align: center;
+    /* グーグルフォント */
+    font-family: 'Caveat', cursive;
+}
+
+/*========= 流れるテキスト：一番目に実行===============*/
+/*全共通*/
+.slide-in {
+	overflow: hidden;
+    display: inline-block;
+}
+
+.slide-in_inner {
+	display: inline-block;
+
+}
+
+/*左右のアニメーション*/
+.leftAnime{
+    opacity: 0;/*事前に透過0にして消しておく*/
+    /* 文字サイズ */
+    font-size: 4rem;
+}
+
+.slideAnimeLeftRight {
+	animation-name:slideTextX100;
+	animation-duration:0.8s;
+	animation-fill-mode:forwards;
+    opacity: 0;
+}
+
+@keyframes slideTextX100 {
+  from {
+	transform: translateX(-100%); /*要素を左の枠外に移動*/
+        opacity: 0;
+  }
+
+  to {
+	transform: translateX(0);/*要素を元の位置に移動*/
+    opacity: 1;
+  }
+}
+
+.slideAnimeRightLeft {
+	animation-name:slideTextX-100;
+	animation-duration:0.8s;
+	animation-fill-mode:forwards;
+    opacity: 0;
+}
+
+.slideAnimeRightLeft_jp {
+	animation-name:slideTextX-100;
+	animation-duration:0.8s;
+	animation-fill-mode:forwards;
+    opacity: 0;
+}
+
+
+@keyframes slideTextX-100 {
+  from {
+	transform: translateX(100%);/*要素を右の枠外に移動*/
+    opacity: 0;
+  }
+
+  to {
+	transform: translateX(0);/*要素を元の位置に移動*/
+    opacity: 1;
+  }
+}
+
+/*========= 流れるテキスト：二番目に実行 ===============*/
+/*左右のアニメーション*/
+.leftAnime_jp{
+    opacity: 0;/*事前に透過0にして消しておく*/
+    /* 文字サイズ */
+    font-size: 2rem;
+}
+
+.slideAnimeLeftRight_jp {
+	animation-name:slideTextX100;
+	animation-duration:0.8s;
+	animation-fill-mode:forwards;
+    opacity: 0;
+}
+
+
+
+

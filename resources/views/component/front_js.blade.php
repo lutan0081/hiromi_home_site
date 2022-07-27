@@ -11,6 +11,9 @@
 <!-- sweetalert(ダイアログ)-->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+<!-- プルダウンメニュー -->
+<script src="{{ asset('js/front/front_menu.js') }}"></script>
+
 <!-- 連続したフェイドインのアニメーション -->
 <script src="{{ asset('fadeUpContinue/js/fadeUpContinue.js') }}"></script>
 

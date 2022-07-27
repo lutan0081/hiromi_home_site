@@ -23,6 +23,12 @@
 <!-- bootstrap-icon -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 
+<!-- common -->
+<link rel="stylesheet" href="{{ asset('common/css/common.css') }}">
+
+<!-- プルダウンメニュー -->
+<link rel="stylesheet" href="{{ asset('css/front/front_menu.css') }}">
+
 <!-- fadeUpContinue(連続でフェードイン　親要素に"delayScroll指定"、子要素にbox) -->
 <link rel="stylesheet" href="{{ asset('fadeUpContinue/css/fadeUpContinue.css') }}">
 
