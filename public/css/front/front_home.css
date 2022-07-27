@@ -248,6 +248,21 @@ video {
     opacity: 0;
 }
 
+/*========= top画面のロゴ要素設定 ===============*/
+/* ロゴの親要素設定 */
+.top_logo_box{
+    position:fixed;
+    z-index: 1000;
+	top: 0;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+/* ロゴの設定 */
+.top_log_size{
+    width: 10rem;
+}
+
 
 
 

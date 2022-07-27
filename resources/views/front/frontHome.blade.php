@@ -49,6 +49,15 @@
             <!-- top動画 -->
 
             <!-- top画面の文字 -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-12 top_logo_box">
+                        <img src="./img/hiromi_home_logo_side.png" class="top_log_size">
+                    </div>
+                </div>
+            </div>
+
+            <!-- top画面の文字 -->
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-12">
@@ -63,7 +72,7 @@
                             <!-- top画面の文字：日本語 -->
                             <p>
                                 <span class="slide-in leftAnime_jp">
-                                    <span class="slide-in_inner leftAnimeInner">「<span class="text_red">住</span>みたい空間」「<span class="text_red">し</span>たい暮らし」を創造する。</span>
+                                    <span class="slide-in_inner leftAnimeInner">「住みたい<span class="text_red">空間</span>」「したい<span class="text_red">暮らし</span>」を創造する。
                                 </span>
                             </p>
                         </h1>
