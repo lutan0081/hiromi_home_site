@@ -143,7 +143,7 @@ video {
     right: 0;
     width: 100%;
     height: 100vh;
-    background-image: radial-gradient(#111 50%, transparent 31%), radial-gradient(#111 50%, transparent 31%);
+    background-image: radial-gradient(#111 30%, transparent 31%), radial-gradient(#111 30%, transparent 31%);
     background-size: 4px 4px;
     background-position: 0 0, 2px 2px;
 }
@@ -166,6 +166,8 @@ video {
     text-align: center;
     /* グーグルフォント */
     font-family: 'Caveat', cursive;
+    /* 黒のフィルタより前に出す */
+    z-index: 1;
 }
 
 /*========= 流れるテキスト：一番目に実行===============*/
@@ -184,7 +186,7 @@ video {
 .leftAnime{
     opacity: 0;/*事前に透過0にして消しておく*/
     /* 文字サイズ */
-    font-size: 4rem;
+    font-size: 3.5rem;
 }
 
 .slideAnimeLeftRight {
@@ -238,7 +240,7 @@ video {
 .leftAnime_jp{
     opacity: 0;/*事前に透過0にして消しておく*/
     /* 文字サイズ */
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 .slideAnimeLeftRight_jp {
@@ -263,6 +265,179 @@ video {
     width: 10rem;
 }
 
+/*========= WORKSの要素設定 ===============*/
+.works_title_box{
+    text-align: center;
+}
 
+.works_title_en{
+    margin-top: 5rem;
+    font-weight: bold;
+    text-align: center;
+    font-size: 3rem;
+    font-family: 'Cormorant Garamond', serif;
+}
 
+.works_title_jp{
+    margin-top: 5rem;
+    text-align: center;
+    font-size: 1rem;
+}
 
+/*========= 事業内容の設定 ===============*/
+/* 画像を親要素に設定 */
+.service_box{
+    position: relative;
+}
+
+/* コンテンツを子要素に設定 */
+.service_contents{
+    /* 文字を中央表示 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    /* 文字色 */
+    color: #fff;
+    text-align: center;
+}
+
+.service_title_box{
+    text-align: center;
+}
+
+.service_title_en{
+    margin-top: 5rem;
+    font-weight: bold;
+    text-align: center;
+    font-size: 3rem;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.service_title_jp{
+    margin-top: 5rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.service_en{
+    font-size: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: bold;
+}
+
+.service_jp{
+    font-size: 1rem;
+}
+
+/*========= 会社概要 ===============*/
+.about_us_box{
+    margin-top: 5rem;
+    background-image: url(../../img/abnout_us.jpg);
+    background-size: cover;
+    background-position: center; 
+    background-attachment: fixed;
+    height: 32rem;
+    /* センター寄せ */
+    position: relative;
+    color: #fff;
+}
+
+.about_us_contents {
+    background-color: rgba(0,0,0,0.6);
+    height: 32rem;
+    text-align: center;
+}
+
+.about_us_title{
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.about_us_text{
+    padding-top: 2rem;
+    font-size: 1rem;
+    line-height: 2.5rem;
+}
+
+/*========= 新着情報 ===============*/
+/* 新着情報親要素 */
+.information_title_box{
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* 新着情報：英語 */
+.information_title_en{
+    margin-top: 5rem;
+    font-weight: bold;
+    text-align: center;
+    font-size: 3rem;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* 新着情報：日本語 */
+.information_title_jp{
+    margin-top: 5rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* 新着情報コンテンツ */
+.information_contents{
+    /* 下線表示 */
+    border-bottom: dashed 1px;
+    border-color:#D6D6D6;
+    border-width:1px;/*5ピクセルの太さにする*/
+}
+
+/* お知らせラベル要素 */
+label {
+    display: block;
+}
+  
+/* お知らせラベルの設定   */
+label.required:after {
+    margin-left: 1.0em;
+    padding: 3px 20px 3px 20px;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: white;
+    background-color: red;
+    content: "お知らせ";
+}
+
+/*========= お問い合わせ ===============*/
+.contact_box{
+    margin-top: 5rem;
+    background-image: url(../../img/contact.jpg);
+    background-size: cover;
+    background-position: center; 
+    background-attachment: fixed;
+    height: 32rem;
+    /* センター寄せ */
+    position: relative;
+    color: #fff;
+}
+
+.about_us_contents {
+    background-color: rgba(0,0,0,0.6);
+    height: 32rem;
+    text-align: center;
+}
+
+.about_us_title{
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.about_us_text{
+    padding-top: 2rem;
+    font-size: 1rem;
+    line-height: 2.5rem;
+}

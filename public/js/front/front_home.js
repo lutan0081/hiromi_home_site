@@ -49,7 +49,7 @@ $(window).on('load', function(){
 });
 
 /**
- * 文字をスライド表示：英語
+ * 文字をスライド表示：日本語
  */
  function slideAnime_jp(){
     // 左に動くアニメーションここから
@@ -81,4 +81,5 @@ $(window).on('load', function(){
         slideAnime_jp();
     },2900);
 });
+
 
