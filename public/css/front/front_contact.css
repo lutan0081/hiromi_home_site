@@ -1,0 +1,58 @@
+/*========= お問い合わせ ===============*/
+/* 親要素 */
+.contact_box{
+    margin-top: 5rem;
+    background-image: url(../../img/contact.jpg);
+    background-size: cover;
+    background-position: center; 
+    background-attachment: fixed;
+    height: 30rem;
+    /* センター寄せ */
+    position: relative;
+    color: #fff;
+}
+
+/* 親要素：黒フィルター */
+.contact_contents {
+    background-color: rgba(0,0,0,0.6);
+    height: 30rem;
+    /* 左右中央 */
+    text-align: center;
+    /* 上下中央 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* お問い合わせ：タイトル */
+.contact_title{
+    font-size: 2.5rem;
+    letter-spacing: 0.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* お問い合わせ：内容 */
+.contact_text{
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 2.5rem;
+}
+
+/* お問い合わせ：ボタン */
+.contact_button_box{
+   margin-top: 2rem;
+}
+
+.contact_tel_box{
+    margin-top: 2rem;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+ }
+
+
+/* お問い合わせ：営業時間の説明 */
+.contact_business_time_box{
+    font-size: 0.8rem;
+    /* margin-top: 2rem; */
+ }

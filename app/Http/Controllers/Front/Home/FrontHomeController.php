@@ -51,7 +51,7 @@ class FrontHomeController extends Controller
 
         // compctは代入名=キーになる
         // キーに名前をつけるときはwith()にする
-        return view('front.frontHome', compact('ret'));
+        return view('front.front_home', compact('ret'));
     }
     
 }

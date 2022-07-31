@@ -246,10 +246,20 @@
             </div>
 
             <!-- 新着情報：コンテンツ -->
-            <div class="container">
+            <div class="container fadeUpTrigger">
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-12 mt-3">
                         <div class="row">
+
+                            <div class="col-12 col-md-12 col-lg-2 py-4 information_contents">
+                                2022-07-01
+                            </div>
+                            <div class="col-12 col-md-12 col-lg-2 py-4 information_contents">
+                                <label class="required" for="textBox"></label>
+                            </div>
+                            <div class="col-12 col-md-12 col-lg-8 py-4 information_contents">
+                                コーポレートサイト開設のお知らせ
+                            </div>
 
                             <div class="col-12 col-md-12 col-lg-2 py-4 information_contents">
                                 2022-07-01
@@ -292,37 +302,12 @@
             </div>  
 
             <!-- お問い合わせ -->
-            <div class="container-fluid contact_box">
-                <div class="row">
-                    <div class="col-12 col-md-12 col-lg-12 about_us_contents">
-                        <div class="row">
+            @component('component.front_contact')
+            @endcomponent
 
-                            <!-- 会社概要コンテンツ -->
-                            <div class="col-12 col-md-12 col-lg-12">
-                                <div class="col-12 col-md-12 col-lg-12 p-5">
-                                    <div class="about_us_title">
-                                        CONTACT US
-                                    </div>
-                                    <div class="about_us_text">
-                                        当社へのご相談・お問い合わせは、メールフォームもしくは、お電話よりお願い致します。<br>
-                                    </div>
-                                    <div class="about_us_text">
-                                        <i class="bi bi-phone-vibrate me-2"></i>06-1111-1111<br>
-                                        営業時間：9:00～19:00(土日・祝日は除く)
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- お問い合わせ -->
-                            <div class="col-12 col-md-12 col-lg-6">
-                                <a href="#" class="btnshine btn_size_10 float-start"><i class="bi bi-chat-dots me-2"></i>CONTACT</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <!-- フッター -->
+            @component('component.front_footer')
+            @endcomponent
 
         </div>
         <!---画面遷移用-->

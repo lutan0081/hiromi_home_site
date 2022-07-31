@@ -29,6 +29,12 @@
 <!-- プルダウンメニュー -->
 <link rel="stylesheet" href="{{ asset('css/front/front_menu.css') }}">
 
+<!-- フッター -->
+<link rel="stylesheet" href="{{ asset('css/front/front_footer.css') }}">
+
+<!-- お問い合わせ -->
+<link rel="stylesheet" href="{{ asset('css/front/front_contact.css') }}">
+
 <!-- fadeUpContinue(連続でフェードイン　親要素に"delayScroll指定"、子要素にbox) -->
 <link rel="stylesheet" href="{{ asset('fadeUpContinue/css/fadeUpContinue.css') }}">
 
