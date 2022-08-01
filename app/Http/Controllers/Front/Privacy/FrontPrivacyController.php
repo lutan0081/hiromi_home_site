@@ -51,7 +51,7 @@ class FrontPrivacyController extends Controller
 
         // compctは代入名=キーになる
         // キーに名前をつけるときはwith()にする
-        return view('front.front_home', compact('ret'));
+        return view('front.front_privacy', compact('ret'));
     }
     
 }

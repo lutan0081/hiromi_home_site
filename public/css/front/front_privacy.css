@@ -1,0 +1,60 @@
+/*========= WORKSの要素設定 ===============*/
+.privacy_top_box{
+    background-image: url(../../img/privacy.jpg);
+    background-size: cover;
+    /* x軸 Y軸 */
+    background-position: 0% 100%;
+    background-attachment: fixed;
+    height: 20rem;
+    position: relative;
+}
+
+/* 画像フィルタ */
+.privacy_top_box_filter {
+    background-color: rgba(0,0,0,0.6);
+    height: 20rem;
+    /* 上下中央 */
+    /* 親要素をrelativeに設定 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* top画面親要素 */
+.privacy_top_title_box{
+    text-align: center;
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.3rem;
+}
+
+/* top画面子要素：英語 */
+.privacy_top_title_en{
+    font-size: 3rem;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.3rem;
+}
+
+/* top画面子要素：日本語 */
+.privacy_top_title_jp{
+    font-size: 1.5rem;
+}
+
+/* コンテンツ：タイトル */
+.privacy_contents_title_box{
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* コンテンツ：タイトル */
+.privacy_contents_title{
+    font-size: 1.5rem;
+}
+
+/* hrの色指定 */
+.bar_red {
+    border-bottom: 2px solid red;
+  }
+
+
+

@@ -15,7 +15,7 @@
                     <h3><i class="bi bi-house-door me-1"></i>HOME</h3>
                     <ul class= "ul_box">
                         <li class="li_box"><a href= "stepuphtml1.html">ホーム</a></li>
-                        <li class="li_box"><a href= "stepuphtml3.html">プライバシー・ポリシー</a></li>
+                        <li class="li_box"><a href= "frontPrivacyInit">プライバシー</a></li>
                         <li class="li_box"><a href= "stepuphtml2.html">サイトマップ</a></li>
                         <li class="li_box"><a href= "stepuphtml4.html">新着情報</a></li>
                     </ul>
