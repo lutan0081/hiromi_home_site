@@ -1,0 +1,90 @@
+@charset "UTF-8";
+/*========= WORKSの要素設定 ===============*/
+.about_us_top_box{
+    background-image: url(../../img/about_us.jpg);
+    background-size: cover;
+    /* x軸 Y軸 */
+    background-position: 0% 100%;
+    background-attachment: fixed;
+    height: 20rem;
+    position: relative;
+}
+
+/* 画像フィルタ */
+.about_us_top_box_filter {
+    background-color: rgba(0,0,0,0.6);
+    height: 20rem;
+    /* 上下中央 */
+    /* 親要素をrelativeに設定 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* top画面親要素 */
+.about_us_top_title_box{
+    text-align: center;
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.3rem;
+}
+
+/* top画面子要素：英語 */
+.about_us_top_title_en{
+    font-size: 3rem;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.3rem;
+}
+
+/* top画面子要素：日本語 */
+.about_us_top_title_jp{
+    font-size: 1.5rem;
+}
+
+/* コンテンツ：タイトル */
+.about_us_contents_title_box{
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+}
+
+/* コンテンツ：タイトル */
+.about_us_contents_title{
+    font-size: 1.5rem;
+}
+
+/* テーブルの設定 */
+.table > tbody > tr > th,
+.table > tbody > tr > td {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border: 1px #CCCCCC solid
+}
+
+th{
+    background-color: #F2F2F2!important;
+}
+
+ /*========= レスポンシブ ===============*/
+/* スマホ */
+@media (max-width: 768px) {
+
+    .about_us_top_box{
+        /* x軸 Y軸 */
+        background-attachment:inherit;
+    }
+    
+    /* top画面子要素：英語 */
+    .about_us_top_title_en{
+        font-size: 2rem;
+    }
+    
+    /* top画面子要素：日本語 */
+    .about_us_top_title_jp{
+        font-size: 1rem;
+    }
+    
+    /* コンテンツ：タイトル */
+    .about_us_contents_title{
+        font-size: 1.5rem;
+    }
+}

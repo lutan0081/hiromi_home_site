@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*========= ローディング画面のためのCSS ===============*/
 #splash {
 	position: fixed;
@@ -318,11 +319,11 @@ video {
 /*========= 会社概要 ===============*/
 .about_us_box{
     margin-top: 5rem;
-    background-image: url(../../img/abnout_us.jpg);
+    background-image: url(../../img/about_us.jpg);
     background-size: cover;
     background-position: center; 
     background-attachment: fixed;
-    height: 32rem;
+    height: 33rem;
     /* センター寄せ */
     position: relative;
     color: #fff;
@@ -331,7 +332,7 @@ video {
 /* 画像フィルタ */
 .about_us_contents {
     background-color: rgba(0,0,0,0.6);
-    height: 32rem;
+    height: 33rem;
     text-align: center;
     /* 上下中央 */
     display: flex;
@@ -347,6 +348,12 @@ video {
 }
 
 .about_us_text{
+    padding-top: 2rem;
+    font-size: 1rem;
+    line-height: 2.5rem;
+}
+
+.about_us_button_box{
     padding-top: 2rem;
     font-size: 1rem;
     line-height: 2.5rem;
@@ -398,4 +405,95 @@ label.required:after {
     color: white;
     background-color: red;
     content: "お知らせ";
+}
+
+/*========= レスポンシブ ===============*/
+/* スマホ */
+@media (max-width: 768px) {
+    
+    /* top画面の親要素 */
+    .top_video_box{
+        width: inherit;
+    }
+
+    /* top画面の文字 */
+    /*左右のアニメーション*/
+    .leftAnime{
+        /* 文字サイズ */
+        font-size: 2.5rem;
+    }
+
+    /* top画面の日本語 */
+    .leftAnime_jp{
+        
+        margin-top: 2rem;
+        /* 文字サイズ */
+        font-size: 1.0rem;
+    }
+
+    /* worksの文字設定 */
+    .works_title_en{
+        font-size: 2rem;
+    }
+    
+    .works_title_jp{
+        font-size: 1rem;
+    }
+
+    /* 事業内容 */
+    /* タイトル：英語 */
+    .service_title_en{
+        font-size: 2rem;
+    }
+    /* タイトル日本語 */
+    .service_title_jp{
+        font-size: 1rem;
+    }
+
+    /* 英語：タイトル */
+    .service_en{
+        font-size: 1.5rem;
+    }
+    
+    /* 英語：日本話 */
+    .service_jp{
+        font-size: 1rem;
+    }
+
+    /* 会社概要 */
+    .about_us_box{
+        height: 42rem;
+        background-position: -200px 0px; 
+    }
+
+    /* 画像フィルタ */
+    .about_us_contents {
+        height: 42rem;
+    }
+    
+    .about_us_title{
+        font-size: 1.5rem;
+        letter-spacing: 0.2rem;
+    }
+    
+    .about_us_text{
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    
+    .about_us_button_box{
+        font-size: 1rem;
+    }
+
+    /* 新着情報 */
+    /* 新着情報：英語 */
+    .information_title_en{
+        font-size: 2rem;
+    }
+
+    /* 新着情報：日本語 */
+    .information_title_jp{
+        font-size: 1rem;
+    }
+
 }

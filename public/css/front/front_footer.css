@@ -1,4 +1,6 @@
- /*========= フッター ===============*/
+@charset "UTF-8";
+
+/*========= フッター ===============*/
  /* 親要素 */
  .footer_box{
     background-color: #fff;
@@ -49,4 +51,36 @@
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
     font-size: 0.7rem;
+}
+
+ /*========= レスポンシブ ===============*/
+/* スマホ */
+@media (max-width: 768px) {
+
+    /* お問い合わせ：タイトル */
+    .footer_contents_box{
+        display: none;
+    }
+
+    /* ロゴボックスサイズ */
+    .footer_img_box{
+        height: 20rem;
+
+    }
+
+    /* ロゴサイズ */
+    .footer_img_size{
+        width: 13rem;
+    }
+
+    /* ロゴボックスサイズ */
+    .footer_img_box{
+        height: 15rem;
+
+    }
+
+    .footer_box{
+        height: 15rem;
+    }
+
 }

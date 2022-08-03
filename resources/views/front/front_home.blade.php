@@ -62,7 +62,7 @@
         
                         <!-- top画面の文字：日本語 -->
                         <span class="slide-in leftAnime_jp">
-                            <span class="slide-in_inner leftAnimeInner">「住みたい<span class="text_red">空</span>間」「したい<span class="text_red">暮</span>らし」を創造する。
+                            <span class="slide-in_inner leftAnimeInner">「住みたい<span class="text_red">空</span>間」「したい<span class="text_red">暮</span>らし」<br class="br-sp">を創造する。
                         </span>
                     </h1>
 
@@ -201,11 +201,11 @@
                             <div class="col-12 col-md-12 col-lg-12">
                                 <div class="col-12 col-md-12 col-lg-12 p-5 fadeUpTrigger">
                                     <div class="about_us_title">
-                                        「住みたい空間」「したい暮らし」を創造する。
+                                        「住みたい空間」<br class="br-sp">「したい暮らし」<br class="br-sp">を創造する。
                                     </div>
                                     <div class="about_us_text">
                                         弊社、広末ホームのコーポレートサイトを閲覧いただきありがとうございます。<br>
-                                        空間に対するこだわりは、十人十色。 デザインの美学や、理想の暮らしは人によって異なります。<br> だからこそ、シンプルでミニマルなものを私たちは追求します。<br>
+                                        空間に対するこだわりは、十人十色。<br class="br-sp">デザインの美学や、理想の暮らしは人によって異なります。<br> だからこそ、シンプルでミニマルなものを私たちは追求します。<br>
                                         ディティールを生かす意匠、シンプルな形状は、 あなたの個性を自由に演出することができるからです。<br> 思わず誰かを招きたくなるような、スタイリッシュなデザインは、 見る人の感性を刺激し、創造力を高めてくれます。<br>
                                         毎日を、自分らしく、豊かに生きる。 そんな幸せがある空間の創造を、お手伝いいたします。
                                     </div>
@@ -213,12 +213,12 @@
                             </div>
 
                             <!-- 会社概要ボタン -->
-                            <div class="col-12 col-md-12 col-lg-6">
+                            <div class="col-6 col-md-6 col-lg-6 mb-5">
                                 <a href="#" class="btnshine btn_size_10 float-end zoomInTrigger"><i class="bi bi-cloud me-2"></i>ABOUT US</a>
                             </div>
 
                             <!-- お問い合わせ -->
-                            <div class="col-12 col-md-12 col-lg-6">
+                            <div class="col-6 col-md-6 col-lg-6 mb-5">
                                 <a href="#" class="btnshine btn_size_10 float-start zoomInTrigger"><i class="bi bi-chat-dots me-2"></i>CONTACT</a>
                             </div>
 
@@ -243,40 +243,40 @@
                     <div class="col-12 col-md-12 col-lg-12 mt-3">
                         <div class="row">
 
-                            <div class="col-12 col-md-12 col-lg-2 py-4 information_contents">
+                            <div class="col-4 col-md-4 col-lg-2 py-4 information_contents">
                                 2022-07-01
                             </div>
-                            <div class="col-12 col-md-12 col-lg-2 py-4 information_contents">
+                            <div class="col-5 col-md-5 col-lg-2 py-4 information_contents">
                                 <label class="required" for="textBox"></label>
                             </div>
                             <div class="col-12 col-md-12 col-lg-8 py-4 information_contents">
                                 コーポレートサイト開設のお知らせ
                             </div>
 
-                            <div class="col-12 col-md-12 col-lg-2 py-4 information_contents">
+                            <div class="col-4 col-md-4 col-lg-2 py-4 information_contents">
                                 2022-07-01
                             </div>
-                            <div class="col-12 col-md-12 col-lg-2 py-4 information_contents">
+                            <div class="col-5 col-md-5 col-lg-2 py-4 information_contents">
                                 <label class="required" for="textBox"></label>
                             </div>
                             <div class="col-12 col-md-12 col-lg-8 py-4 information_contents">
                                 コーポレートサイト開設のお知らせ
                             </div>
 
-                            <div class="col-12 col-md-12 col-lg-2 py-4 information_contents">
+                            <div class="col-4 col-md-4 col-lg-2 py-4 information_contents">
                                 2022-07-01
                             </div>
-                            <div class="col-12 col-md-12 col-lg-2 py-4 information_contents">
+                            <div class="col-5 col-md-5 col-lg-2 py-4 information_contents">
                                 <label class="required" for="textBox"></label>
                             </div>
                             <div class="col-12 col-md-12 col-lg-8 py-4 information_contents">
                                 コーポレートサイト開設のお知らせ
                             </div>
 
-                            <div class="col-12 col-md-12 col-lg-2 py-4 information_contents">
+                            <div class="col-4 col-md-4 col-lg-2 py-4 information_contents">
                                 2022-07-01
                             </div>
-                            <div class="col-12 col-md-12 col-lg-2 py-4 information_contents">
+                            <div class="col-5 col-md-5 col-lg-2 py-4 information_contents">
                                 <label class="required" for="textBox"></label>
                             </div>
                             <div class="col-12 col-md-12 col-lg-8 py-4 information_contents">

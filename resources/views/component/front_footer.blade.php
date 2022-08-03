@@ -14,7 +14,7 @@
 
                     <h3><i class="bi bi-house-door me-1"></i>HOME</h3>
                     <ul class= "ul_box">
-                        <li class="li_box"><a href= "stepuphtml1.html">ホーム</a></li>
+                        <li class="li_box"><a href= "{{ url('/') }}">ホーム</a></li>
                         <li class="li_box"><a href= "frontPrivacyInit">プライバシー</a></li>
                         <li class="li_box"><a href= "stepuphtml2.html">サイトマップ</a></li>
                         <li class="li_box"><a href= "stepuphtml4.html">新着情報</a></li>
@@ -27,8 +27,8 @@
 
                     <h4><i class="bi bi-building me-1"></i>COMPANY</h4>
                     <ul class= "ul_box">
-                        <li class="li_box"><a href= "stepuphtml1.html">会社概要</a></li>
-                        <li class="li_box"><a href= "stepuphtml2.html">お問い合わせ</a></li>
+                        <li class="li_box"><a href= "frontAboutUsInit">会社概要</a></li>
+                        <li class="li_box"><a href= "frontContactInit">お問い合わせ</a></li>
                     </ul>
 
                 </div>

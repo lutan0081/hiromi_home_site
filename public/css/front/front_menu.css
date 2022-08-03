@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*========= ナビゲーションのためのCSS ===============*/
 /*アクティブになったエリア*/
 #g-nav.panelactive{
@@ -162,4 +163,14 @@ opacity: 1;
 /* ロゴの設定 */
 .top_log_size{
     width: 10rem;
+}
+
+ /*========= レスポンシブ ===============*/
+/* スマホ */
+@media (max-width: 768px) {
+
+    /* ロゴの設定 */
+    .top_log_size{
+        width: 7rem;
+    }
 }

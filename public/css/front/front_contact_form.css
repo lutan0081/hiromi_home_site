@@ -1,17 +1,17 @@
 @charset "UTF-8";
 /*========= WORKSの要素設定 ===============*/
-.privacy_top_box{
-    background-image: url(../../img/privacy.jpg);
+.contact_form_top_box{
+    background-image: url(../../img/contact_form.jpg);
     background-size: cover;
     /* x軸 Y軸 */
-    background-position: 0% 120%;
+    background-position: 0px -140px;
     background-attachment: fixed;
     height: 20rem;
     position: relative;
 }
 
 /* 画像フィルタ */
-.privacy_top_box_filter {
+.contact_form_top_box_filter {
     background-color: rgba(0,0,0,0.6);
     height: 20rem;
     /* 上下中央 */
@@ -22,7 +22,7 @@
 }
 
 /* top画面親要素 */
-.privacy_top_title_box{
+.contact_form_top_title_box{
     text-align: center;
     color: #fff;
     font-family: 'Cormorant Garamond', serif;
@@ -30,36 +30,63 @@
 }
 
 /* top画面子要素：英語 */
-.privacy_top_title_en{
+.contact_form_title_en{
     font-size: 3rem;
     font-family: 'Cormorant Garamond', serif;
     letter-spacing: 0.3rem;
 }
 
 /* top画面子要素：日本語 */
-.privacy_top_title_jp{
+.contact_form_title_jp{
     font-size: 1.5rem;
 }
 
 /* コンテンツ：タイトル */
-.privacy_contents_title_box{
-    margin-top: 3rem;
+.contact_form_title_box{
+    margin-top: 5rem;
     margin-bottom: 1rem;
 }
 
 /* コンテンツ：タイトル */
-.privacy_contents_title{
+.contact_form_title{
     font-size: 1.5rem;
+}
+
+/* テーブルの設定 */
+.table > tbody > tr > th,
+.table > tbody > tr > td {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border: 1px #CCCCCC solid
+}
+
+th{
+    background-color: #F2F2F2!important;
 }
 
  /*========= レスポンシブ ===============*/
 /* スマホ */
 @media (max-width: 768px) {
-    .privacy_top_box{
+
+    .contact_form_top_box{
+        /* x軸 Y軸 */
+        background-position: -50px 0px;
         background-attachment: inherit;
-        background-position: 45% 0%;
     }
+
+    /* top画面子要素：英語 */
+    .contact_form_title_en{
+        font-size: 2rem;
+    }
+
+    /* top画面子要素：日本語 */
+    .contact_form_title_jp{
+        font-size: 1rem;
+    }
+
+    /* コンテンツ：タイトル */
+    .contact_form_title{
+        font-size: 1.5rem;
+    }
+
 }
-
-
-
