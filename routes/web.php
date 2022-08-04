@@ -14,3 +14,9 @@ Route::get('frontAboutUsInit', 'Front\AboutUs\FrontAboutUsController@frontAboutU
 
 // お問い合わせ:表示
 Route::get('frontContactInit', 'Front\Contact\FrontContactController@frontContactInit');
+
+// サイトマップ:表示
+Route::get('frontSiteMapInit', 'Front\SiteMap\FrontSiteMapController@frontSiteMapInit');
+
+// 施工事例:表示
+Route::get('frontWorksInit', 'Front\Works\FrontWorksController@frontWorksInit');

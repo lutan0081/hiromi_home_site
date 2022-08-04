@@ -16,7 +16,7 @@
                     <ul class= "ul_box">
                         <li class="li_box"><a href= "{{ url('/') }}">ホーム</a></li>
                         <li class="li_box"><a href= "frontPrivacyInit">プライバシー</a></li>
-                        <li class="li_box"><a href= "stepuphtml2.html">サイトマップ</a></li>
+                        <li class="li_box"><a href= "frontSiteMapInit">サイトマップ</a></li>
                         <li class="li_box"><a href= "stepuphtml4.html">新着情報</a></li>
                     </ul>
 
@@ -36,9 +36,9 @@
                 <!-- Service -->
                 <div class="col-12 col-md-12 col-lg-2 footer_contents_box box">
 
-                    <h4><i class="bi bi-gem me-1"></i></i>SERVICE</h4>
+                    <h4><i class="bi bi-gem me-1"></i>SERVICE</h4>
                     <ul class= "ul_box">
-                        <li class="li_box"><a href= "stepuphtml1.html">施工事例</a></li>
+                        <li class="li_box"><a href= "frontWorksInit">施工事例</a></li>
                         <li class="li_box"><a href= "stepuphtml2.html">ブログ</a></li>
                     </ul>
 

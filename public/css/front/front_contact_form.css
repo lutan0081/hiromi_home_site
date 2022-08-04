@@ -1,5 +1,17 @@
 @charset "UTF-8";
-/*========= WORKSの要素設定 ===============*/
+/*========= コンテンツ内の文字設定 ===============*/
+
+/* コンテンツ内の文字の大きさ */
+.contact_form_container_box{
+    font-size: 0.9rem;
+}
+
+/* フォームの文字の大きさ調整 */
+.form-control, .form-select, .btn, .dropdown-menu{
+    font-size: 0.9rem;
+}
+
+/*========= 要素設定 ===============*/
 .contact_form_top_box{
     background-image: url(../../img/contact_form.jpg);
     background-size: cover;
@@ -52,6 +64,16 @@
     font-size: 1.5rem;
 }
 
+/* コンテンツ：内容 */
+.contact_form_contents_box{
+    text-align: center;
+}
+
+/* コンテンツ：inputの大きさ */
+.contact_form_input_box{
+    width: 50%;
+}
+
 /* テーブルの設定 */
 .table > tbody > tr > th,
 .table > tbody > tr > td {
@@ -87,6 +109,11 @@ th{
     /* コンテンツ：タイトル */
     .contact_form_title{
         font-size: 1.5rem;
+    }
+
+    /* コンテンツ：inputの大きさ */
+    .contact_form_input_box{
+        width: 100%;
     }
 
 }
