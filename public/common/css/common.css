@@ -43,7 +43,8 @@ PC、モバイル用の改行コード　
     /*ボタンの形状*/
 	text-decoration: none;
 	display: inline-block;
-   	border: 1px solid red;/* ボーダーの色と太さ */
+   	border: 1px solid red;
+    /* ボーダーの色と太さ */
     padding: 10px 30px;
     text-align: center;
     outline: none;

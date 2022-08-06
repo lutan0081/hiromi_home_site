@@ -20,3 +20,18 @@ Route::get('frontSiteMapInit', 'Front\SiteMap\FrontSiteMapController@frontSiteMa
 
 // 施工事例:表示
 Route::get('frontWorksInit', 'Front\Works\FrontWorksController@frontWorksInit');
+
+// 施工事例詳細:表示
+Route::get('frontWorksEditInit', 'Front\Works\FrontWorksController@frontWorksEditInit');
+
+/**
+ * back
+ */
+// ログイン画面：表示
+Route::get('backLoginInit', 'Back\Login\BackLoginController@backLoginInit');
+
+// ログイン画面：ログインの処理
+Route::post('backLoginEntry', 'Back\Login\BackLoginController@backLoginEntry');
+
+// メイン画面：表示
+Route::get('backHomeInit', 'Back\Home\BackHomeController@backHomeInit');
