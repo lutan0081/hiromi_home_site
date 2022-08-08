@@ -26,6 +26,9 @@
 <!-- common -->
 <link rel="stylesheet" href="{{ asset('common/css/common.css') }}">
 
+<!-- loading -->
+<link rel="stylesheet" href="{{ asset('loading/css/loading.css') }}">
+
 <!-- サイドメニューのアイコン -->
 <script src="https://kit.fontawesome.com/33bf6d5577.js" crossorigin="anonymous"></script>
 

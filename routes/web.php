@@ -41,3 +41,7 @@ Route::any('backPostInit', 'Back\Post\BackPostController@backPostInit');
 
 // 投稿編集：表示
 Route::get('backPostEditInit', 'Back\Post\BackPostController@backPostEditInit');
+
+// 投稿編集：登録
+Route::post('backPostEntry', 'Back\Post\BackPostController@backPostEntry');
+
