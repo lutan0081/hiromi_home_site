@@ -130,7 +130,7 @@
                         <div class="row">
                             <!-- 施工事例：1 -->
                             <div class="col-12 col-md-12 col-lg-12 mt-3 fadeUpTrigger">
-                                <a href="#" class="btn bgleft float-end"><span>VIEW ALL</span></a><br>
+                                <a href="#" class="btnDraw bgleft float-end"><span>VIEW ALL</span></a><br>
                             </div>
                         </div>
                     </div>
@@ -214,12 +214,12 @@
 
                             <!-- 会社概要ボタン -->
                             <div class="col-6 col-md-6 col-lg-6 mb-5">
-                                <a href="#" class="btnshine btn_size_10 float-end zoomInTrigger"><i class="bi bi-cloud me-2"></i>ABOUT US</a>
+                                <a href="#" class="btnshine btn_size_10 float-end zoomInTrigger">ABOUT US</a>
                             </div>
 
                             <!-- お問い合わせ -->
                             <div class="col-6 col-md-6 col-lg-6 mb-5">
-                                <a href="#" class="btnshine btn_size_10 float-start zoomInTrigger"><i class="bi bi-chat-dots me-2"></i>CONTACT</a>
+                                <a href="#" class="btnshine btn_size_10 float-start zoomInTrigger">CONTACT</a>
                             </div>
 
                         </div>
@@ -284,7 +284,7 @@
                             </div>
 
                             <div class="col-12 col-md-12 col-lg-12 mt-5">
-                                <a href="#" class="btn bgleft float-end"><span>VIEW ALL</span></a><br>
+                                <a href="#" class="btnDraw bgleft float-end"><span>VIEW ALL</span></a><br>
                             </div>
 
                         </div>

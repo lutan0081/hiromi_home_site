@@ -60,7 +60,7 @@
                                 <!-- パスワード -->
                                 <div class="col-12 col-md-12 col-lg-12 mt-3">
                                     <label class="label_required mb-2" for="textBox"></label>パスワード
-                                    <input type="text" class="form-control" name="create_user_password" id="create_user_password" placeholder="例：パスワード" value="" required>
+                                    <input type="password" class="form-control" name="create_user_password" id="create_user_password" placeholder="例：パスワード" value="" required>
                                     
                                     <!-- エラーメッセージ -->
                                     <div class="invalid-feedback" id ="create_user_password_error">
@@ -69,7 +69,7 @@
                                 </div>
 
                                 <div class="col-12 col-md-12 col-lg-12 mt-4">
-                                    <a href="#" id="btn_login" class="btn bgleft float-end"><span>ログイン</span></a><br>
+                                    <a href="#" id="btn_login" class="btnDraw bgleft float-end"><span>ログイン</span></a><br>
                                 </div>
 
                                 <div class="col-12 col-md-12 col-lg-12 mt-4 forgot_box">
@@ -87,7 +87,7 @@
         </div>
         <!-- 一覧 --> 
 
-        <!-- 自作js -->
+        <!-- 共通js -->
         @component('component.back_js')
         @endcomponent
 

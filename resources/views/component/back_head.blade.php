@@ -26,6 +26,12 @@
 <!-- common -->
 <link rel="stylesheet" href="{{ asset('common/css/common.css') }}">
 
+<!-- サイドメニューのアイコン -->
+<script src="https://kit.fontawesome.com/33bf6d5577.js" crossorigin="anonymous"></script>
+
+<!-- サイドバー -->
+<link rel="stylesheet" href="{{ asset('css/back/back_sidebar.css') }}">
+
 <!-- fadeUpContinue(連続でフェードイン　親要素に"delayScroll指定"、子要素にbox) -->
 <link rel="stylesheet" href="{{ asset('fadeUpContinue/css/fadeUpContinue.css') }}">
 

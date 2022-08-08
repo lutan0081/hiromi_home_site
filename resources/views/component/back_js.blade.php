@@ -17,6 +17,9 @@
 <!-- common.js -->
 <script src="{{ asset('common/js/common.js') }}"></script>
 
+<!-- サイドバー -->
+<script src="{{ asset('js/back/back_sidebar.js') }}"></script>
+
 <!-- 連続したフェイドインのアニメーション -->
 <script src="{{ asset('fadeUpContinue/js/fadeUpContinue.js') }}"></script>
 

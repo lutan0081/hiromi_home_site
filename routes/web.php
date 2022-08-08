@@ -35,3 +35,9 @@ Route::post('backLoginEntry', 'Back\Login\BackLoginController@backLoginEntry');
 
 // メイン画面：表示
 Route::get('backHomeInit', 'Back\Home\BackHomeController@backHomeInit');
+
+// 投稿一覧：表示
+Route::any('backPostInit', 'Back\Post\BackPostController@backPostInit');
+
+// 投稿編集：表示
+Route::get('backPostEditInit', 'Back\Post\BackPostController@backPostEditInit');
