@@ -66,7 +66,7 @@
                             <!-- 記事タイトル -->
                             <div class="col-12 col-md-12 col-lg-6 mb-3">
                                 <label class="s_required mb-1" for="textBox"><i class="bi bi-check-lg me-1"></i>タイトル</label>
-                                <input type="text" class="form-control" name="post_title" id="post_title" value="" placeholder="例：記事タイトル" required>
+                                <input type="text" class="form-control" name="post_title" id="post_title" value="{{ $post_list->post_title }}" placeholder="例：記事タイトル" required>
                                 <div class="invalid-feedback" id ="post_title_error">
                                     タイトルは必須です。
                                 </div>
@@ -80,7 +80,7 @@
                                 <select class="form-select" name="post_type_id" id="post_type_id" required>
                                     <option></option>
                                     @foreach($post_type_list as $post_type)
-                                        <option value="{{ $post_type->post_type_id }}" >{{ $post_type->post_type_name }}</option>
+                                        <option value="{{ $post_type->post_type_id }}" @if($post_list->post_type_id == $post_type->post_type_id) selected @endif>{{ $post_type->post_type_name }}</option>
                                     @endforeach
                                 </select>
                                 <div class="invalid-feedback" id ="post_type_id_error">
@@ -96,9 +96,10 @@
 
                                 <!-- 確認欄：非表示の場合は、style="display: none" -->
                                 <!-- <textarea id="editor_input" name="editor_input" style="display: none" required></textarea> -->
-                                <textarea id="editor_input" style="min-height:30rem;" name="editor_input" required></textarea>
+                                <textarea id="editor_input" style="min-height:30rem;" name="editor_input" required>{{ $post_list->post_contents }}</textarea>
                             </div>
 
+                            <!-- 投稿美単 -->
                             <div class="col-12 col-md-12 col-lg-12">
                                 <div class="btn-group float-end" role="group">
                                     <button type="button" id="btn_edit" class="btn btn-outline-primary float-end btn_size_10"><i class="bi bi-plus"></i>投稿する</button>

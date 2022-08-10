@@ -113,6 +113,9 @@ class BackLoginController extends Controller
                 // アカウント名設定
                 $request->session()->put('create_user_name',$create_user_list[0]->create_user_name);
 
+                // auth=trueに設定(ログインしていない場合falseの為、backLoginInitに強制遷移)
+                $request->session()->put('post_auth',true);
+
                 // 戻り値
                 $response["status"] = true;
 

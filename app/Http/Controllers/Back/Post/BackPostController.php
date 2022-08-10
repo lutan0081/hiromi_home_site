@@ -66,7 +66,7 @@ class BackPostController extends Controller
 
         // compctは代入名=キーになる
         // キーに名前をつけるときはwith()にする
-        return view('back.back_post', $post_list, compact('paginate_params', 'post_type_list'));
+        return view('back.back_post', $post_list, compact('paginate_params', 'post_type_list', 'free_word'));
     }
 
     /**
@@ -94,6 +94,7 @@ class BackPostController extends Controller
             .",posts.post_contents "
             .",posts.active_flag "
             .",posts.entry_user_id "
+            .",create_users.create_user_name "
             .",posts.entry_date "
             .",posts.update_user_id "
             .",posts.update_date "
@@ -101,6 +102,8 @@ class BackPostController extends Controller
             ."posts "
             ."left join post_types on "
             ."post_types.post_type_id = posts.post_type_id "
+            ."left join create_users on "
+            ."create_users.create_user_id = posts.entry_user_id "
             ."where "
             ."(1 = 1) ";
             
@@ -140,16 +143,15 @@ class BackPostController extends Controller
     }
    
     /**
-     * 投稿編集：表示
+     * 投稿詳細：新規表示
      */
-    public function backPostEditInit(Request $request)
-    {   
+    public function backPostNewInit(Request $request)
+    { 
         Log::debug('start:' .__FUNCTION__);
 
         try {
-      
-            // // 投稿一覧
-            // $post_list = $this->getPostList($request);
+            // 投稿一覧
+            $post_list = $this->getNewList($request);
             
             // 共通クラス
             $common = new Common();
@@ -169,11 +171,107 @@ class BackPostController extends Controller
 
         // compctは代入名=キーになる
         // キーに名前をつけるときはwith()にする
-        return view('back.back_post_edit', compact('post_type_list'));
+        return view('back.back_post_edit', compact('post_list', 'post_type_list'));
     }
 
     /**
-     * 投稿編集：登録分岐
+     * 投稿詳細：ダミー配列取得
+     */
+    private function getNewList(Request $request){
+        Log::debug('log_start:'.__FUNCTION__);
+        
+        $obj = new \stdClass();
+        
+        $obj->post_id= '';
+        $obj->post_title= '';
+        $obj->post_type_id= '';
+        $obj->editor_input= '';
+        $obj->post_contents= '';
+        
+        $ret = [];
+        $ret = $obj;
+
+        Log::debug('log_end:'.__FUNCTION__);
+        return $ret;
+    }
+
+    /**
+     * 投稿詳細：編集表示
+     */
+    public function backPostEditInit(Request $request){   
+        Log::debug('start:' .__FUNCTION__);
+
+        try {
+            // 投稿一覧
+            $post_info = $this->getEditList($request);
+            $post_list = $post_info[0];
+
+            // 共通クラス
+            $common = new Common();
+
+            // 投稿種別
+            $post_type_list = $common->getPostType();
+            
+        // 例外処理
+        } catch (\Throwable $e) {
+
+            Log::debug('error:'.$e);
+
+        } finally {
+        }
+
+        Log::debug('end:' .__FUNCTION__);
+        return view('back.back_post_edit', compact('post_list', 'post_type_list'));
+    }
+
+    /**
+     * 編集(表示:sql)
+     *
+     * @return void
+     */
+    private function getEditList(Request $request){
+
+        Log::debug('start:' .__FUNCTION__);
+
+        try{
+            // 値設定
+            $post_id = $request->input('post_id');
+
+            $str = "select "
+            ."post_id "
+            .",posts.post_title "
+            .",posts.post_type_id "
+            .",post_types.post_type_name "
+            .",posts.post_contents "
+            .",posts.active_flag "
+            .",posts.entry_user_id "
+            .",posts.entry_date "
+            .",posts.update_user_id "
+            .",posts.update_date "
+            ."from "
+            ."posts "
+            ."left join post_types on "
+            ."post_types.post_type_id = posts.post_type_id "
+            ."where "
+            ."post_id = $post_id ";
+            Log::debug('sql:' .$str);
+            
+            $ret = DB::select($str);
+
+        // 例外処理
+        } catch (\Exception $e) {
+
+            throw $e;
+
+        } finally {
+        }
+        
+        Log::debug('start:' .__FUNCTION__);
+        return $ret;
+    }
+
+    /**
+     * 投稿詳細：登録分岐
      */
     public function backPostEntry(Request $request){
         Log::debug('log_start:'.__FUNCTION__);
@@ -213,7 +311,7 @@ class BackPostController extends Controller
     }
 
     /**
-     * 投稿編集：バリデーション
+     * 投稿詳細：バリデーション
      */
     private function editValidation(Request $request){
         Log::debug('log_start:'.__FUNCTION__);
@@ -315,7 +413,7 @@ class BackPostController extends Controller
     }
 
     /**
-     * 投稿編集；sql
+     * 投稿詳細；sql
      */
     private function insertPost(Request $request){
         Log::debug('log_start:' .__FUNCTION__);
@@ -370,6 +468,79 @@ class BackPostController extends Controller
 
             // ok=1/ng=0
             $ret['status'] = DB::insert($str);
+
+        // 例外処理
+        } catch (\Throwable  $e) {
+
+            throw $e;
+
+        // status:OK=1/NG=0
+        } finally {
+        }
+
+        Log::debug('log_end:'.__FUNCTION__);
+        return $ret;
+    }
+
+    /**
+     * 投稿詳細：登録分岐
+     */
+    public function backPostReleaseEntry(Request $request){
+        Log::debug('log_start:'.__FUNCTION__);
+        
+        // return初期値
+        $response = [];
+
+        /**
+         * 値取得
+         */
+        // id
+        $post_id = $request->input('post_id');
+
+        // 公開フラグ
+        $active_id = $request->input('active_id');
+
+        $ret = $this->updateActiveData($request);
+
+        // js側での判定のステータス(true:OK/false:NG)
+        $response["status"] = $ret['status'];
+
+        Log::debug('log_end:' .__FUNCTION__);
+        return response()->json($response);
+    }
+
+    /**
+     * 投稿詳細；公開・非公開
+     */
+    private function updateActiveData(Request $request){
+        Log::debug('log_start:' .__FUNCTION__);
+
+        try {
+            // returnの初期値
+            $ret=[];
+
+            // 値取得
+            $session_id = $request->session()->get('create_user_id');
+
+            // id
+            $post_id = $request->input('post_id');
+
+            // 公開フラグ
+            $active_id = $request->input('active_id');
+
+            $date = now() .'.000';
+
+            $str = "update posts "
+            ."set "
+            ."active_flag = $active_id "
+            .",update_user_id = $session_id "
+            .",update_date = '$date' "
+            ."where "
+            ."post_id = $post_id ";
+            Log::debug('sql:'.$str);
+
+            // ok=1/ng=0
+            $ret['status'] = DB::update($str);
 
         // 例外処理
         } catch (\Throwable  $e) {

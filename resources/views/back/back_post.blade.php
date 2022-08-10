@@ -23,6 +23,13 @@
 	<body>
 		<!-- page-wrapper -->
 		<div class="page-wrapper chiller-theme toggled">
+
+            <!-- ローディング画面 -->
+            <div id="overlay">
+                <div class="cv-spinner">
+                    <span class="spinner"></span>
+                </div>
+            </div>
         
             <!-- sidebar-wrapper  -->
             @component('component.back_sidebar')
@@ -55,7 +62,7 @@
                                             <!-- フリーワード -->
                                             <div class="col-7 col-md-8 col-lg-4">
                                                 <label for="">フリーワード</label>
-                                                <input type="text" class="form-control" name="free_word" id="free_word" value="">
+                                                <input type="text" class="form-control" name="free_word" id="free_word" value="{{ $free_word }}">
                                             </div>
                                             <!-- 検索ボタン -->
                                             <div class="col-5 col-md-4 col-lg-8">
@@ -84,9 +91,8 @@
                                                     <tr>
                                                         <th scope="col" id="post_id" style="display:none">id</th>
                                                         <th>公開</th>
-                                                        <th scope="col" id="post_title">タイトル</th>
+                                                        <th scope="col" id="post_title">記事タイトル</th>
                                                         <th scope="col" id="post_tyoe">カテゴリ</th>
-                                                        <th scope="col" id="post_contents">内容</th>
                                                         <th scope="col" id="entry_user_id">作成者</th>
                                                         <th scope="col" id="entry_date">登録日</th>
                                                         <th scope="col" id="entry_date"></th>
@@ -98,12 +104,11 @@
                                                     @foreach($res as $post_list)
                                                         <tr>
                                                             <td id="id_{{ $post_list->post_id }}" class="click_class" style="display:none"></td>
-                                                            <td id="cb_{{ $post_list->post_id }}" class="click_class"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" @if( $post_list->active_flag == 0 ) checked @endif></td>
+                                                            <td id="cb_{{ $post_list->post_id }}" class="click_class"><input class="form-check-input check_class" type="checkbox" value="" name="aaa" id="v_{{ $post_list->post_id }}" @if( $post_list->active_flag == 0 ) checked @endif></td>
                                                             <td id="title_{{ $post_list->post_id }}" class="click_class">{{ $post_list->post_title }}</td>
                                                             <td id="type_{{ $post_list->post_id }}" class="click_class">{{ $post_list->post_type_name }}</td>
-                                                            <td id="contents_{{ $post_list->post_id }}" class="click_class">{{ $post_list->post_contents }}</td>
-                                                            <td id="user_{{ $post_list->post_id }}" class="click_class">{{ $post_list->post_type_name }}</td>
-                                                            <td id="date_{{ $post_list->post_id }}" class="click_class">{{ $post_list->update_date }}</td>
+                                                            <td id="user_{{ $post_list->post_id }}" class="click_class">{{ $post_list->create_user_name }}</td>
+                                                            <td id="date_{{ $post_list->post_id }}" class="click_class">{{ $post_list->entry_date }}</td>
                                                             <td id="date_{{ $post_list->post_id }}" class="click_class"><a href=""><i class="bi bi-three-dots"></i></a></td>
                                                         </tr>
                                                     @endforeach
@@ -126,7 +131,7 @@
                                     <!-- ボタン -->
                                     <div class="col-12">
                                         <div class="btn-group float-end" role="group">
-                                            <button type="button" onclick="location.href='backPostEditInit'" class="btn btn-outline-primary float-end btn_size_7"><i class="bi bi-plus"></i>新規登録</button>
+                                            <button type="button" onclick="location.href='backPostNewInit'" class="btn btn-outline-primary float-end btn_size_7"><i class="bi bi-plus"></i>新規登録</button>
                                         </div>
                                     </div>
                                 </div>

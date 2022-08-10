@@ -34,14 +34,20 @@ Route::get('backLoginInit', 'Back\Login\BackLoginController@backLoginInit');
 Route::post('backLoginEntry', 'Back\Login\BackLoginController@backLoginEntry');
 
 // メイン画面：表示
-Route::get('backHomeInit', 'Back\Home\BackHomeController@backHomeInit');
+Route::get('backHomeInit', 'Back\Home\BackHomeController@backHomeInit')->middleware("post_auth");
 
 // 投稿一覧：表示
-Route::any('backPostInit', 'Back\Post\BackPostController@backPostInit');
+Route::any('backPostInit', 'Back\Post\BackPostController@backPostInit')->middleware("post_auth");
 
-// 投稿編集：表示
-Route::get('backPostEditInit', 'Back\Post\BackPostController@backPostEditInit');
+// 投稿詳細：新規表示
+Route::get('backPostNewInit', 'Back\Post\BackPostController@backPostNewInit')->middleware("post_auth");
 
-// 投稿編集：登録
-Route::post('backPostEntry', 'Back\Post\BackPostController@backPostEntry');
+// 投稿詳細：編集表示
+Route::get('backPostEditInit', 'Back\Post\BackPostController@backPostEditInit')->middleware("post_auth");
+
+// 投稿詳細：登録
+Route::post('backPostEntry', 'Back\Post\BackPostController@backPostEntry')->middleware("post_auth");
+
+// 投稿詳細：公開・非公開
+Route::post('backPostReleaseEntry', 'Back\Post\BackPostController@backPostReleaseEntry')->middleware("post_auth");
 
