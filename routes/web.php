@@ -24,6 +24,12 @@ Route::get('frontWorksInit', 'Front\Works\FrontWorksController@frontWorksInit');
 // 施工事例詳細:表示
 Route::get('frontWorksEditInit', 'Front\Works\FrontWorksController@frontWorksEditInit');
 
+// 新着情報:表示
+Route::get('frontInformationInit', 'Front\Information\FrontInformationController@frontInformationInit');
+
+// 新着情報：詳細表示
+Route::get('frontInformationEditInit', 'Front\Information\FrontInformationController@frontInformationEditInit');
+
 /**
  * back
  */
@@ -48,6 +54,22 @@ Route::get('backPostEditInit', 'Back\Post\BackPostController@backPostEditInit')-
 // 投稿詳細：登録
 Route::post('backPostEntry', 'Back\Post\BackPostController@backPostEntry')->middleware("post_auth");
 
+// 投稿詳細：削除
+Route::post('backPostDeleteEntry', 'Back\Post\BackPostController@backPostDeleteEntry')->middleware("post_auth");
+
 // 投稿詳細：公開・非公開
 Route::post('backPostReleaseEntry', 'Back\Post\BackPostController@backPostReleaseEntry')->middleware("post_auth");
+
+// 施工事例一覧：表示
+Route::any('backReformInit', 'Back\Reform\BackReformController@backReformInit')->middleware("post_auth");
+
+// 施工事例詳細：新規表示
+Route::get('backReformNewInit', 'Back\Reform\BackReformController@backReformNewInit')->middleware("post_auth");
+
+// 施工事例詳細：編集表示
+Route::get('backReformEditInit', 'Back\Reform\BackReformController@backReformEditInit')->middleware("post_auth");
+
+// 施工事例詳細：公開・非公開
+Route::post('backReformReleaseEntry', 'Back\Reform\BackReformController@backReformReleaseEntry')->middleware("post_auth");
+
 

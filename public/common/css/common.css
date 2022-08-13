@@ -163,6 +163,10 @@ PC、モバイル用の改行コード　
 	width: 10rem;
 }
 
+.btn_size_12{
+	width: 12rem;
+}
+
 .btn_size_15{
 	width: 15rem;
 }
@@ -199,6 +203,7 @@ hr色指定
     background-color: #5382DB;
     opacity: 1;
     height: 1px!important;
+    margin-bottom: 0;
 }
 
 /*==================================

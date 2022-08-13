@@ -389,6 +389,10 @@ video {
     border-bottom: dashed 1px;
     border-color:#D6D6D6;
     border-width:1px;/*5ピクセルの太さにする*/
+    /* はみ出し部分：隠す・ドット */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* お知らせラベル要素 */

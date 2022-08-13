@@ -92,22 +92,29 @@
                             <div class="col-12 col-md-12 col-lg-12 mb-4">
                                 <!-- 入力欄 -->
                                 <label class="s_required mb-1" for="textBox"><i class="bi bi-check-lg me-1"></i>記事本文</label>
-                                <div id="editor" style="min-height:30rem;"></div>
+                                <div id="editor" style="min-height:30rem;">{!! $post_list->post_contents !!}</div>
 
                                 <!-- 確認欄：非表示の場合は、style="display: none" -->
                                 <!-- <textarea id="editor_input" name="editor_input" style="display: none" required></textarea> -->
-                                <textarea id="editor_input" style="min-height:30rem;" name="editor_input" required>{{ $post_list->post_contents }}</textarea>
+                                <textarea id="editor_input" style="min-height:30rem; display: none;" name="editor_input" required>{{ $post_list->post_contents }}</textarea>
                             </div>
 
-                            <!-- 投稿美単 -->
-                            <div class="col-12 col-md-12 col-lg-12">
+                            <!-- 削除ボタン -->
+                            <div class="col-12 col-md-12 col-lg-6 bg-info mb-3">
+                                <div class="btn-group float-start" role="group">
+                                    <button type="button" id="btn_delete" class="btn btn-outline-danger btn_size_10"><i class="bi bi-trash me-1"></i>削除</button>
+                                </div>
+                            </div>
+
+                            <!-- 投稿ボタン -->
+                            <div class="col-12 col-md-12 col-lg-12 bg-info">
                                 <div class="btn-group float-end" role="group">
-                                    <button type="button" id="btn_edit" class="btn btn-outline-primary float-end btn_size_10"><i class="bi bi-plus"></i>投稿する</button>
+                                    <button type="button" id="btn_edit" class="btn btn-outline-primary btn_size_10"><i class="bi bi-plus me-1"></i>投稿</button>
                                 </div>
                             </div>
 
                             <!-- id -->
-                            <input type="text" name="post_id" id="post_id" value="">
+                            <input type="hidden" name="post_id" id="post_id" value="{{ $post_list->post_id }}">
 
                         </form>
                     </div>

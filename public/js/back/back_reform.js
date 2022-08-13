@@ -27,7 +27,7 @@
         },500);
 
         // idをパラメーターでControllerに渡す
-        location.href = "backPostEditInit?post_id=" + id;
+        location.href = "backReformEditInit?reform_id=" + id;
     });
 
     /**
@@ -66,14 +66,14 @@
          * フォームから値取得
          */
         // id
-        let post_id = id;
-        console.log('post_id:' + post_id);
+        let reform_id = id;
+        console.log('reform_id:' + reform_id);
 
         /**
          * 送信データ設定
          */
         var sendData = new FormData();
-        sendData.append('post_id', post_id);
+        sendData.append('reform_id', reform_id);
         sendData.append('active_id', active_id);
 
         /**
@@ -85,8 +85,9 @@
         });
 
         $.ajax({
+            
             type: 'post',
-            url: 'backPostReleaseEntry',
+            url: 'backReformReleaseEntry',
             dataType: 'json',
             data: sendData,
             // ★以下は画像送信の際に必要★
@@ -110,7 +111,6 @@
             // trueの処理->申込一覧に遷移
             if(data.status == true){
                 console.log("status:" + data.status);
-                // 画面更新
                 location.reload();
             };
 
@@ -124,7 +124,7 @@
                 // アラートボタン設定
                 var options = {
                     title: 'エラー',
-                    text: 'システム管理者にお問い合わせください。',
+                    text: '※管理者にお問い合わせください。',
                     icon: 'error',
                     buttons: {
                         OK: 'OK'
@@ -139,7 +139,28 @@
                      * ok,nullの場合の処理を記載
                      */
                     if (val == 'OK' || val == null) {
+
                         console.log(val);
+
+                        /**
+                         * formの全要素をerror_Messageを表示に変更
+                         * error数だけループ処理
+                         */
+                        for (let i = 0; i < data.errkeys.length; i++) {
+                            
+                            // bladeの各divにclass指定
+                            let id_key = "#" + data.errkeys[i];
+                            $(id_key).addClass('is-invalid');
+                            console.log(id_key);
+
+                            // 表示箇所のMessageのkey取得
+                            let msg_key = "#" + data.errkeys[i] + "_error"
+
+                            // error_messageテキスト追加
+                            $(msg_key).text(data.messages[i]);
+                            $(msg_key).show();
+                            console.log(msg_key);
+                        };
                     };
                 });
             }

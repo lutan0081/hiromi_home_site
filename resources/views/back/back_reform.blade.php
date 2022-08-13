@@ -2,14 +2,14 @@
 <html lang="ja">
 
 	<head>
-		<title>投稿一覧/POST</title>
+		<title>施工事例一覧/POST</title>
 
         <!-- css -->
         @component('component.back_head')
         @endcomponent
 
 		<!-- 自作css -->
-        <link rel="stylesheet" href="{{ asset('css/back/back_post.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/back/back_reform.css') }}">
 		
         <style>
             /* 一覧の左右に余白が出来るため、0に設定 */
@@ -47,7 +47,7 @@
                             <div class="row">
                                 <div class="col-12 col-md-12 col-lg-12">
                                     <div class="mt-3">
-                                        <i class="bi bi-mailbox me-1"></i>投稿一覧
+                                        <i class="bi bi-wrench-adjustable me-1"></i>施工事例一覧
                                     </div>
                                     <hr class="bar_blue">
                                 </div>
@@ -55,7 +55,7 @@
                             
                             <!-- 検索欄 -->
                             <div class="row">
-                                <form action="backPostInit" method="post">
+                                <form action="backReformInit" method="post">
                                     {{ csrf_field() }}
                                     <div class="col-12 col-md-12 col-lg-12 mt-3">
                                         <div class="row align-items-end">
@@ -91,8 +91,8 @@
                                                     <tr>
                                                         <th scope="col" id="post_id" style="display:none">id</th>
                                                         <th>公開</th>
-                                                        <th scope="col" id="post_title">記事タイトル</th>
-                                                        <th scope="col" id="post_tyoe">カテゴリ</th>
+                                                        <th scope="col" id="post_title">タイトル</th>
+                                                        <th scope="col" id="post_tyoe">サブタイトル</th>
                                                         <th scope="col" id="entry_user_id">作成者</th>
                                                         <th scope="col" id="entry_date">登録日</th>
                                                         <th scope="col" id="entry_date"></th>
@@ -101,15 +101,15 @@
 
                                                 <!-- テーブルボディ -->
                                                 <tbody>
-                                                    @foreach($res as $post_list)
+                                                    @foreach($res as $reform_list)
                                                         <tr>
-                                                            <td id="id_{{ $post_list->post_id }}" class="click_class" style="display:none"></td>
-                                                            <td id="cb_{{ $post_list->post_id }}" class="click_class"><input class="form-check-input check_class" type="checkbox" value="" name="aaa" id="v_{{ $post_list->post_id }}" @if( $post_list->active_flag == 0 ) checked @endif></td>
-                                                            <td id="title_{{ $post_list->post_id }}" class="click_class">{{ $post_list->post_title }}</td>
-                                                            <td id="type_{{ $post_list->post_id }}" class="click_class">{{ $post_list->post_type_name }}</td>
-                                                            <td id="user_{{ $post_list->post_id }}" class="click_class">{{ $post_list->create_user_name }}</td>
-                                                            <td id="date_{{ $post_list->post_id }}" class="click_class">{{ $post_list->entry_date }}</td>
-                                                            <td id="date_{{ $post_list->post_id }}" class="click_class"><a href=""><i class="bi bi-three-dots"></i></a></td>
+                                                            <td id="id_{{ $reform_list->reform_id }}" class="click_class" style="display:none"></td>
+                                                            <td id="cb_{{ $reform_list->reform_id }}" class="click_class"><input class="form-check-input check_class" type="checkbox" value="" id="v_{{ $reform_list->reform_id }}" @if( $reform_list->active_flag == 0 ) checked @endif></td>
+                                                            <td id="title_{{ $reform_list->reform_id }}" class="click_class">{{ $reform_list->reform_title }}</td>
+                                                            <td id="subTitle_{{ $reform_list->reform_id }}" class="click_class">{{ $reform_list->reform_sub_title }}</td>
+                                                            <td id="user_{{ $reform_list->reform_id }}" class="click_class">{{ $reform_list->create_user_name }}</td>
+                                                            <td id="date_{{ $reform_list->reform_id }}" class="click_class">{{ $reform_list->entry_date }}</td>
+                                                            <td id="config_{{ $reform_list->reform_id }}" class="click_class"><a href=""><i class="bi bi-three-dots"></i></a></td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
@@ -131,7 +131,7 @@
                                     <!-- ボタン -->
                                     <div class="col-12">
                                         <div class="btn-group float-end" role="group">
-                                            <button type="button" onclick="location.href='backPostNewInit'" class="btn btn-outline-primary float-end btn_size_7"><i class="bi bi-plus"></i>新規登録</button>
+                                            <button type="button" onclick="location.href='backReformNewInit'" class="btn btn-outline-primary float-end btn_size_7"><i class="bi bi-plus"></i>新規登録</button>
                                         </div>
                                     </div>
                                 </div>
@@ -149,7 +149,7 @@
         @endcomponent
 
 		<!-- 自作js -->
-        <script src="{{ asset('js/back/back_post.js') }}"></script>
+        <script src="{{ asset('js/back/back_reform.js') }}"></script>
 		
 	</body>
 </html>

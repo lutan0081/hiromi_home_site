@@ -1,9 +1,8 @@
 $(function() {
-    
     /**
      * 登録
      */
-    $("#btn_edit").on('click', function(e) {
+     $("#btn_edit").on('click', function(e) {
 
         console.log('btn_editの処理');
 
@@ -73,7 +72,6 @@ $(function() {
         sendData.append('post_title', post_title);
         sendData.append('post_type_id', post_type_id);
         sendData.append('editor_input', editor_input);
-        sendData.append('post_id', post_id);
 
         /**
          * ajaxの設定
@@ -122,7 +120,8 @@ $(function() {
                 swal(options)
                     .then(function(val) {
                     if (val == 'OK' || val == null) {
-                        location.href = 'backPostInit';
+
+                        // location.reload();
                     };
                 });
             };
@@ -190,104 +189,6 @@ $(function() {
             setTimeout(function(){
                 $("#overlay").fadeOut(300);
             },500);
-        });
-    });
-
-    /**
-     * 削除
-     */
-     $("#btn_delete").on('click', function(e) {
-
-        console.log('btn_deleteの処理');
-
-        e.preventDefault();
-
-        // alertの設定
-        var options = {
-            title: "削除しますか？",
-            text: "※一度削除したデータは復元出来ません。",
-            icon: 'warning',
-            buttons: {
-                CANCEL: "CANCEL", // キャンセルボタン
-                OK: true
-            }
-        };
-
-        /**
-         * フォームから値取得
-         */
-        let post_id = $("#post_id").val();
-        console.log('post_id:' + post_id);
-        
-        // then() OKを押した時の処理
-        swal(options)
-            .then(function(val) {
-
-            if(val == null){
-
-                console.log('キャンセルの処理');
-
-                return false;
-            }
-
-            // OKの処理
-            if (val == "OK") {
-
-                console.log('OKの処理');
-
-                // 送信用データ
-                let sendData = {
-                    "post_id": post_id,
-                };
-                console.log(sendData);
-
-                $.ajaxSetup({
-                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
-                });
-
-                $.ajax({
-                    type: 'post',
-                    url: 'backPostDeleteEntry',
-                    dataType: 'json',
-                    data: sendData,
-                // 接続処理
-                }).done(function(data) {
-
-                    console.log('status:' + data.status);
-
-                    // ローディング停止
-                    setTimeout(function(){
-                        $("#overlay").fadeOut(300);
-                    },500);
-
-                    var options = {
-                        title: "削除が完了しました。",
-                        icon: "success",
-                        buttons: {
-                            ok: true
-                        }
-                    };
-
-                    // then() OKを押した時の処理
-                    swal(options)
-                        .then(function(val) {
-                        if (val) {
-                            location.href = 'backPostInit';
-                        }
-                    });
-
-                // ajax接続失敗の時の処理
-                }).fail(function(jqXHR, textStatus, errorThrown) {
-
-                    setTimeout(function(){
-                        $("#overlay").fadeOut(300);
-                    },500);
-
-                    console.log(jqXHR);
-                    console.log(textStatus);
-                    console.log(errorThrown);
-                });
-            };
         });
     });
 });

@@ -36,8 +36,8 @@ class FrontHomeController extends Controller
         Log::debug('start:' .__FUNCTION__);
 
         try {
-      
-            $ret = [];
+
+            $information_list = $this->getInformationList($request);
 
         // 例外処理
         } catch (\Exception $e) {
@@ -51,7 +51,38 @@ class FrontHomeController extends Controller
 
         // compctは代入名=キーになる
         // キーに名前をつけるときはwith()にする
-        return view('front.front_home', compact('ret'));
+        return view('front.front_home', compact('information_list'));
+    }
+
+    /**
+     * 新着情報：sql
+     */
+    private function getInformationList(Request $request){
+
+        Log::debug('log_start:'.__FUNCTION__);
+
+        try{
+
+            // sql
+            $str = "select * from posts "
+            ."where post_type_id = 1 "
+            ."and Active_flag = 0 "
+            ."order by post_id desc "
+            ."LIMIT 4; ";
+            Log::debug('str:' .$str);
+            $ret = DB::select($str);
+
+        }catch(\Throwable $e) {
+
+            throw $e;
+
+        }finally{
+
+        };
+
+        Log::debug('log_end:'.__FUNCTION__);
+
+        return $ret;
     }
     
 }

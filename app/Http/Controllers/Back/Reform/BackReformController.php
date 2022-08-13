@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Back\Post;
+namespace App\Http\Controllers\Back\Reform;
 
 use Illuminate\Http\Request;
 
@@ -21,28 +21,22 @@ use DateTime;
 use Common;
 
 /**
- * 投稿
+ * 施工事例
  */
-class BackPostController extends Controller
+class BackReformController extends Controller
 {
     /**
-     * 投稿一覧：表示
+     * 施工事例一覧：表示
      */
-    public function backPostInit(Request $request)
+    public function backReformInit(Request $request)
     {   
         Log::debug('start:' .__FUNCTION__);
 
         try {
       
-            // 投稿一覧
-            $post_list = $this->getPostList($request);
+            // 施工事例一覧
+            $reform_list = $this->getReformList($request);
             
-            // 共通クラス
-            $common = new Common();
-
-            // 投稿種別
-            $post_type_list = $common->getPostType();
-
             /**
              * フォームに値を保持させるためにそのまま返す
              */
@@ -66,13 +60,13 @@ class BackPostController extends Controller
 
         // compctは代入名=キーになる
         // キーに名前をつけるときはwith()にする
-        return view('back.back_post', $post_list, compact('paginate_params', 'post_type_list', 'free_word'));
+        return view('back.back_reform', $reform_list, compact('paginate_params', 'reform_list', 'free_word'));
     }
 
     /**
-     * 投稿一覧：sql
+     * 施工事例一覧：sql
      */
-    private function getPostList(Request $request){
+    private function getReformList(Request $request){
 
         Log::debug('log_start:'.__FUNCTION__);
 
@@ -87,23 +81,20 @@ class BackPostController extends Controller
             Log::debug('$session_id:' .$session_id);
 
             $str = "select "
-            ."posts.post_id "
-            .",posts.post_title "
-            .",posts.post_type_id "
-            .",post_types.post_type_name "
-            .",posts.post_contents "
-            .",posts.active_flag "
-            .",posts.entry_user_id "
+            ."reforms.reform_id "
+            .",reforms.reform_title "
+            .",reforms.reform_sub_title "
+            .",reforms.reform_contents "
+            .",reforms.active_flag "
+            .",reforms.entry_user_id "
             .",create_users.create_user_name "
-            .",posts.entry_date "
-            .",posts.update_user_id "
-            .",posts.update_date "
+            .",reforms.entry_date "
+            .",reforms.update_user_id "
+            .",reforms.update_date "
             ."from "
-            ."posts "
-            ."left join post_types on "
-            ."post_types.post_type_id = posts.post_type_id "
+            ."reforms "
             ."left join create_users on "
-            ."create_users.create_user_id = posts.entry_user_id "
+            ."create_users.create_user_id = reforms.entry_user_id "
             ."where "
             ."(1 = 1) ";
             
@@ -112,8 +103,9 @@ class BackPostController extends Controller
 
             // フリーワード
             if($free_word !== null){
-                $where = $where ."and ifnull(post_title,'') like '%$free_word%'";
-                $where = $where ."or ifnull(post_contents,'') like '%$free_word%'";
+                $where = $where ."and ifnull(reform_title,'') like '%$free_word%'";
+                $where = $where ."or ifnull(reform_sub_title,'') like '%$free_word%'";
+                $where = $where ."or ifnull(reform_contents,'') like '%$free_word%'";
             };
     
             $str = $str .$where;
@@ -123,7 +115,7 @@ class BackPostController extends Controller
             $alias = DB::raw("({$str}) as alias");
 
             // columnの設定、表示件数
-            $res = DB::table($alias)->selectRaw("*")->orderByRaw("post_id desc")->paginate(30)->onEachSide(1);
+            $res = DB::table($alias)->selectRaw("*")->orderByRaw("reform_id desc")->paginate(30)->onEachSide(1);
 
             // resの中に値が代入されている
             $ret = [];
@@ -143,22 +135,16 @@ class BackPostController extends Controller
     }
    
     /**
-     * 投稿詳細：新規表示
+     * 施工事例詳細：新規表示
      */
-    public function backPostNewInit(Request $request)
+    public function backReformNewInit(Request $request)
     { 
         Log::debug('start:' .__FUNCTION__);
 
         try {
-            // 投稿一覧
-            $post_list = $this->getNewList($request);
+            // 一覧
+            $reform_list = $this->getNewList($request);
             
-            // 共通クラス
-            $common = new Common();
-
-            // 投稿種別
-            $post_type_list = $common->getPostType();
-
         // 例外処理
         } catch (\Exception $e) {
 
@@ -171,22 +157,21 @@ class BackPostController extends Controller
 
         // compctは代入名=キーになる
         // キーに名前をつけるときはwith()にする
-        return view('back.back_post_edit', compact('post_list', 'post_type_list'));
+        return view('back.back_reform_edit', compact('reform_list'));
     }
 
     /**
-     * 投稿詳細：ダミー配列取得
+     * 施工事例詳細：ダミー配列取得
      */
     private function getNewList(Request $request){
         Log::debug('log_start:'.__FUNCTION__);
         
         $obj = new \stdClass();
         
-        $obj->post_id= '';
-        $obj->post_title= '';
-        $obj->post_type_id= '';
-        $obj->editor_input= '';
-        $obj->post_contents= '';
+        $obj->reform_id= '';
+        $obj->reform_title= '';
+        $obj->reform_sub_title= '';
+        $obj->reform_contents= '';
         
         $ret = [];
         $ret = $obj;
@@ -196,21 +181,15 @@ class BackPostController extends Controller
     }
 
     /**
-     * 投稿詳細：編集表示
+     * 施工事例詳細：編集表示
      */
-    public function backPostEditInit(Request $request){   
+    public function backReformEditInit(Request $request){   
         Log::debug('start:' .__FUNCTION__);
 
         try {
-            // 投稿一覧
-            $post_info = $this->getEditList($request);
-            $post_list = $post_info[0];
-
-            // 共通クラス
-            $common = new Common();
-
-            // 投稿種別
-            $post_type_list = $common->getPostType();
+            // 施工事例一覧
+            $reform_info = $this->getEditList($request);
+            $reform_list = $reform_info[0];
             
         // 例外処理
         } catch (\Throwable $e) {
@@ -221,11 +200,11 @@ class BackPostController extends Controller
         }
 
         Log::debug('end:' .__FUNCTION__);
-        return view('back.back_post_edit', compact('post_list', 'post_type_list'));
+        return view('back.back_reform_edit', compact('reform_list'));
     }
 
     /**
-     * 編集(表示:sql)
+     * 施工事例詳細：編集表示(sql)
      *
      * @return void
      */
@@ -235,25 +214,23 @@ class BackPostController extends Controller
 
         try{
             // 値設定
-            $post_id = $request->input('post_id');
+            $reform_id = $request->input('reform_id');
 
+            // sql
             $str = "select "
-            ."post_id "
-            .",posts.post_title "
-            .",posts.post_type_id "
-            .",post_types.post_type_name "
-            .",posts.post_contents "
-            .",posts.active_flag "
-            .",posts.entry_user_id "
-            .",posts.entry_date "
-            .",posts.update_user_id "
-            .",posts.update_date "
+            ."reform_id "
+            .",reform_title "
+            .",reform_sub_title "
+            .",reform_contents "
+            .",active_flag "
+            .",entry_user_id "
+            .",entry_date "
+            .",update_user_id "
+            .",update_date "
             ."from "
-            ."posts "
-            ."left join post_types on "
-            ."post_types.post_type_id = posts.post_type_id "
+            ."reforms "
             ."where "
-            ."post_id = $post_id ";
+            ."reform_id = $reform_id ";
             Log::debug('sql:' .$str);
             
             $ret = DB::select($str);
@@ -413,7 +390,7 @@ class BackPostController extends Controller
     }
 
     /**
-     * 投稿詳細；新規登録（sql）
+     * 投稿詳細；sql
      */
     private function insertPost(Request $request){
         Log::debug('log_start:' .__FUNCTION__);
@@ -483,116 +460,19 @@ class BackPostController extends Controller
     }
 
     /**
-     * 投稿編集：編集登録（各テーブルに分岐）
+     * 投稿詳細：公開・非公開（登録分岐）
      */
-    private function updateData(Request $request){
-        Log::debug('log_start:' .__FUNCTION__);
-
-        try {
-            // retrunの初期値
-            $ret = [];
-            $ret['status'] = true;
-
-            // 投稿のinsert
-            $post_info = $this->updatePost($request);
-            $ret['status'] = $post_info['status'];
-
-        // 例外処理
-        } catch (\Throwable $e) {
-
-            Log::debug(__FUNCTION__ .':' .$e);
-            $ret['status'] = 0;
-
-        // status:OK=1/NG=0
-        } finally {
-
-            if($ret['status'] == 1){
-                Log::debug('status:trueの処理');
-                $ret['status'] = true;
-            }else{
-                Log::debug('status:falseの処理');
-                $ret['status'] = false;
-            }
-
-            Log::debug('log_end:'.__FUNCTION__);
-            return $ret;
-        }
-    }
-
-    /**
-     * 投稿詳細；新規登録（sql）
-     */
-    private function updatePost(Request $request){
-        Log::debug('log_start:' .__FUNCTION__);
-
-        try {
-            // returnの初期値
-            $ret=[];
-
-            // 値取得
-            $post_id = $request->input('post_id');
-            $session_id = $request->session()->get('create_user_id');
-            $post_title = $request->input('post_title');
-            $post_type_id = $request->input('post_type_id');
-            $editor_input = $request->input('editor_input');
-            $date = now() .'.000';
-    
-            // タイトル
-            if($post_title == null){
-                $post_title = '';
-            }
-
-            // カテゴリ
-            if($post_type_id == null){
-                $post_type_id = 0;
-            }
-
-            // 記事本文
-            if($editor_input == null){
-                $editor_input = '';
-            }
-
-            $str = "update posts "
-            ."set "
-            ."post_title = '$post_title' "
-            .",post_type_id = $post_type_id "
-            .",post_contents = '$editor_input' "
-            .",update_user_id = $session_id "
-            .",update_date = '$date' "
-            ."where "
-            ."post_id = $post_id ";
-            Log::debug('sql:'.$str);
-
-            // ok=1/ng=0
-            $ret['status'] = DB::update($str);
-
-        // 例外処理
-        } catch (\Throwable  $e) {
-
-            throw $e;
-
-        // status:OK=1/NG=0
-        } finally {
-        }
-
-        Log::debug('log_end:'.__FUNCTION__);
-        return $ret;
-    }
-
-    /**
-     * 投稿詳細：公開・非公開分岐
-     */
-    public function backPostReleaseEntry(Request $request){
+    public function backReformReleaseEntry(Request $request){
         Log::debug('log_start:'.__FUNCTION__);
         
-        // return初期値
+        // 初期値
         $response = [];
 
         /**
          * 値取得
          */
         // id
-        $post_id = $request->input('post_id');
+        $reform_id = $request->input('reform_id');
 
         // 公開フラグ
         $active_id = $request->input('active_id');
@@ -607,7 +487,7 @@ class BackPostController extends Controller
     }
 
     /**
-     * 投稿詳細；公開・非公開
+     * 投稿詳細：公開・非公開（sql）
      */
     private function updateActiveData(Request $request){
         Log::debug('log_start:' .__FUNCTION__);
@@ -620,20 +500,21 @@ class BackPostController extends Controller
             $session_id = $request->session()->get('create_user_id');
 
             // id
-            $post_id = $request->input('post_id');
+            $reform_id = $request->input('reform_id');
 
             // 公開フラグ
             $active_id = $request->input('active_id');
 
+            // 日付
             $date = now() .'.000';
 
-            $str = "update posts "
+            $str = "update reforms "
             ."set "
             ."active_flag = $active_id "
             .",update_user_id = $session_id "
             .",update_date = '$date' "
             ."where "
-            ."post_id = $post_id ";
+            ."reform_id = $reform_id ";
             Log::debug('sql:'.$str);
 
             // ok=1/ng=0
@@ -650,70 +531,5 @@ class BackPostController extends Controller
 
         Log::debug('log_end:'.__FUNCTION__);
         return $ret;
-    }
-
-    /**
-     * 投稿詳細：削除
-     */
-    public function backPostDeleteEntry(Request $request){
-        Log::debug('log_start:'.__FUNCTION__);
-        
-        // return初期値
-        $response = [];
-
-        // 削除
-        $ret = $this->deleteData($request);
-
-        // js側での判定のステータス(true:OK/false:NG)
-        $response["status"] = $ret['status'];
-
-        Log::debug('log_end:' .__FUNCTION__);
-        return response()->json($response);
-    }
-
-    /**
-     * 投稿詳細：削除（sql）
-     */
-    private function deleteData(Request $request){
-        Log::debug('log_start:' .__FUNCTION__);
-
-        try {
-            // retrunの初期値
-            $ret = [];
-            $ret['status'] = true;
-
-            // 値取得
-            $post_id = $request->input('post_id');
-
-            // sql
-            $str = "delete "
-            ."from "
-            ."posts "
-            ."where "
-            ."post_id = $post_id ";
-            Log::debug('sql:'.$str);
-
-            $ret['status'] = DB::delete($str);
-
-        // 例外処理
-        } catch (\Throwable $e) {
-
-            Log::debug(__FUNCTION__ .':' .$e);
-            $ret['status'] = 0;
-
-        // status:OK=1/NG=0
-        } finally {
-
-            if($ret['status'] == 1){
-                Log::debug('status:trueの処理');
-                $ret['status'] = true;
-            }else{
-                Log::debug('status:falseの処理');
-                $ret['status'] = false;
-            }
-
-            Log::debug('log_end:'.__FUNCTION__);
-            return $ret;
-        }
     }
 }

@@ -1,0 +1,136 @@
+@charset "UTF-8";
+/*========= WORKSの要素設定 ===============*/
+.information_top_box{
+    background-image: url(../../img/information.jpg);
+    background-size: cover;
+    /* x軸 Y軸 */
+    background-position: 0px -150px;
+    background-attachment: fixed;
+    height: 20rem;
+    position: relative;
+}
+
+/* 画像フィルタ */
+.information_top_box_filter {
+    background-color: rgba(0,0,0,0.6);
+    height: 20rem;
+    /* 上下中央 */
+    /* 親要素をrelativeに設定 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* top画面親要素 */
+.information_top_title_box{
+    text-align: center;
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.3rem;
+}
+
+/* top画面子要素：英語 */
+.information_top_title_en{
+    font-size: 3rem;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.3rem;
+}
+
+/* top画面子要素：日本語 */
+.information_top_title_jp{
+    font-size: 1.5rem;
+}
+
+/* コンテンツ：タイトル */
+.information_contents_title_box{
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+}
+
+/* コンテンツ：タイトル */
+.information_contents_title{
+    font-size: 1.5rem;
+}
+
+.information_contents_box{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    /* 要素の大きさ調整 */
+    height: 13rem;
+    /* 要素を上下中央 */
+    background-color: #F7F7F7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+/* 新着ボックス：左 */
+.information_contents_left_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 新着ボックス：右 */
+.information_contents_right_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* テーブルの設定 */
+.table > tbody > tr > th,
+.table > tbody > tr > td {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border: 1px #CCCCCC solid
+}
+
+th{
+    background-color: #F2F2F2!important;
+}
+
+ /*========= レスポンシブ ===============*/
+/* スマホ */
+@media (max-width: 768px) {
+
+    .information_top_box{
+        /* x軸 Y軸 */
+        background-position: -30px 0px;
+        background-attachment:inherit;
+    }
+    
+    /* top画面子要素：英語 */
+    .information_top_title_en{
+        font-size: 2rem;
+    }
+    
+    /* top画面子要素：日本語 */
+    .information_top_title_jp{
+        font-size: 1rem;
+    }
+
+    /* コンテンツ：タイトル */
+    .information_contents_title{
+        font-size: 1.2rem;
+    }
+
+    /* 新着情報の親要素 */
+    .information_contents_box{
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        height: 20rem;
+        font-size: 1rem;
+    }
+
+    /* コンテンツの左icon */
+    .information_img_size{
+        width: 15rem;
+    }
+}

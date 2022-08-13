@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+/*==================================
+全体の設定
+===================================*/
+body{
+    font-size: 0.9rem;
+}
+
+/*==================================
+ボタン・ドロップダウン、セレクトボックスの文字大きさ
+===================================*/
+.form-control, .form-select, .btn, .dropdown-menu{
+    font-size: 0.9rem;
+}
+
+/*==================================
+テーブルの設定
+===================================*/
+/* 行間 */
+.table-responsive > .table-condensed > thead > tr > th,
+.table-responsive > .table-condensed > tbody > tr > th,
+.table-responsive > .table-condensed > tfoot > tr > th,
+.table-responsive > .table-condensed > thead > tr > td,
+.table-responsive > .table-condensed > tbody > tr > td,
+.table-responsive > .table-condensed > tfoot > tr > td {
+
+    padding: 10px;  /* 5px の値を変更 */
+    /* 見出し線、テーブル線のカスタマイズ */
+    border-bottom: 1px solid #dee2e6!important;
+    /* はみ出た部分を隠す */
+    overflow: hidden;
+    /* 折り返し無し */
+    white-space: nowrap;
+
+    font-size: 0.9em;
+}

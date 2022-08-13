@@ -242,56 +242,34 @@
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-12 mt-3">
                         <div class="row">
-
-                            <div class="col-4 col-md-4 col-lg-2 py-4 information_contents">
-                                2022-07-01
-                            </div>
-                            <div class="col-5 col-md-5 col-lg-2 py-4 information_contents">
-                                <label class="required" for="textBox"></label>
-                            </div>
-                            <div class="col-12 col-md-12 col-lg-8 py-4 information_contents">
-                                コーポレートサイト開設のお知らせ
-                            </div>
-
-                            <div class="col-4 col-md-4 col-lg-2 py-4 information_contents">
-                                2022-07-01
-                            </div>
-                            <div class="col-5 col-md-5 col-lg-2 py-4 information_contents">
-                                <label class="required" for="textBox"></label>
-                            </div>
-                            <div class="col-12 col-md-12 col-lg-8 py-4 information_contents">
-                                コーポレートサイト開設のお知らせ
-                            </div>
-
-                            <div class="col-4 col-md-4 col-lg-2 py-4 information_contents">
-                                2022-07-01
-                            </div>
-                            <div class="col-5 col-md-5 col-lg-2 py-4 information_contents">
-                                <label class="required" for="textBox"></label>
-                            </div>
-                            <div class="col-12 col-md-12 col-lg-8 py-4 information_contents">
-                                コーポレートサイト開設のお知らせ
-                            </div>
-
-                            <div class="col-4 col-md-4 col-lg-2 py-4 information_contents">
-                                2022-07-01
-                            </div>
-                            <div class="col-5 col-md-5 col-lg-2 py-4 information_contents">
-                                <label class="required" for="textBox"></label>
-                            </div>
-                            <div class="col-12 col-md-12 col-lg-8 py-4 information_contents">
-                                コーポレートサイト開設のお知らせ
-                            </div>
-
-                            <div class="col-12 col-md-12 col-lg-12 mt-5">
-                                <a href="#" class="btnDraw bgleft float-end"><span>VIEW ALL</span></a><br>
-                            </div>
-
+                            @foreach($information_list as $information)
+                                <div class="col-4 col-md-4 col-lg-2 py-4 information_contents">
+                                    {{ Common::format_date_hy($information->entry_date) }}
+                                </div>
+                                <div class="col-5 col-md-5 col-lg-2 py-4 information_contents">
+                                    <label class="required" for="textBox"></label>
+                                </div>
+                                <div class="col-12 col-md-12 col-lg-8 py-4 information_contents">
+                                    {{ $information->post_title }}
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
-
-            </div>  
+            </div> 
+        
+            <!-- 新着情報：ボタン -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-12 mt-3">
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 mt-3 fadeUpTrigger">
+                                <a href="frontInformationInit" class="btnDraw bgleft float-end"><span>VIEW ALL</span></a><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
 
             <!-- お問い合わせ -->
             @component('component.front_contact')

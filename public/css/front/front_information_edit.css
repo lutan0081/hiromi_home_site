@@ -1,0 +1,85 @@
+@charset "UTF-8";
+/*========= WORKSの要素設定 ===============*/
+.information_edit_top_box{
+    background-image: url(../../img/information.jpg);
+    background-size: cover;
+    /* x軸 Y軸 */
+    background-position: 0px -150px;
+    background-attachment: fixed;
+    height: 20rem;
+    position: relative;
+}
+
+/* 画像フィルタ */
+.information_edit_top_box_filter {
+    background-color: rgba(0,0,0,0.6);
+    height: 20rem;
+    /* 上下中央 */
+    /* 親要素をrelativeに設定 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* top画面親要素 */
+.information_edit_top_title_box{
+    text-align: center;
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.3rem;
+}
+
+/* top画面子要素：英語 */
+.information_edit_top_title_en{
+    font-size: 3rem;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.3rem;
+}
+
+/* top画面子要素：日本語 */
+.information_edit_top_title_jp{
+    font-size: 1.5rem;
+}
+
+/* コンテンツ：タイトル */
+.information_edit_contents_title_box{
+    margin-top: 4rem;
+}
+
+/* コンテンツ：タイトル */
+.information_edit_contents_title{
+    font-size: 1.5rem;
+}
+
+/* コンテンツ：内容 */
+.information_edit_contents_box{
+    font-size: 1rem;
+    /* はみ出し部分は折り返し表示 */
+    overflow-wrap: break-word;
+}
+
+ /*========= レスポンシブ ===============*/
+/* スマホ */
+@media (max-width: 768px) {
+
+    .information_edit_top_box{
+        /* x軸 Y軸 */
+        background-position: -30px 0px;
+        background-attachment:inherit;
+    }
+    
+    /* top画面子要素：英語 */
+    .information_edit_top_title_en{
+        font-size: 2rem;
+    }
+    
+    /* top画面子要素：日本語 */
+    .information_edit_top_title_jp{
+        font-size: 1rem;
+    }
+
+    /* コンテンツ：タイトル */
+    .information_edit_contents_title{
+        font-size: 1.2rem;
+    }
+}
