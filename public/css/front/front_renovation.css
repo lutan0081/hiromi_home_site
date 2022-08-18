@@ -1,0 +1,187 @@
+@charset "UTF-8";
+/*========= WORKSの要素設定 ===============*/
+.renovation_top_box{
+    background-image: url(../../img/renovation_top.jpg);
+    background-size: cover;
+    /* x軸 Y軸 */
+    background-position: 0px 700px;
+    background-attachment: fixed;
+    height: 20rem;
+    position: relative;
+}
+
+/* 画像フィルタ */
+.renovation_top_box_filter {
+    background-color: rgba(0,0,0,0.6);
+    height: 20rem;
+    /* 上下中央 */
+    /* 親要素をrelativeに設定 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* top画面親要素 */
+.renovation_top_box_title_box{
+    text-align: center;
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.3rem;
+}
+
+/* top画面子要素：英語 */
+.renovation_top_title_en{
+    font-size: 3rem;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.3rem;
+}
+
+/* top画面子要素：日本語 */
+.renovation_top_title_jp{
+    font-size: 1.5rem;
+}
+
+/*============= 内容 ===============*/
+/* コンテンツ：タイトル */
+.renovation_contents_title_box{
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+}
+
+/* コンテンツ：タイトル */
+.renovation_contents_title{
+    font-size: 1.5rem;
+}
+
+/* コンテンツ：内容 */
+.renovation_contents_box{
+    font-size: 1rem;
+    line-height: 2.5rem;
+}
+
+/* コンテンツ：タイトル */
+.renovation_contents_title_box{
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+}
+
+/*============= 内容01 ===============*/
+/* コンテンツ：タイトル */
+.renovation_contents_title_box_01{
+    margin-top: 7rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    letter-spacing: 0.3rem;
+}
+
+.renovation_contents_title_01{
+    letter-spacing: 0.3rem;
+    font-size: 2rem;
+}
+
+/* 縦のライン */
+.line{
+    width: 1px;
+    height: auto;
+    /* 高さ設定 */
+    padding-top: 3.8823%;
+    background-color: #2d2d2d;
+    margin: 1% auto;
+}
+
+/*============= 内容02 ===============*/
+/* コンテンツ：タイトル */
+.renovation_contents_title_box_02{
+    margin-top: 7rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    letter-spacing: 0.3rem;
+}
+
+.renovation_contents_title_02{
+    letter-spacing: 0.3rem;
+    font-size: 2rem;
+}
+
+/* テーブルの設定 */
+.table > tbody > tr > th,
+.table > tbody > tr > td {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border: 1px #CCCCCC solid
+}
+
+th{
+    background-color: #F2F2F2!important;
+}
+
+
+/*==================================
+スライダーのためのcss
+===================================*/
+.slider img {
+    width:100%;/*スライダー内の画像を横幅100%に*/
+    height:18rem;
+}
+
+/*slickのJSで書かれるタグ内、スライド左右の余白調整*/
+
+.slider .slick-slide {
+    margin: 0.5rem;/*スライド左右の余白調整*/
+    padding: 0;
+}
+
+/* 左側に余白が出るため、直接設定 */
+.slick-slider {
+    padding: 0;
+}
+
+ /*========= レスポンシブ ===============*/
+/* スマホ */
+@media (max-width: 768px) {
+
+    .renovation_top_box{
+        /* x軸 Y軸 */
+        background-position: -30px 0px;
+        background-attachment:inherit;
+    }
+    
+    /* top画面子要素：英語 */
+    .renovation_top_title_en{
+        font-size: 2rem;
+    }
+    
+    /* top画面子要素：日本語 */
+    .renovation_top_title_jp{
+        font-size: 1rem;
+    }
+
+    /* コンテンツ：タイトル */
+    .renovation_contents_title{
+        font-size: 1.2rem;
+    }
+
+    .renovation_contents_img_box{
+        display: none;
+    }
+
+    .renovation_contents_title_01{
+        font-size: 1.5rem;
+    }
+
+    .renovation_contents_title_box_01{
+        margin-top: 5rem;
+    }
+
+    .slider img {
+        height:11rem;
+    }
+
+    .renovation_contents_title_02{
+        font-size: 1rem;
+    }
+
+    .renovation_contents_title_box_02{
+        margin-top: 3rem;
+    }
+}

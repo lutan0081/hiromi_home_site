@@ -43,3 +43,16 @@ body{
 .ql-toolbar.ql-snow {
     background-color: #f3f3f3;
 }
+
+/*==================================
+施工事例
+===================================*/
+.uplode_box{
+    border: 2px dashed #5382DB;
+    height: 15rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

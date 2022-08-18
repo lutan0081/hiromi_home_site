@@ -248,32 +248,33 @@ class BackReformController extends Controller
     }
 
     /**
-     * 投稿詳細：登録分岐
+     * 施工事例詳細：登録分岐
      */
-    public function backPostEntry(Request $request){
+    public function backReformEntry(Request $request){
         Log::debug('log_start:'.__FUNCTION__);
         
         // return初期値
         $response = [];
 
         // バリデーション:OK=true NG=false
-        $response = $this->editValidation($request);
+        // $response = $this->editValidation($request);
 
-        if($response["status"] == false){
-            Log::debug('validator_status:falseのif文通過');
-            return response()->json($response);
-        }
+        // if($response["status"] == false){
+        //     Log::debug('validator_status:falseのif文通過');
+        //     return response()->json($response);
+        // }
 
         // 値取得
-        $post_id = $request->input('post_id');
+        $reform_id = $request->input('reform_id');
 
         /**
          * id=無:insert、id=有:update
          */
         // 新規登録
-        if($post_id == ""){
+        if($reform_id == ""){
             Log::debug('新規の処理');
             $ret = $this->insertData($request);
+
         // 編集登録
         }else{
             Log::debug('編集の処理');
@@ -288,7 +289,7 @@ class BackReformController extends Controller
     }
 
     /**
-     * 投稿詳細：バリデーション
+     * 施工事例詳細：バリデーション
      */
     private function editValidation(Request $request){
         Log::debug('log_start:'.__FUNCTION__);
@@ -353,7 +354,7 @@ class BackReformController extends Controller
     }
 
     /**
-     * 投稿編集：新規登録（各テーブルに分岐）
+     * 施工事例編集：新規登録（各テーブルに分岐）
      */
     private function insertData(Request $request){
         Log::debug('log_start:' .__FUNCTION__);
@@ -363,10 +364,34 @@ class BackReformController extends Controller
             $ret = [];
             $ret['status'] = true;
 
-            // 投稿のinsert
-            $post_info = $this->insertPost($request);
-            $ret['status'] = $post_info['status'];
+            /**
+             * 施工事例_insert
+             */
+            $reform_info = $this->insertReform($request);
+            $ret['status'] = $reform_info['status'];
 
+            // 登録時のidを取得
+            $reform_id = $reform_info['reform_id'];
+            Log::debug('reform_id:'.$reform_id);
+
+            /**
+             * 画像登録
+             */
+            $img_files = $request->file('img_files');
+            Log::debug('img_files:'.$img_files);
+            $count = count($img_files);
+            $arrString = print_r($count , true);
+            Log::debug('messages:'.$arrString);
+
+
+            // アップロードしたファイルの件数分ループ
+            foreach ($img_files as $file) {
+                Log::debug('file'. $file);
+
+                // $reform_img_info = $this->insertImg($request, $reform_id);
+                // $ret['status'] = $reform_img_info['status'];
+            }
+;
         // 例外処理
         } catch (\Throwable $e) {
 
@@ -390,9 +415,9 @@ class BackReformController extends Controller
     }
 
     /**
-     * 投稿詳細；sql
+     * 施工事例編集：新規登録（sql）
      */
-    private function insertPost(Request $request){
+    private function insertReform(Request $request){
         Log::debug('log_start:' .__FUNCTION__);
 
         try {
@@ -401,50 +426,73 @@ class BackReformController extends Controller
 
             // 値取得
             $session_id = $request->session()->get('create_user_id');
-            $post_title = $request->input('post_title');
-            $post_type_id = $request->input('post_type_id');
-            $editor_input = $request->input('editor_input');
+            $reform_title = $request->input('reform_title');
+            $reform_sub_title = $request->input('reform_sub_title');
+            $reform_contents = $request->input('editor_input');
             $date = now() .'.000';
     
             // タイトル
-            if($post_title == null){
-                $post_title = '';
+            if($reform_title == null){
+                $reform_title = '';
             }
 
             // カテゴリ
-            if($post_type_id == null){
-                $post_type_id = 0;
+            if($reform_sub_title == null){
+                $reform_sub_title = '';
             }
 
             // 記事本文
-            if($editor_input == null){
-                $editor_input = '';
+            if($reform_contents == null){
+                $reform_contents = '';
             }
 
+            // insert
             $str = "insert "
-            ."into posts( "
-            ."post_title "
-            .",post_type_id "
-            .",post_contents "
+            ."into reforms( "
+            ."reform_title "
+            .",reform_sub_title "
+            .",reform_contents "
             .",active_flag "
             .",entry_user_id "
             .",entry_date "
             .",update_user_id "
             .",update_date "
-            .")values( "
-            ."'$post_title' "
-            .",$post_type_id "
-            .",'$editor_input' "
+            .") values ( "
+            ."'$reform_title' "
+            .",'$reform_sub_title' "
+            .",'$reform_contents' "
             .",0 "
             .",$session_id "
             .",'$date' "
             .",$session_id "
             .",'$date' "
-            .") ";
+            ."); ";
             Log::debug('sql:'.$str);
-
-            // ok=1/ng=0
             $ret['status'] = DB::insert($str);
+
+            // select：reform_id取得
+            $str = "select "
+            ."reform_id "
+            .",reform_title "
+            .",reform_sub_title "
+            .",reform_contents "
+            .",active_flag "
+            .",entry_user_id "
+            .",entry_date "
+            .",update_user_id "
+            .",update_date "
+            ."from "
+            ."reforms "
+            ."where "
+            ."(reform_title = '$reform_title') "
+            ."and "
+            ."(reform_sub_title = '$reform_sub_title') "
+            ."and "
+            ."(reform_contents = '$reform_contents') ";
+            Log::debug('sql:'.$str);
+            $reform_info = DB::select($str);
+
+            $ret['reform_id'] = $reform_info[0]->reform_id;
 
         // 例外処理
         } catch (\Throwable  $e) {
@@ -457,6 +505,138 @@ class BackReformController extends Controller
 
         Log::debug('log_end:'.__FUNCTION__);
         return $ret;
+    }
+
+    /**
+     * 施工事例編集：新規登録（画像）
+     */
+    private function insertImg(Request $request, $reform_id){
+        Log::debug('log_start:'.__FUNCTION__);
+
+        try {
+
+            /**
+             * 値取得
+             */
+            // session_id
+            $session_id = $request->session()->get('create_user_id');
+
+            $img_files = $request->file('img_files');
+            Log::debug('img_files:'.$img_files);
+
+            // 付属書類がない場合、trueでretrun
+            if($img_files == null){
+                Log::debug('付属書類がない場合の処理');
+                $ret['status'] = 1;
+                return $ret;
+            }
+
+            // 拡張子取得
+            $file_extension = $img_file->getClientOriginalExtension();
+            Log::debug('file_extension:'.$file_extension);
+
+            // 種別
+            $img_type = $request->input('img_type');
+            Log::debug('img_type:'.$img_type);
+
+            // 備考
+            $img_text = $request->input('img_text');
+            Log::debug('img_text:'.$img_text);
+
+            // 現在の日付取得
+            $date = now() .'.000';
+        
+            // idごとのフォルダ作成のためのパス生成
+            $dir ='img/reform/' .$reform_id;
+            
+            // 任意のフォルダ作成
+            // ※appを入れるとエラーになる
+            Storage::makeDirectory('/public/' .$dir);
+
+            /**
+             * 画像登録処理
+             */
+            // ファイル名変更
+            $file_name = time() .'.' .$file_extension;
+            Log::debug('ファイル名:'.$file_name);
+
+            // ファイルパス+ファイル名
+            $tmp_file_path = $dir .'/' .$file_name;
+            Log::debug('tmp_file_path :'.$tmp_file_path);
+
+            // pdfの場合、通常の保存をする
+            if($file_extension == 'pdf'){
+
+                // 第一引数=dir,第二引数=ファイル名
+                Log::debug('PDFの処理');
+                $img_file->storeAs('/public/'. $dir, $file_name);
+
+            }else{
+
+                // pdf以外は、リサイズし、保存する
+                Log::debug('jpg,pngの処理');
+                InterventionImage::make($img_file)->resize(380, null,
+                function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save(storage_path('app/public/' .$tmp_file_path));
+
+            }
+
+            /**
+             * 種別idがnullの場合、0を入れる
+             */
+            if($img_type == null){
+                $img_type = 0;
+            }
+
+            /**
+             * 画像データ(insert)
+             */
+            $str = "insert "
+            ."into "
+            ."cost_imgs "
+            ."( "
+            ."cost_id, "
+            ."cost_img_type_id, "
+            ."cost_img_path, "
+            ."cost_img_memo, "
+            ."entry_user_id, "
+            ."entry_date, "
+            ."update_user_id, "
+            ."update_date "
+            .")values( "
+            ."$cost_id, "
+            ."$img_type, "
+            ."'$tmp_file_path', "
+            ."'$img_text', "
+            ."$session_id, "
+            ."'$date', "
+            ."$session_id, "
+            ."'$date' "
+            ."); ";
+            
+            Log::debug('sql:'.$str);
+
+            // OK=1/NG=0
+            $ret['status'] = DB::insert($str);
+
+            Log::debug('status:'.$ret);
+            
+        } catch (\Throwable $e) {
+
+            Log::debug('error:'.$e);
+
+            // storage/app/public/imagesから、画像ファイルを削除する
+            Storage::delete($tmp_file_path);
+
+            throw $e;
+
+        }finally{
+
+            Log::debug('log_end:'.__FUNCTION__);
+            return $ret;
+
+        }
     }
 
     /**

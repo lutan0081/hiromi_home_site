@@ -30,6 +30,15 @@ Route::get('frontInformationInit', 'Front\Information\FrontInformationController
 // 新着情報：詳細表示
 Route::get('frontInformationEditInit', 'Front\Information\FrontInformationController@frontInformationEditInit');
 
+// 入居者対応：表示
+Route::get('frontSupportInit', 'Front\Support\FrontSupportController@frontSupportInit');
+
+// リノベーション：表示
+Route::get('frontRenovationInit', 'Front\Renovation\FrontRenovationController@frontRenovationInit');
+
+// リフォーム：表示
+Route::get('frontReformInit', 'Front\Reform\FrontReformController@frontReformInit');
+
 /**
  * back
  */
@@ -71,5 +80,9 @@ Route::get('backReformEditInit', 'Back\Reform\BackReformController@backReformEdi
 
 // 施工事例詳細：公開・非公開
 Route::post('backReformReleaseEntry', 'Back\Reform\BackReformController@backReformReleaseEntry')->middleware("post_auth");
+
+// 施工事例詳細：登録
+Route::post('backReformEntry', 'Back\Reform\BackReformController@backReformEntry')->middleware("post_auth");
+
 
 

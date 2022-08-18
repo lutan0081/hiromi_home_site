@@ -66,7 +66,8 @@
                         </span>
                     </h1>
 
-                </div>		
+                </div>
+                <div class="scrolldown3"><span>Scroll</span></div>		
             </div>
 
             <hr class="boderTrigger"> 
@@ -152,38 +153,44 @@
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-12 mt-3">
                         <div class="row delayScroll">
-
+                        
                             <!-- 事業内容：1 -->
                             <div class="col-12 col-md-12 col-lg-4 mt-3 box">
-                                <div class="colorfilter-base service_box">
-                                    <img src="./img/service_01.jpg" class="img-fluid colorfilter-image" alt="...">
-                                    <div class="service_contents">
-                                        <span class="service_en">REFORM<br></span>
-                                        <span class="service_jp">リフォーム</span>
+                                <a href="frontReformInit">
+                                    <div class="colorfilter-base service_box">
+                                        <img src="./img/service_01.jpg" class="img-fluid colorfilter-image" alt="...">
+                                        <div class="service_contents">
+                                            <span class="service_en">REFORM<br></span>
+                                            <span class="service_jp">リフォーム</span>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
 
                             <!-- 事業内容：2 -->
                             <div class="col-12 col-md-12 col-lg-4 mt-3 box">
-                                <div class="colorfilter-base service_box">
-                                    <img src="./img/service_02.jpg" class="img-fluid colorfilter-image" alt="...">
-                                    <div class="service_contents">
-                                        <span class="service_en">RENOVATION<br></span>
-                                        <span class="service_jp">リノベーション</span>
+                                <a href="frontRenovationInit">
+                                    <div class="colorfilter-base service_box">
+                                        <img src="./img/service_02.jpg" class="img-fluid colorfilter-image" alt="...">
+                                        <div class="service_contents">
+                                            <span class="service_en">RENOVATION<br></span>
+                                            <span class="service_jp">リノベーション</span>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
 
-                            <!-- 事業内容：3 -->
+                            <!-- 入居者対応 -->
                             <div class="col-12 col-md-12 col-lg-4 mt-3 box">
-                                <div class="colorfilter-base service_box">
-                                    <img src="./img/service_03.jpg" class="img-fluid colorfilter-image" alt="...">
-                                    <div class="service_contents">
-                                        <span class="service_en">SUPPORT<br></span>
-                                        <span class="service_jp">入居者対応</span>
+                                <a href="frontSupportInit">
+                                    <div class="colorfilter-base service_box">
+                                        <img src="./img/service_03.jpg" class="img-fluid colorfilter-image" alt="...">
+                                        <div class="service_contents">
+                                            <span class="service_en">SUPPORT<br></span>
+                                            <span class="service_jp">入居者対応</span>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
 
                         </div>
@@ -214,12 +221,12 @@
 
                             <!-- 会社概要ボタン -->
                             <div class="col-6 col-md-6 col-lg-6 mb-5">
-                                <a href="#" class="btnshine btn_size_10 float-end zoomInTrigger">ABOUT US</a>
+                                <a href="frontAboutUsInit" class="btnshine btn_size_10 float-end zoomInTrigger">ABOUT US</a>
                             </div>
 
                             <!-- お問い合わせ -->
                             <div class="col-6 col-md-6 col-lg-6 mb-5">
-                                <a href="#" class="btnshine btn_size_10 float-start zoomInTrigger">CONTACT</a>
+                                <a href="frontContactInit" class="btnshine btn_size_10 float-start zoomInTrigger">CONTACT</a>
                             </div>
 
                         </div>

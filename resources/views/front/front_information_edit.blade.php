@@ -55,15 +55,6 @@
             </div>
         </div>
 
-        <!-- 罫線 -->
-        <div class="container fadeUpTrigger">
-            <div class="row">
-                <div class="col-12 col-md-12 col-lg-12">
-                    <hr class="bar_red"> 
-                </div>
-            </div>
-        </div>
-
         <!-- ボタン：戻る -->
         <div class="container fadeUpTrigger">
             <div class="row">

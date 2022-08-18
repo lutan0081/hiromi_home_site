@@ -186,24 +186,25 @@ th{
 /* スマホ */
 @media (max-width: 768px) {
 
-    .works_top_box{
+    .works_edit_top_box{
         /* x軸 Y軸 */
         background-position: -30px 0px;
         background-attachment:inherit;
+        
     }
     
     /* top画面子要素：英語 */
-    .works_top_title_en{
+    .works_edit_top_title_en{
         font-size: 2rem;
     }
     
     /* top画面子要素：日本語 */
-    .works_top_title_jp{
+    .works_edit_top_title_jp{
         font-size: 1rem;
     }
-    
-    /* コンテンツ：タイトル */
-    .works_contents_title{
-        font-size: 1rem;
-    }
+
+    .works_edit_contents_main_title {
+      font-size: 1.2rem;;
+  }
+  
 }

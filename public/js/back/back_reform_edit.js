@@ -1,8 +1,6 @@
 $(function() {
-    /**
-     * 登録
-     */
-     $("#btn_edit").on('click', function(e) {
+    // 登録
+    $("#btn_edit").on('click', function(e) {
 
         console.log('btn_editの処理');
 
@@ -15,63 +13,34 @@ $(function() {
          * フォームから値取得
          */
         // タイトル
-        let post_title = $("#post_title").val();
-        console.log('post_title:' + post_title);
+        let reform_title = $("#reform_title").val();
+        console.log('reform_title:' + reform_title);
 
-        // 種別
-        let post_type_id = $("#post_type_id").val();
-        console.log('post_type_id:' + post_type_id);
+        // サブタイトル
+        let reform_sub_title = $("#reform_sub_title").val();
+        console.log('reform_sub_title:' + reform_sub_title);
 
         // 本文
         let editor_input = $("#editor_input").val();
         console.log('editor_input:' + editor_input);
 
-        // id
-        let post_id = $("#post_id").val();
-        console.log('post_id:' + post_id);
-
-        // validationフラグ初期値
-        let v_check = true;
-        
-        /**
-         * 必須項目が空白の時、v_check = falseになり、modalFormにwas-validatedを付与、エラー文字の表示
-         */
-        if(post_title == ''){
-
-            v_check = false;
-        }
-
-        if(post_type_id == ''){
-
-            v_check = false;
-        }
-
-        if(editor_input == ''){
-
-            v_check = false;
-        }
-
-        console.log('v_check:' + v_check);
-
-        if (v_check === false) {
-
-            // ローディング停止
-            setTimeout(function(){
-                $("#overlay").fadeOut(300);
-            },500);
-
-            $('#editForm').addClass("was-validated");
-
-            return false;
-        }
+        // 画像ファイル取得
+        let img_files = $('#img_files').prop('files');
+        console.log("img_files:" + img_files);
 
         /**
          * 送信データ設定
          */
         var sendData = new FormData();
-        sendData.append('post_title', post_title);
-        sendData.append('post_type_id', post_type_id);
+        sendData.append('reform_title', reform_title);
+        sendData.append('reform_sub_title', reform_sub_title);
         sendData.append('editor_input', editor_input);
+  
+        jQuery.each(jQuery('#img_files')[0].files, function(i, file) {
+            sendData.append('img_files'+'['+i+']', file);
+        });
+
+        console.log("sendData:" + sendData);
 
         /**
          * ajaxの設定
@@ -83,7 +52,7 @@ $(function() {
 
         $.ajax({
             type: 'post',
-            url: 'backPostEntry',
+            url: 'backReformEntry',
             dataType: 'json',
             data: sendData,
             // ★以下は画像送信の際に必要★
@@ -95,6 +64,7 @@ $(function() {
              */
             processData : false,
             contentType : false,
+            enctype: 'multipart/form-data',
 
         // trueの処理：完了アラート表示
         }).done(function(data) {
@@ -126,7 +96,7 @@ $(function() {
                 });
             };
 
-             // falseの処理：アラートでエラーメッセージを表示
+            // falseの処理：アラートでエラーメッセージを表示
             if(data.status == false){
 
                 console.log("status:" + data.status);

@@ -17,7 +17,7 @@
                         <li class="li_box"><a href= "{{ url('/') }}">ホーム</a></li>
                         <li class="li_box"><a href= "frontPrivacyInit">プライバシー</a></li>
                         <li class="li_box"><a href= "frontSiteMapInit">サイトマップ</a></li>
-                        <li class="li_box"><a href= "stepuphtml4.html">新着情報</a></li>
+                        <li class="li_box"><a href= "frontInformationInit">新着情報</a></li>
                     </ul>
 
                 </div>

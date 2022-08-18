@@ -20,7 +20,7 @@
 
                         <!-- CONTACT US：ボタン -->
                         <div class="contact_button_box">
-                            <a href="#" class="btnshine btn_size_10 zoomInTrigger">CONTACT</a>
+                            <a href="frontContactInit" class="btnshine btn_size_10 zoomInTrigger">CONTACT</a>
                         </div>
 
                         <div class="contact_tel_box">

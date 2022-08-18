@@ -47,7 +47,7 @@
                             <div class="row">
                                 <div class="col-12 col-md-12 col-lg-12">
                                     <div class="mt-3">
-                                        <i class="bi bi-wrench-adjustable me-1"></i>施工事例一覧
+                                        <i class="bi bi-wrench-adjustable me-1"></i>施工事例：一覧
                                     </div>
                                     <hr class="bar_blue">
                                 </div>

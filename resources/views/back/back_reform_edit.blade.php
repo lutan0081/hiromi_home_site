@@ -2,7 +2,7 @@
 <html lang="ja">
 
 	<head>
-		<title>施工事例詳細/POST</title>
+		<title>施工事例：詳細/POST</title>
 
         <!-- css -->
         @component('component.back_head')
@@ -49,7 +49,7 @@
                             <div class="row">
                                 <div class="col-12 col-md-12 col-lg-12">
                                     <div class="mt-3">
-                                        <i class="bi bi-wrench-adjustable me-1"></i>施工事例詳細
+                                        <i class="bi bi-wrench-adjustable me-1"></i>施工事例：詳細
                                     </div>
                                     <hr class="bar_blue">
                                 </div>
@@ -74,87 +74,187 @@
 
                 <!-- タブ：コンテンツ -->
                 <div class="container">
-                    <div class="row row-cols-3">
-                        <div class="col-12 col-md-12 col-lg-12 mb-3">
-                            <div class="tab-content" id="nav-tabContent">
-                            
-                                <!-- 記事項目 -->
-                                <div class="tab-pane fade show active" id="nav-reform_contents" role="tabpanel" aria-labelledby="nav-reform_contents-tab">
-                                    <div class="row row-cols-2">
-                                        <!-- 記事タイトル -->
-                                        <div class="col-12 col-md-12 col-lg-6 mb-3">
-                                            <label class="s_required mb-1" for="textBox"><i class="bi bi-check-lg me-1"></i>タイトル</label>
-                                            <input type="text" class="form-control" name="reform_title" id="reform_title" value="{{ $reform_list->reform_title }}" placeholder="例：記事タイトル" required>
-                                            <div class="invalid-feedback" id ="reform_title_error">
-                                                タイトルは必須です。
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-lg-12">
+                            <form id="editForm" class="needs-validation" enctype="multipart/form-data" novalidate>
+                                <div class="tab-content" id="nav-tabContent">
+                                
+                                    <!-- 記事項目 -->
+                                    <div class="tab-pane fade show active" id="nav-reform_contents" role="tabpanel" aria-labelledby="nav-reform_contents-tab">
+                                        <div class="row row-cols-2">
+                                            
+                                            <!-- 記事タイトル -->
+                                            <div class="col-12 col-md-12 col-lg-6 mb-3">
+                                                <label class="s_required mb-1" for="textBox"><i class="bi bi-check-lg me-1"></i>タイトル</label>
+                                                <input type="text" class="form-control" name="reform_title" id="reform_title" value="{{ $reform_list->reform_title }}" placeholder="例：記事タイトル" required>
+                                                <div class="invalid-feedback" id ="reform_title_error">
+                                                    タイトルは必須です。
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="w-100"></div>
+                                            <div class="w-100"></div>
 
-                                        <!-- サブタイトル -->
-                                        <div class="col-12 col-md-12 col-lg-6 mb-3">
-                                            <label class="s_required mb-1" for="textBox"><i class="bi bi-check-lg me-1"></i>サブタイトル</label>
-                                            <input type="text" class="form-control" name="reform_sub_title" id="reform_sub_title" value="{{ $reform_list->reform_sub_title }}" placeholder="例：サブタイトル" required>
-                                            <div class="invalid-feedback" id ="reform_sub_title_error">
-                                                サブタイトルは必須です。
+                                            <!-- サブタイトル -->
+                                            <div class="col-12 col-md-12 col-lg-6 mb-3">
+                                                <label class="s_required mb-1" for="textBox"><i class="bi bi-check-lg me-1"></i>サブタイトル</label>
+                                                <input type="text" class="form-control" name="reform_sub_title" id="reform_sub_title" value="{{ $reform_list->reform_sub_title }}" placeholder="例：サブタイトル" required>
+                                                <div class="invalid-feedback" id ="reform_sub_title_error">
+                                                    サブタイトルは必須です。
+                                                </div>
                                             </div>
+
+                                            <!-- 記事本文 -->
+                                            <div class="col-12 col-md-12 col-lg-12">
+                                                <div class="card border border-0">
+                                                    <div class="card-body">
+                                                        <!-- 入力欄 -->
+                                                        <label class="s_required mb-1" for="textBox"><i class="bi bi-check-lg me-1"></i>記事本文</label>
+                                                        <div id="editor" style="min-height:30rem;">{!! $reform_list->reform_contents !!}</div>
+
+                                                        <!-- 確認欄：非表示の場合は、style="display: none" -->
+                                                        <!-- <textarea id="editor_input" style="min-height:30rem; display: none;" name="editor_input" required>{{ $reform_list->reform_contents }}</textarea> -->
+                                                        <textarea id="editor_input" style="min-height:30rem;" name="editor_input" required>{{ $reform_list->reform_contents }}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
-
-                                        <!-- 記事本文 -->
-                                        <div class="col-12 col-md-12 col-lg-12 mb-4">
-                                            <!-- 入力欄 -->
-                                            <label class="s_required mb-1" for="textBox"><i class="bi bi-check-lg me-1"></i>記事本文</label>
-                                            <div id="editor" style="min-height:30rem;"></div>
-
-                                            <!-- 確認欄：非表示の場合は、style="display: none" -->
-                                            <!-- <textarea id="reform_contents" style="min-height:30rem;" name="reform_contents" required>{{ $reform_list->reform_contents }}</textarea> -->
-                                        </div>
-
                                     </div>
-                                </div>
 
-                                <!-- 施工事例 -->
-                                <div class="tab-pane fade" id="nav-reform_picture" role="tabpanel" aria-labelledby="nav-reform_picture-tab">
-                                    <div class="row row-cols-3">
+                                    <!-- 施工事例 -->
+                                    <div class="tab-pane fade" id="nav-reform_picture" role="tabpanel" aria-labelledby="nav-reform_picture-tab">
+                                        <div class="row">
 
-                                        <!-- 記事本文 -->
-                                        <div class="col-12 col-md-12 col-lg-12 mb-4">
+                                            <!-- 一括アップロードエリア -->
+                                            <div class="col-12 col-md-12 col-lg-12 mb-4">
+                                                <div class="card">
+                                                    <div class="card-body">
+
+                                                        <!-- ドラッグ&ドロップエリア -->
+                                                        <div id="image_upload_section">
+                                                            <div id="drop" class="uplode_box" ondragover="onDragOver(event)" ondrop="onDrop(event)">
+                                                                ファイルをドラッグ&ドロップしてください。複数ファイル同時も対応しています。
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- ファイルアップロード -->
+                                            <div class="col-12 col-md-12 col-lg-6 mb-3">
+                                                <input class="form-control" id="img_files" type="file" name="img_files[]" multiple />
+                                                <!-- <input type="file" name="img_files[]" multiple /> -->
+                                            </div>
+
+                                            <!-- 罫線 -->
+                                            <div class="col-12 col-md-12 col-lg-12 mb-4">
+                                                <hr class="bar_blue">
+                                            </div>
+
+                                            <div class="col-12 col-md-12 col-lg-4 mb-4">
+                                                <div class="card">
+                                                    <img src="./img/works_03.jpg" class="card-img-top" alt="...">
+                                                    <div class="card-body">
+                                                        <div class="card-text p-3">
+
+                                                            <div class="row">
+                                                                <div class="col-12 col-md-12 col-lg-12">
+                                                                    <span>種別：居間</span>
+                                                                </div>
+                                                                <div class="col-12 col-md-12 col-lg-12">
+                                                                    <span>備考：テキストテキストテキスト</span>
+                                                                </div>
+                                                                <div class="col-12 col-md-12 col-lg-12">
+                                                                    <button type="button" id="btn_delete" class="btn btn-outline-danger btn_size_6 float-end"><i class="bi bi-trash me-1"></i>削除</button>
+                                                                </div>
+                                                            </div>
+                                                        
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-md-12 col-lg-4 mb-4">
+                                                <div class="card">
+                                                    <img src="./img/works_03.jpg" class="card-img-top" alt="...">
+                                                    <div class="card-body">
+                                                        <div class="card-text p-3">
+
+                                                            <div class="row">
+                                                                <div class="col-12 col-md-12 col-lg-12">
+                                                                    <span>種別：居間</span>
+                                                                </div>
+                                                                <div class="col-12 col-md-12 col-lg-12">
+                                                                    <span>備考：テキストテキストテキスト</span>
+                                                                </div>
+                                                                <div class="col-12 col-md-12 col-lg-12">
+                                                                    <button type="button" id="btn_delete" class="btn btn-outline-danger btn_size_6 float-end"><i class="bi bi-trash me-1"></i>削除</button>
+                                                                </div>
+                                                            </div>
+                                                        
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-md-12 col-lg-4 mb-4">
+                                                <div class="card">
+                                                    <img src="./img/works_03.jpg" class="card-img-top" alt="...">
+                                                    <div class="card-body">
+                                                        <div class="card-text p-3">
+
+                                                            <div class="row">
+                                                                <div class="col-12 col-md-12 col-lg-12">
+                                                                    <span>種別：居間</span>
+                                                                </div>
+                                                                <div class="col-12 col-md-12 col-lg-12">
+                                                                    <span>備考：テキストテキストテキスト</span>
+                                                                </div>
+                                                                <div class="col-12 col-md-12 col-lg-12">
+                                                                    <button type="button" id="btn_delete" class="btn btn-outline-danger btn_size_6 float-end"><i class="bi bi-trash me-1"></i>削除</button>
+                                                                </div>
+                                                            </div>
+                                                        
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+             
                                             
                                         </div>
-                                        
                                     </div>
-                                </div>
 
-                            </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
 
                 <!-- ボタン -->
-                <div class="container mt-4">
+                <div class="container mt-1">
                     <div class="row">
 
                         <!-- 削除ボタン -->
-                        <div class="col-12 col-md-12 col-lg-6">
+                        <div class="col-6 col-md-6 col-lg-6">
                             <div class="btn-group float-start" role="group">
                                 <button type="button" id="btn_delete" class="btn btn-outline-danger btn_size_10"><i class="bi bi-trash me-1"></i>削除</button>
                             </div>
                         </div>
 
                         <!-- 投稿ボタン -->
-                        <div class="col-12 col-md-12 col-lg-6">
+                        <div class="col-6 col-md-6 col-lg-6">
                             <div class="btn-group float-end" role="group">
                                 <button type="button" id="btn_edit" class="btn btn-outline-primary btn_size_10"><i class="bi bi-plus me-1"></i>投稿</button>
                             </div>
                         </div>
 
-                        <!-- id -->
-                        <div class="col-12 col-md-12 col-lg-12">
-                            <input type="hidden" name="reform_id" id="reform_id" value="">
-                        </div>
-
                     </div>
+                </div>
+
+                <!-- id -->
+                <div class="col-12 col-md-12 col-lg-12">
+                    <input type="hidden" name="reform_id" id="reform_id" value="">
                 </div>
 
 
