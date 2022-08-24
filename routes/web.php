@@ -48,6 +48,9 @@ Route::get('backLoginInit', 'Back\Login\BackLoginController@backLoginInit');
 // ログイン画面：ログインの処理
 Route::post('backLoginEntry', 'Back\Login\BackLoginController@backLoginEntry');
 
+// ログアウト
+Route::get('backLogOutEntry', 'Back\LogOut\BackLogOutController@backLogOutEntry')->middleware("post_auth");
+
 // メイン画面：表示
 Route::get('backHomeInit', 'Back\Home\BackHomeController@backHomeInit')->middleware("post_auth");
 
@@ -83,6 +86,18 @@ Route::post('backReformReleaseEntry', 'Back\Reform\BackReformController@backRefo
 
 // 施工事例詳細：登録
 Route::post('backReformEntry', 'Back\Reform\BackReformController@backReformEntry')->middleware("post_auth");
+
+// 施工事例詳細：削除
+Route::post('backReformDeleteEntry', 'Back\Reform\BackReformController@backReformDeleteEntry')->middleware("post_auth");
+
+// 施工事例画像：表示
+Route::post('backImgEditInit', 'Back\Reform\BackReformController@backImgEditInit')->middleware("post_auth");
+
+// 施工事例画像：登録・編集
+Route::post('backImgEditEntry', 'Back\Reform\BackReformController@backImgEditEntry')->middleware("post_auth");
+
+// 施工事例画像：削除
+Route::post('backImgDeleteEntry', 'Back\Reform\BackReformController@backImgDeleteEntry')->middleware("post_auth");
 
 
 

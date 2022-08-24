@@ -114,7 +114,7 @@
         </a>
 
         <!-- ログアウト -->
-        <a href="logOut">
+        <a href="backLogOutEntry">
             <i class="fa fa-power-off"></i>
         </a>
 

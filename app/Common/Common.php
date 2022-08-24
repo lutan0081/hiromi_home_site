@@ -20,6 +20,19 @@ class Common
         return $ret; 
     }
 
+    // 施工事例種別
+    public function getImgType(){
+        Log::debug('log_start:'.__FUNCTION__);
+
+        $str = "select * from img_types "
+        ."order by sort_id asc ";
+
+        $ret = DB::select($str);
+
+        Log::debug('log_end:'.__FUNCTION__);
+        return $ret; 
+    }
+
     /**
      * 日付fフォーマット(年月日)
      * {{ Common::format_date($update->create_date,'Y年m月d日') }}

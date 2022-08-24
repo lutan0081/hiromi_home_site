@@ -20,6 +20,11 @@ use DateTime;
 
 use Common;
 
+// データ縮小
+use InterventionImage;
+
+use Storage;
+
 /**
  * 施工事例
  */
@@ -142,9 +147,15 @@ class BackReformController extends Controller
         Log::debug('start:' .__FUNCTION__);
 
         try {
-            // 一覧
+            // 施工一覧
             $reform_list = $this->getNewList($request);
-            
+
+            // 画像一覧
+            $img_list = [];
+
+            // 画像種別一覧
+            $img_type_list = [];
+
         // 例外処理
         } catch (\Exception $e) {
 
@@ -157,7 +168,7 @@ class BackReformController extends Controller
 
         // compctは代入名=キーになる
         // キーに名前をつけるときはwith()にする
-        return view('back.back_reform_edit', compact('reform_list'));
+        return view('back.back_reform_edit', compact('reform_list', 'img_list', 'img_type_list'));
     }
 
     /**
@@ -190,7 +201,16 @@ class BackReformController extends Controller
             // 施工事例一覧
             $reform_info = $this->getEditList($request);
             $reform_list = $reform_info[0];
-            
+
+            // 画像一覧
+            $img_list = $this->getImgList($request);
+
+            // 共通クラス
+            $common = new Common();
+
+            // お知らせ
+            $img_type_list = $common->getImgType();
+
         // 例外処理
         } catch (\Throwable $e) {
 
@@ -200,7 +220,7 @@ class BackReformController extends Controller
         }
 
         Log::debug('end:' .__FUNCTION__);
-        return view('back.back_reform_edit', compact('reform_list'));
+        return view('back.back_reform_edit', compact('reform_list', 'img_list' ,'img_type_list'));
     }
 
     /**
@@ -248,6 +268,49 @@ class BackReformController extends Controller
     }
 
     /**
+     * 画像一覧：sql
+     */
+    private function getImgList(Request $request){
+        Log::debug('start:' .__FUNCTION__);
+
+        try{
+            // 値設定
+            $reform_id = $request->input('reform_id');
+
+            $str = "select "
+            ."imgs.img_id "
+            .",imgs.reform_id "
+            .",imgs.img_type_id "
+            .",img_types.img_type_name "
+            .",imgs.img_path "
+            .",imgs.img_memo "
+            .",imgs.entry_user_id "
+            .",imgs.entry_date "
+            .",imgs.update_user_id "
+            .",imgs.update_date "
+            ."from "
+            ."imgs "
+            ."left join img_types on "
+            ."img_types.img_type_id = imgs.img_type_id "
+            ."where "
+            ."reform_id = $reform_id ";
+            Log::debug('sql:' .$str);
+
+            $ret = DB::select($str);
+
+        } catch (\Throwable $e) {
+
+            throw $e;
+
+        } finally {
+
+        }
+
+        Log::debug('end:' .__FUNCTION__);
+        return $ret;
+    }
+
+    /**
      * 施工事例詳細：登録分岐
      */
     public function backReformEntry(Request $request){
@@ -256,7 +319,7 @@ class BackReformController extends Controller
         // return初期値
         $response = [];
 
-        // バリデーション:OK=true NG=false
+        // // バリデーション:OK=true NG=false
         // $response = $this->editValidation($request);
 
         // if($response["status"] == false){
@@ -294,21 +357,32 @@ class BackReformController extends Controller
     private function editValidation(Request $request){
         Log::debug('log_start:'.__FUNCTION__);
 
+        $img_files = $request->file('img_files');
+
         // returnの出力値
         $response = [];
         $response["status"] = true;
 
         // rules
         $rules = [];
-        $rules['post_title'] = "required|max:50";
-        $rules['editor_input'] = "required";
+        $rules['reform_title'] = "required|max:50";
+        $rules['reform_sub_title'] = "required|max:50";
+        if($img_files !== null){
+            Log::debug('画像(rules)添付の処理');
+            $rules['img_files'] = "nullable|mimes:jpeg,png,jpg";
+        }
 
         // messages
         $messages = [];
-        $messages['post_title.required'] = "タイトルは必須です。";
-        $messages['post_title.max'] = "タイトルの文字数が超過しています。";
-        $messages['editor_input.required'] = "記事本文は必須です。";
-    
+        $messages['reform_title.required'] = "タイトルは必須です。";
+        $messages['reform_title.max'] = "タイトルの文字数が超過しています。";
+        $messages['reform_sub_title.required'] = "サブタイトルは必須です。";
+        $messages['reform_sub_title.max'] = "サブタイトルの文字数が超過しています。";
+        if($img_files !== null){
+            Log::debug('画像(messages)添付の処理');
+            $messages['img_files.mimes'] = "画像ファイル（jpg.jpeg.png）でアップロードしてください。";
+        }
+
         // validation判定
         $validator = Validator::make($request->all(), $rules, $messages);
 
@@ -378,20 +452,24 @@ class BackReformController extends Controller
              * 画像登録
              */
             $img_files = $request->file('img_files');
-            Log::debug('img_files:'.$img_files);
-            $count = count($img_files);
-            $arrString = print_r($count , true);
-            Log::debug('messages:'.$arrString);
 
+            if($img_files !== null){
+                // 保存時同じファイル名になってしまうので、カウントを追加
+                $count = 0;
 
-            // アップロードしたファイルの件数分ループ
-            foreach ($img_files as $file) {
-                Log::debug('file'. $file);
+                // アップロードしたファイルの件数分ループ
+                foreach ($img_files as $file) {
+                    Log::debug('file'. $file);
+                    
+                    // 画像登録
+                    $reform_img_info = $this->insertImg($request, $reform_id, $file, $count);
+                    $ret['status'] = $reform_img_info['status'];
 
-                // $reform_img_info = $this->insertImg($request, $reform_id);
-                // $ret['status'] = $reform_img_info['status'];
+                    $count = $count + 1;
+                    Log::debug('count:'. $count);
+                }
             }
-;
+
         // 例外処理
         } catch (\Throwable $e) {
 
@@ -508,9 +586,135 @@ class BackReformController extends Controller
     }
 
     /**
-     * 施工事例編集：新規登録（画像）
+     * 施工事例編集：編集登録（各テーブルに分岐）
      */
-    private function insertImg(Request $request, $reform_id){
+    private function updateData(Request $request){
+        Log::debug('log_start:' .__FUNCTION__);
+
+        try {
+            // retrunの初期値
+            $ret = [];
+            $ret['status'] = true;
+
+            /**
+             * 値取得
+             */
+            $reform_id = $request->input('reform_id');
+
+            /**
+             * 施工事例_update
+             */
+            $reform_info = $this->updateReform($request);
+            $ret['status'] = $reform_info['status'];
+
+            /**
+             * 画像登録
+             */
+            $img_files = $request->file('img_files');
+
+            if($img_files !== null){
+                // 保存時同じファイル名になってしまうので、カウントを追加
+                $count = 0;
+
+                // アップロードしたファイルの件数分ループ
+                foreach ($img_files as $file) {
+                    Log::debug('file'. $file);
+                    
+                    // 画像登録
+                    $reform_img_info = $this->insertImg($request, $reform_id, $file, $count);
+                    $ret['status'] = $reform_img_info['status'];
+
+                    $count = $count + 1;
+                    Log::debug('count:'. $count);
+                }
+            }
+
+        // 例外処理
+        } catch (\Throwable $e) {
+
+            Log::debug(__FUNCTION__ .':' .$e);
+            $ret['status'] = 0;
+
+        // status:OK=1/NG=0
+        } finally {
+
+            if($ret['status'] == 1){
+                Log::debug('status:trueの処理');
+                $ret['status'] = true;
+            }else{
+                Log::debug('status:falseの処理');
+                $ret['status'] = false;
+            }
+
+            Log::debug('log_end:'.__FUNCTION__);
+            return $ret;
+        }
+    }
+
+    /**
+     * 施工事例編集：編集登録（sql）
+     */
+    private function updateReform(Request $request){
+        Log::debug('log_start:' .__FUNCTION__);
+
+        try {
+            // returnの初期値
+            $ret=[];
+
+            // 値取得
+            $session_id = $request->session()->get('create_user_id');
+            $reform_id = $request->input('reform_id');
+            $reform_title = $request->input('reform_title');
+            $reform_sub_title = $request->input('reform_sub_title');
+            $reform_contents = $request->input('editor_input');
+            $date = now() .'.000';
+    
+            // タイトル
+            if($reform_title == null){
+                $reform_title = '';
+            }
+
+            // カテゴリ
+            if($reform_sub_title == null){
+                $reform_sub_title = '';
+            }
+
+            // 記事本文
+            if($reform_contents == null){
+                $reform_contents = '';
+            }
+
+            // update
+            $str = "update reforms "
+            ."set "
+            ."reform_title = '$reform_title' "
+            .",reform_sub_title = '$reform_sub_title' "
+            .",reform_contents = '$reform_contents' "
+            .",update_user_id = $session_id "
+            .",update_date = '$date' "
+            ."where "
+            ."reform_id = $reform_id ";
+            
+            Log::debug('sql:'.$str);
+            $ret['status'] = DB::update($str);
+
+        // 例外処理
+        } catch (\Throwable  $e) {
+
+            throw $e;
+
+        // status:OK=1/NG=0
+        } finally {
+        }
+
+        Log::debug('log_end:'.__FUNCTION__);
+        return $ret;
+    }
+
+    /**
+     * 施工事例編集：新規・編集登録（画像）
+     */
+    private function insertImg(Request $request, $reform_id, $file, $count){
         Log::debug('log_start:'.__FUNCTION__);
 
         try {
@@ -521,12 +725,13 @@ class BackReformController extends Controller
             // session_id
             $session_id = $request->session()->get('create_user_id');
 
-            $img_files = $request->file('img_files');
-            Log::debug('img_files:'.$img_files);
+            // 画像ファイル
+            $img_file = $file;
+            Log::debug('$img_file:'.$img_file);
 
-            // 付属書類がない場合、trueでretrun
-            if($img_files == null){
-                Log::debug('付属書類がない場合の処理');
+            // 画像がない場合、trueでretrun
+            if($img_file == null){
+                Log::debug('画像がない場合の処理');
                 $ret['status'] = 1;
                 return $ret;
             }
@@ -534,14 +739,6 @@ class BackReformController extends Controller
             // 拡張子取得
             $file_extension = $img_file->getClientOriginalExtension();
             Log::debug('file_extension:'.$file_extension);
-
-            // 種別
-            $img_type = $request->input('img_type');
-            Log::debug('img_type:'.$img_type);
-
-            // 備考
-            $img_text = $request->input('img_text');
-            Log::debug('img_text:'.$img_text);
 
             // 現在の日付取得
             $date = now() .'.000';
@@ -554,73 +751,50 @@ class BackReformController extends Controller
             Storage::makeDirectory('/public/' .$dir);
 
             /**
-             * 画像登録処理
+             * 画像登録
              */
             // ファイル名変更
-            $file_name = time() .'.' .$file_extension;
+            $file_name = time(). '_'. $count .'.' .$file_extension;
             Log::debug('ファイル名:'.$file_name);
 
             // ファイルパス+ファイル名
             $tmp_file_path = $dir .'/' .$file_name;
             Log::debug('tmp_file_path :'.$tmp_file_path);
 
-            // pdfの場合、通常の保存をする
-            if($file_extension == 'pdf'){
-
-                // 第一引数=dir,第二引数=ファイル名
-                Log::debug('PDFの処理');
-                $img_file->storeAs('/public/'. $dir, $file_name);
-
-            }else{
-
-                // pdf以外は、リサイズし、保存する
-                Log::debug('jpg,pngの処理');
-                InterventionImage::make($img_file)->resize(380, null,
-                function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save(storage_path('app/public/' .$tmp_file_path));
-
-            }
-
-            /**
-             * 種別idがnullの場合、0を入れる
-             */
-            if($img_type == null){
-                $img_type = 0;
-            }
+            // pdf以外は、リサイズし、保存する
+            Log::debug('jpg,pngの処理');
+            InterventionImage::make($img_file)->resize(380, null,
+            function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(storage_path('app/public/' .$tmp_file_path));
 
             /**
              * 画像データ(insert)
              */
             $str = "insert "
-            ."into "
-            ."cost_imgs "
-            ."( "
-            ."cost_id, "
-            ."cost_img_type_id, "
-            ."cost_img_path, "
-            ."cost_img_memo, "
-            ."entry_user_id, "
-            ."entry_date, "
-            ."update_user_id, "
-            ."update_date "
-            .")values( "
-            ."$cost_id, "
-            ."$img_type, "
-            ."'$tmp_file_path', "
-            ."'$img_text', "
-            ."$session_id, "
-            ."'$date', "
-            ."$session_id, "
-            ."'$date' "
-            ."); ";
-            
+            ."into imgs( "
+            ."reform_id "
+            .",img_type_id "
+            .",img_path "
+            .",img_memo "
+            .",entry_user_id "
+            .",entry_date "
+            .",update_user_id "
+            .",update_date "
+            .") values ( "
+            ."$reform_id "
+            .",0 "
+            .",'$tmp_file_path' "
+            .",'' "
+            .",$session_id "
+            .",'$date' "
+            .",$session_id "
+            .",'$date' "
+            .") ";
             Log::debug('sql:'.$str);
 
             // OK=1/NG=0
             $ret['status'] = DB::insert($str);
-
-            Log::debug('status:'.$ret);
             
         } catch (\Throwable $e) {
 
@@ -639,25 +813,57 @@ class BackReformController extends Controller
         }
     }
 
-    /**
-     * 投稿詳細：公開・非公開（登録分岐）
+   /**
+     * 施工事例画像：編集表示
      */
-    public function backReformReleaseEntry(Request $request){
+    public function backImgEditInit(Request $request){   
+        Log::debug('start:' .__FUNCTION__);
+
+        try {
+
+            // 値取得
+            $img_id = $request->input('id');
+    
+            // update
+            $str = "select * from imgs "
+            ."where "
+            ."img_id = $img_id ";
+            Log::debug('sql:'.$str);
+            $img_list = DB::select($str);
+
+            // return初期値
+            $response = [];
+            $response['img_list'] = $img_list;
+
+        // 例外処理
+        } catch (\Throwable $e) {
+
+            Log::debug('error:'.$e);
+
+        } finally {
+        }
+
+        Log::debug('end:' .__FUNCTION__);
+        return response()->json($response);
+    }
+
+    /**
+     * 施工事例画像：登録分岐
+     */
+    public function backImgEditEntry(Request $request){
         Log::debug('log_start:'.__FUNCTION__);
         
-        // 初期値
+        // return初期値
         $response = [];
 
-        /**
-         * 値取得
-         */
-        // id
-        $reform_id = $request->input('reform_id');
+        // // バリデーション:OK=true NG=false
+        // $response = $this->editValidation($request);
 
-        // 公開フラグ
-        $active_id = $request->input('active_id');
-
-        $ret = $this->updateActiveData($request);
+        // if($response["status"] == false){
+        //     Log::debug('validator_status:falseのif文通過');
+        //     return response()->json($response);
+        // }
+        $ret = $this->updateImgData($request);
 
         // js側での判定のステータス(true:OK/false:NG)
         $response["status"] = $ret['status'];
@@ -667,9 +873,124 @@ class BackReformController extends Controller
     }
 
     /**
-     * 投稿詳細：公開・非公開（sql）
+     * 施工事例画像：バリデーション
      */
-    private function updateActiveData(Request $request){
+    private function editImgValidation(Request $request){
+        Log::debug('log_start:'.__FUNCTION__);
+
+        $img_files = $request->file('img_files');
+
+        // returnの出力値
+        $response = [];
+        $response["status"] = true;
+
+        // rules
+        $rules = [];
+        $rules['reform_title'] = "required|max:50";
+        $rules['reform_sub_title'] = "required|max:50";
+        if($img_files !== null){
+            Log::debug('画像(rules)添付の処理');
+            $rules['img_files'] = "nullable|mimes:jpeg,png,jpg";
+        }
+
+        // messages
+        $messages = [];
+        $messages['reform_title.required'] = "タイトルは必須です。";
+        $messages['reform_title.max'] = "タイトルの文字数が超過しています。";
+        $messages['reform_sub_title.required'] = "サブタイトルは必須です。";
+        $messages['reform_sub_title.max'] = "サブタイトルの文字数が超過しています。";
+        if($img_files !== null){
+            Log::debug('画像(messages)添付の処理');
+            $messages['img_files.mimes'] = "画像ファイル（jpg.jpeg.png）でアップロードしてください。";
+        }
+
+        // validation判定
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        // エラーがある場合処理
+        if ($validator->fails()) {
+            Log::debug('validator:失敗');
+
+            // response初期値
+            $keys = [];
+            $msgs = [];
+
+            // errorsをjson形式に変換(true=連想配列)
+            $ary = json_decode($validator->errors(), true);
+            
+            // ループ&値をvalueに設定
+            foreach ($ary as $key => $value) {
+                // キーを配列に設定
+                $keys[] = $key;
+                // 値(メッセージ)を設定
+                $msgs[] = $value;
+            }
+
+            // keyデバック
+            $arrKeys = print_r($keys , true);
+            Log::debug('keys:'.$arrKeys);
+
+            // msgsデバック
+            $arrMsgs = print_r($msgs , true);
+            Log::debug('msgs:'.$arrMsgs);
+
+            // response値設定
+            // status = falseの場合js側でerrorメッセージ表示
+            $response["status"] = false;
+            $response['msg'] = "入力を確認して下さい。";
+            $response["messages"] = $msgs;
+            $response["errkeys"] = $keys;
+            
+            Log::debug('log_end:' .__FUNCTION__);
+        }
+
+        Log::debug('log_end:'.__FUNCTION__);
+        return $response;
+    }
+
+    /**
+     * 施工事例画像：登録（各テーブルに分岐）
+     */
+    private function updateImgData(Request $request){
+        Log::debug('log_start:' .__FUNCTION__);
+
+        try {
+            // retrunの初期値
+            $ret = [];
+            $ret['status'] = true;
+
+            /**
+             * 画像詳細：update
+             */
+            $img_info = $this->updateImg($request);
+            $ret['status'] = $img_info['status'];
+
+        // 例外処理
+        } catch (\Throwable $e) {
+
+            Log::debug(__FUNCTION__ .':' .$e);
+            $ret['status'] = 0;
+
+        // status:OK=1/NG=0
+        } finally {
+
+            if($ret['status'] == 1){
+                Log::debug('status:trueの処理');
+                $ret['status'] = true;
+            }else{
+                Log::debug('status:falseの処理');
+                $ret['status'] = false;
+            }
+
+            Log::debug('log_end:'.__FUNCTION__);
+            return $ret;
+        }
+    }
+
+    /**
+     * 施工事例画像：登録（sql）
+     */
+    private function updateImg(Request $request){
         Log::debug('log_start:' .__FUNCTION__);
 
         try {
@@ -678,26 +999,31 @@ class BackReformController extends Controller
 
             // 値取得
             $session_id = $request->session()->get('create_user_id');
-
-            // id
-            $reform_id = $request->input('reform_id');
-
-            // 公開フラグ
-            $active_id = $request->input('active_id');
-
-            // 日付
+            $img_id = $request->input('img_id');
+            $img_type_id = $request->input('img_type_id');
+            $img_memo = $request->input('img_memo');
             $date = now() .'.000';
+    
+            // 種別
+            if($img_type_id == null){
+                $img_type_id = 0;
+            }
 
-            $str = "update reforms "
+            // 備考
+            if($img_memo == null){
+                $img_memo = '';
+            }
+
+            $str = "update imgs "
             ."set "
-            ."active_flag = $active_id "
+            ."img_type_id = $img_type_id "
+            .",img_memo = '$img_memo' "
             .",update_user_id = $session_id "
             .",update_date = '$date' "
             ."where "
-            ."reform_id = $reform_id ";
-            Log::debug('sql:'.$str);
+            ."img_id = $img_id ";
 
-            // ok=1/ng=0
+            Log::debug('sql:'.$str);
             $ret['status'] = DB::update($str);
 
         // 例外処理
@@ -711,5 +1037,303 @@ class BackReformController extends Controller
 
         Log::debug('log_end:'.__FUNCTION__);
         return $ret;
+    }
+
+    /**
+     * 施工事例削除：登録分岐
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function backReformDeleteEntry(Request $request){
+        Log::debug('log_start:'.__FUNCTION__);
+
+        try{
+
+            DB::beginTransaction();
+
+            // return初期値
+            $response = [];
+
+            /**
+             * 経費概要
+             */
+            $reform_info = $this->deleteReform($request);
+
+            // js側での判定のステータス(true:OK/false:NG)
+            $response['status'] = $reform_info['status'];
+
+            /**
+             * 補足資料
+             */
+            $img_info = $this->deleteImg($request);
+
+            // js側での判定のステータス(true:OK/false:NG)
+            $ret['status'] = $img_info['status'];
+
+            // js側での判定のステータス(true:OK/false:NG)
+            $response["status"] = $ret['status'];
+
+            DB::commit();
+
+        // 例外処理
+        } catch (\Throwable $e) {
+
+            DB::rollback();
+
+            Log::debug(__FUNCTION__ .':' .$e);
+
+            $response['status'] = 0;
+
+        // status:OK=1/NG=0
+        } finally {
+
+            if($response['status'] == 1){
+
+                Log::debug('status:trueの処理');
+                $response['status'] = true;
+
+            }else{
+
+                Log::debug('status:falseの処理');
+                $response['status'] = false;
+            }
+
+        }
+
+        Log::debug('log_end:' .__FUNCTION__);
+        return response()->json($response);
+    }
+
+    /**
+     * 施工事例削除：sql
+     *
+     * @param Request $request
+     * @return void
+     */
+    private function deleteReform(Request $request){
+        Log::debug('log_start:'.__FUNCTION__);
+
+        try{
+            // return初期値
+            $ret = [];
+
+            // 値取得
+            $reform_id = $request->input('reform_id');
+
+            $str = "delete "
+            ."from "
+            ."reforms "
+            ."where "
+            ."reform_id = $reform_id; ";
+            Log::debug('str:'.$str);
+
+            // OK=1/NG=0
+            $ret['status'] = DB::delete($str);
+
+        // 例外処理
+        } catch (\Throwable $e) {
+
+            Log::debug(__FUNCTION__ .':' .$e);
+
+            throw $e;
+
+        // status:OK=1/NG=0
+        } finally {
+
+        }
+
+        Log::debug('log_end:' .__FUNCTION__);
+        return $ret;
+    }
+
+    /**
+     * 施工事例削除：画像データ
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function deleteImg(Request $request){
+        Log::debug('log_start:'.__FUNCTION__);
+
+        try{
+            $ret = [];
+
+            // 値取得
+            $reform_id = $request->input('reform_id');
+
+            /**
+             * 画像削除
+             * 1.契約者Idごとの画像データ取得
+             * 2.パス取得
+             * 3.フォルダ削除
+             * 4.データ(DB)削除
+             */
+            $str = "select * from imgs "
+            ."where reform_id = '$reform_id' ";
+            Log::debug('select_img_sql:'.$str);
+            $img_list = DB::select($str);
+
+            // デバック
+            $arrString = print_r($img_list , true);
+            Log::debug('log_Imgs:'.$arrString);
+
+            /**
+             * 画像データが存在しない場合
+             * 削除対象が無のため、return=trueを返却
+             */
+            if(count($img_list) == 0){
+                Log::debug('画像データが存在しない場合の処理');
+
+                $ret['status'] = 1;
+
+                return $ret;
+            }
+
+            // 画像パスを"/"で分解->配列化
+            $arr = explode('/', $img_list[0]->img_path);
+
+            // appを除外し文字結合(public/img/214)
+            $img_dir_path = $arr[0] ."/" .$arr[1] ."/" .$arr[2];
+
+            // フォルダ削除
+            Storage::deleteDirectory('/public/' .$img_dir_path);
+
+            // 画像データ削除(DB)
+            $str = "delete from imgs "
+            ."where reform_id = '$reform_id' ";
+            Log::debug('delete_img_sql:'.$str);
+
+            $ret['status'] = DB::delete($str);
+            Log::debug($ret['status']);
+            
+        // 例外処理
+        } catch (\Throwable $e) {
+
+            Log::debug(__FUNCTION__ .':' .$e);
+
+            throw $e;
+
+        // status:OK=1/NG=0
+        } finally {
+
+        }
+
+        Log::debug('log_end:' .__FUNCTION__);
+        return $ret;
+    }
+
+    /**
+     * 施工事例削除（画像詳細）：削除・画像データ
+     *
+     * @param Request $request
+     * @return $ret['status'] OK=true/NG=false
+     */
+    public function backImgDeleteEntry(Request $request){
+        Log::debug('log_start:'.__FUNCTION__);
+
+        try{
+            // トランザクション
+            DB::beginTransaction();
+
+            $response = [];
+
+            // 値取得
+            $img_id = $request->input('img_id');
+
+            /**
+             * 画像削除
+             * 1.契約者Idごとの画像データ取得
+             * 2.パス取得
+             * 3.フォルダ削除
+             * 4.データ(DB)削除
+             */
+            $str = "select * from imgs "
+            ."where img_id = '$img_id' ";
+            Log::debug('select_img_sql:'.$str);
+            $img_list = DB::select($str);
+
+            // デバック
+            $arrString = print_r($img_list , true);
+            Log::debug('imgs:'.$arrString);
+
+            // 画像データが存在しない場合、削除対象が無のため、return=trueを返却
+            if(count($img_list) == 0){
+                Log::debug('画像が存在しない場合の処理');
+
+                $ret['status'] = true;
+
+                // コミット(記載無しの場合、処理が実行されない)
+                DB::commit();
+
+                return response()->json($response);
+            }
+            
+            /**
+             * 画像ファイル削除
+             */
+            // 画像パスを"/"で分解->配列化
+            $img_name_path = $img_list[0]->img_path;
+            Log::debug('img_name_path:'.$img_name_path);
+
+            // ファイル削除(例:Storage::delete('public/img/214/1637578613.jpg');
+            Storage::delete('/public/' .$img_name_path);
+
+            /**
+             * 画像フォルダ削除
+             */
+             // 画像パスを"/"で分解->配列化
+            $arr = explode('/', $img_list[0]->img_path);
+            $img_dir_path = $arr[0] ."/" .$arr[1] ."/" .$arr[2];
+
+            // フォルダの中身を確認
+            $img_arr = Storage::files('/public/' .$img_dir_path);
+
+            // デバック(ファイルの中身を確認)
+            Log::debug('img_arr:'.$arrString);
+            $arrString = print_r($img_arr , true);
+
+            // 参照の値が空白の場合、フォルダ削除
+            if(empty($img_arr)){
+
+                Log::debug('フォルダの中身がない場合の処理');
+
+                // フォルダ削除
+                Storage::deleteDirectory('/public/' .$img_dir_path);
+            }
+
+            // 画像データ削除(DB)
+            $str = "delete from imgs "
+            ."where img_id = '$img_id' ";
+            Log::debug('delete_sql:'.$str);
+
+            $response['status'] = DB::delete($str);
+            Log::debug($response['status']);
+            
+            // コミット
+            DB::commit();
+
+        // 例外処理
+        } catch (\Throwable $e) {
+            Log::debug(__FUNCTION__ .':' .$e);
+
+            DB::rollback();
+
+            $response['status'] = 0;
+        // status:OK=1/NG=0
+        } finally {
+
+            if($response['status'] == 1){
+                Log::debug('status:trueの処理');
+                $response['status'] = true;
+
+            }else{
+                Log::debug('status:falseの処理');
+                $response['status'] = false;
+            }
+        }
+
+        Log::debug('log_end:' .__FUNCTION__);
+        return response()->json($response);
     }
 }
