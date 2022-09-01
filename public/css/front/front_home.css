@@ -420,7 +420,7 @@ label.required:after {
 	right:50%;
     /*マウスの動き1.6秒かけて動く永遠にループ*/
 	animation:mousemove 1.6s ease-in-out infinite;
-    z-index: 999;
+    z-index: 2;
 }
 
 /*下からの距離が変化して上から下に動く*/
@@ -505,7 +505,10 @@ label.required:after {
 	border:1px solid #eee;
 }
 
-
+/* 施工事例の設定 */
+.click_reform_img{
+    cursor: pointer;
+}
 
 /*========= レスポンシブ ===============*/
 /* スマホ */

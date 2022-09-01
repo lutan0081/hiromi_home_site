@@ -156,7 +156,7 @@
                                                 <div class="col-12 col-md-12 col-lg-4 mb-4">
                                                     <div class="card">
                                                         <!-- 画像 -->
-                                                        <img src="storage/{{ $imgs->img_path }}" class="card-img-top" style="height:16rem; alt="...">
+                                                        <img src="storage/{{ $imgs->img_path }}" class="card-img-top" style="height:16rem;" alt="...">
                                                         <div class="card-body">
                                                             <div class="card-text p-3">
 

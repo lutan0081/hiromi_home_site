@@ -82,4 +82,24 @@ $(window).on('load', function(){
     },2900);
 });
 
+$(function() {
+    /**
+     * 施工事例：詳細表示
+     */
+    $(".click_reform_img").on('click', function(e) {
+        console.log('click_reform_imgの処理');
+
+        // tdのidを配列に分解
+        var id = $(this).attr("id");
+
+        // 文字列をアンダーバーで分割
+        id = id.split('_')[2];
+        console.log('id:'+ id);
+
+        // idをパラメーターでControllerに渡す
+        location.href = "frontWorksEditInit?reform_id=" + id;
+    });
+});
+
+
 

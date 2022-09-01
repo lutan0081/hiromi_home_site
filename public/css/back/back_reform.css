@@ -34,4 +34,6 @@ body{
     white-space: nowrap;
 
     font-size: 0.9em;
+
+    cursor:pointer;
 }

@@ -763,7 +763,7 @@ class BackReformController extends Controller
 
             // pdf以外は、リサイズし、保存する
             Log::debug('jpg,pngの処理');
-            InterventionImage::make($img_file)->resize(380, null,
+            InterventionImage::make($img_file)->resize(1200, 675,
             function ($constraint) {
                 $constraint->aspectRatio();
             })->save(storage_path('app/public/' .$tmp_file_path));

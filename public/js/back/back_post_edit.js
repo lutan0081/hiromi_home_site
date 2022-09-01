@@ -75,6 +75,8 @@ $(function() {
         sendData.append('editor_input', editor_input);
         sendData.append('post_id', post_id);
 
+        console.log('sendData' + JSON.stringify(sendData));
+        
         /**
          * ajaxの設定
          */

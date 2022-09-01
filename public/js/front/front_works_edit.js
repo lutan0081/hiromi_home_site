@@ -8,4 +8,4 @@ $(function () {
       centerMode: true, // slidesToShowが奇数のとき、現在のスライドを中央に表示する
       variableWidth: true, // スライド幅の自動計算を無効化
     });
-  });
+});

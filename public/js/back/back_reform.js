@@ -9,7 +9,32 @@
      * 一覧ダブルクリックの処理
      */
     $(".click_class").on('dblclick', function(e) {
-        console.log("dblclickの処理.");
+        console.log("dblclickの処理");
+
+        // ローディング開始
+        $("#overlay").fadeIn(300);
+
+        // tdのidを配列に分解
+        var id = $(this).attr("id");
+
+        // 文字列をアンダーバーで分割
+        id = id.split('_')[1];
+        console.log(id);
+
+        // ローディング停止
+        setTimeout(function(){
+            $("#overlay").fadeOut(300);
+        },500);
+
+        // idをパラメーターでControllerに渡す
+        location.href = "backReformEditInit?reform_id=" + id;
+    });
+
+    /**
+     * 一覧編集ボタンの処理
+     */
+    $(".config_class").on('click', function(e) {
+        console.log("config_classの処理");
 
         // ローディング開始
         $("#overlay").fadeIn(300);
@@ -179,4 +204,5 @@
             },500);
         });
     });
+    
 });

@@ -88,37 +88,11 @@
                     <div class="col-12 col-md-12 col-lg-12 mt-3">
                         <div class="row delayScroll">
                             <!-- 施工事例：1 -->
-                            <div class="col-12 col-md-12 col-lg-3 mt-3 box">
-                                <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                            </div>
-                            <!-- 施工事例：2 -->
-                            <div class="col-12 col-md-12 col-lg-3 mt-3 box">
-                                <img src="./img/works_02.jpg" class="img-fluid" alt="...">
-                            </div>
-                            <!-- 施工事例：3 -->
-                            <div class="col-12 col-md-12 col-lg-3 mt-3 box">
-                                <img src="./img/works_03.jpg" class="img-fluid" alt="...">
-                            </div>
-                            <!-- 施工事例：4 -->
-                            <div class="col-12 col-md-12 col-lg-3 mt-3 box">
-                                <img src="./img/works_04.jpg" class="img-fluid" alt="...">
-                            </div>
-                            <!-- 施工事例：1 -->
-                            <div class="col-12 col-md-12 col-lg-3 mt-3 box">
-                                <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                            </div>
-                            <!-- 施工事例：2 -->
-                            <div class="col-12 col-md-12 col-lg-3 mt-3 box">
-                                <img src="./img/works_02.jpg" class="img-fluid" alt="...">
-                            </div>
-                            <!-- 施工事例：3 -->
-                            <div class="col-12 col-md-12 col-lg-3 mt-3 box">
-                                <img src="./img/works_03.jpg" class="img-fluid" alt="...">
-                            </div>
-                            <!-- 施工事例：4 -->
-                            <div class="col-12 col-md-12 col-lg-3 mt-3">
-                                <img src="./img/works_04.jpg" class="img-fluid" alt="...">
-                            </div>
+                            @foreach($reform_img_list as $reform_img)
+                                <div class="col-12 col-md-12 col-lg-3 mt-4 box">
+                                    <img src="storage/{{ $reform_img->img_path }}" style="height:17rem;" id="reform_id_{{ $reform_img->reform_id }}" class="img-fluid click_reform_img" alt="...">
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -131,7 +105,7 @@
                         <div class="row">
                             <!-- 施工事例：1 -->
                             <div class="col-12 col-md-12 col-lg-12 mt-3 fadeUpTrigger">
-                                <a href="#" class="btnDraw bgleft float-end"><span>VIEW ALL</span></a><br>
+                                <a href="frontWorksInit" target="_blank" class="btnDraw bgleft float-end"><span>VIEW ALL</span></a><br>
                             </div>
                         </div>
                     </div>
@@ -156,7 +130,7 @@
                         
                             <!-- 事業内容：1 -->
                             <div class="col-12 col-md-12 col-lg-4 mt-3 box">
-                                <a href="frontReformInit">
+                                <a href="frontReformInit" target="_blank">
                                     <div class="colorfilter-base service_box">
                                         <img src="./img/service_01.jpg" class="img-fluid colorfilter-image" alt="...">
                                         <div class="service_contents">
@@ -169,7 +143,7 @@
 
                             <!-- 事業内容：2 -->
                             <div class="col-12 col-md-12 col-lg-4 mt-3 box">
-                                <a href="frontRenovationInit">
+                                <a href="frontRenovationInit" target="_blank">
                                     <div class="colorfilter-base service_box">
                                         <img src="./img/service_02.jpg" class="img-fluid colorfilter-image" alt="...">
                                         <div class="service_contents">
@@ -182,7 +156,7 @@
 
                             <!-- 入居者対応 -->
                             <div class="col-12 col-md-12 col-lg-4 mt-3 box">
-                                <a href="frontSupportInit">
+                                <a href="frontSupportInit" target="_blank">
                                     <div class="colorfilter-base service_box">
                                         <img src="./img/service_03.jpg" class="img-fluid colorfilter-image" alt="...">
                                         <div class="service_contents">
@@ -221,12 +195,12 @@
 
                             <!-- 会社概要ボタン -->
                             <div class="col-6 col-md-6 col-lg-6 mb-5">
-                                <a href="frontAboutUsInit" class="btnshine btn_size_10 float-end zoomInTrigger">ABOUT US</a>
+                                <a href="frontAboutUsInit" target="_blank" class="btnshine btn_size_10 float-end zoomInTrigger">ABOUT US</a>
                             </div>
 
                             <!-- お問い合わせ -->
                             <div class="col-6 col-md-6 col-lg-6 mb-5">
-                                <a href="frontContactInit" class="btnshine btn_size_10 float-start zoomInTrigger">CONTACT</a>
+                                <a href="frontContactInit" target="_blank" class="btnshine btn_size_10 float-start zoomInTrigger">CONTACT</a>
                             </div>
 
                         </div>
@@ -271,7 +245,7 @@
                     <div class="col-12 col-md-12 col-lg-12 mt-3">
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12 mt-3 fadeUpTrigger">
-                                <a href="frontInformationInit" class="btnDraw bgleft float-end"><span>VIEW ALL</span></a><br>
+                                <a href="frontInformationInit" target="_blank" class="btnDraw bgleft float-end"><span>VIEW ALL</span></a><br>
                             </div>
                         </div>
                     </div>

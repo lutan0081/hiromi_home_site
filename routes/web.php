@@ -21,6 +21,9 @@ Route::get('frontSiteMapInit', 'Front\SiteMap\FrontSiteMapController@frontSiteMa
 // 施工事例:表示
 Route::get('frontWorksInit', 'Front\Works\FrontWorksController@frontWorksInit');
 
+// 施工事例:もっと見る
+Route::post('frontWorksViewMore', 'Front\Works\FrontWorksController@frontWorksViewMore');
+
 // 施工事例詳細:表示
 Route::get('frontWorksEditInit', 'Front\Works\FrontWorksController@frontWorksEditInit');
 

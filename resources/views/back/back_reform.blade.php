@@ -109,7 +109,7 @@
                                                             <td id="subTitle_{{ $reform_list->reform_id }}" class="click_class">{{ $reform_list->reform_sub_title }}</td>
                                                             <td id="user_{{ $reform_list->reform_id }}" class="click_class">{{ $reform_list->create_user_name }}</td>
                                                             <td id="date_{{ $reform_list->reform_id }}" class="click_class">{{ $reform_list->entry_date }}</td>
-                                                            <td id="config_{{ $reform_list->reform_id }}" class="click_class"><a href=""><i class="bi bi-three-dots"></i></a></td>
+                                                            <td id="config_{{ $reform_list->reform_id }}" class="click_class config_class"><a><i class="bi bi-three-dots"></i></a></td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>

@@ -12,12 +12,12 @@
                 <!-- HOME -->
                 <div class="col-12 col-md-12 col-lg-2 footer_contents_box box">
 
-                    <h3><i class="bi bi-house-door me-1"></i>HOME</h3>
+                    <h4><i class="bi bi-house-door me-1"></i>HOME</h3>
                     <ul class= "ul_box">
                         <li class="li_box"><a href= "{{ url('/') }}">ホーム</a></li>
-                        <li class="li_box"><a href= "frontPrivacyInit">プライバシー</a></li>
-                        <li class="li_box"><a href= "frontSiteMapInit">サイトマップ</a></li>
-                        <li class="li_box"><a href= "frontInformationInit">新着情報</a></li>
+                        <li class="li_box"><a href= "frontPrivacyInit" target="_blank">プライバシー</a></li>
+                        <li class="li_box"><a href= "frontSiteMapInit" target="_blank">サイトマップ</a></li>
+                        <li class="li_box"><a href= "frontInformationInit" target="_blank">新着情報</a></li>
                     </ul>
 
                 </div>
@@ -27,8 +27,8 @@
 
                     <h4><i class="bi bi-building me-1"></i>COMPANY</h4>
                     <ul class= "ul_box">
-                        <li class="li_box"><a href= "frontAboutUsInit">会社概要</a></li>
-                        <li class="li_box"><a href= "frontContactInit">お問い合わせ</a></li>
+                        <li class="li_box"><a href= "frontAboutUsInit" target="_blank">会社概要</a></li>
+                        <li class="li_box"><a href= "frontContactInit" target="_blank">お問い合わせ</a></li>
                     </ul>
 
                 </div>
@@ -39,7 +39,7 @@
                     <h4><i class="bi bi-gem me-1"></i>SERVICE</h4>
                     <ul class= "ul_box">
                         <li class="li_box"><a href= "frontWorksInit">施工事例</a></li>
-                        <li class="li_box"><a href= "stepuphtml2.html">ブログ</a></li>
+                        <li class="li_box"><a href= "#">ブログ</a></li>
                     </ul>
 
                 </div>

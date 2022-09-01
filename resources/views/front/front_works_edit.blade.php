@@ -44,12 +44,12 @@
 
                 <!-- タイトル -->
                 <div class="col-12 col-md-12 col-lg-12 works_edit_contents_title_box fadeUpTrigger">
-                    <span class="works_edit_contents_main_title">こだわりの詰まった家<br></span>
+                    <span class="works_edit_contents_main_title">{{ $reform_edit_list->reform_title }}<br></span>
                 </div>
 
                 <!-- サブタイトル -->
                 <div class="col-12 col-md-12 col-lg-12 works_edit_contents_sub_title_box fadeUpTrigger">
-                    <span class="works_edit_contents_sub_title pt-3">ルタンテラス福島</span>
+                    <span class="works_edit_contents_sub_title pt-3">{{ $reform_edit_list->reform_sub_title }}</span>
                 </div>
 
                 <!-- 罫線 -->
@@ -62,22 +62,16 @@
                 <div class="col-12 col-md-12 col-lg-12 slider_box">
                     
                     <ul class="slider-2" id="js-slider-2">
-                        <li><img src="./img/works_01.jpg" alt=""></li>
-                        <li><img src="./img/works_01.jpg" alt=""></li>
-                        <li><img src="./img/works_01.jpg" alt=""></li>
-                        <li><img src="./img/works_01.jpg" alt=""></li>
+                        @foreach($img_list as $img)
+                            <li><img src="storage/{{ $img->img_path }}" alt=""></li>
+                        @endforeach
                     </ul>
                     <div class="dots-2"></div>
 
                 </div>
 
                 <div class="col-12 col-md-12 col-lg-12 works_edit_bottom_box fadeUpTrigger">
-                    おしゃれな空間<br>
-                    まるで外国のカフェのようなおしゃれな空間が広がります。<br>
-                    天井は、レッドシダーの板を採用。淡い色や濃い色を混ぜて
-                    ランダムに貼ることで、重厚感と軽やかさを融合しました。<br>
-                    梁やシーリングファンとの相性もピッタリ。<br>
-                    奥へ進むと、お子さまが大好きなすべり台があります。
+                    {!! $reform_edit_list->reform_contents!!}
                 </div>
 
                 <!-- 罫線 -->
@@ -89,42 +83,14 @@
                 <div class="col-12 col-md-12 col-lg-12 mt-5">
                     <div class="row delayScroll">
 
-                        <div class="col-12 col-md-12 col-lg-6 mb-4 box">
-                            <div class="img_wrap">
-                                <img src="./img/works_01.jpg" class="img-fluid" alt="...">
+                        @foreach($img_list as $img)
+                            <div class="col-12 col-md-12 col-lg-6 mb-4 box">
+                                <div class="img_wrap">
+                                    <img src="storage/{{ $img->img_path }}" class="img-fluid img_fluid_box" alt="...">
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
 
-                        <div class="col-12 col-md-12 col-lg-6 mb-4 box">
-                            <div class="img_wrap">
-                                <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-6 mb-4 box">
-                            <div class="img_wrap">
-                                <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-6 mb-4 box">
-                            <div class="img_wrap">
-                                <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-6 mb-4 box">
-                            <div class="img_wrap">
-                                <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-6 mb-4">
-                            <div class="img_wrap">
-                                <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                            </div>
-                        </div>
-                        
                     </div>
                 </div>
                 

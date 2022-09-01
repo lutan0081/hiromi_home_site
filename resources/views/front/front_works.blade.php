@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        <!-- プライバシー内容 -->
+        <!-- 内容 -->
         <div class="container fadeUpTrigger">
             <div class="row">
 
@@ -48,241 +48,45 @@
 
                 <!-- コンテンツ -->
                 <div class="col-12 col-md-12 col-lg-12">
-
-                    <div class="row">
-
+                    <div class="row view_more_box">
                         <!-- 施工事例：写真 -->
-                        <div class="col-12 col-md-12 col-lg-4 mb-4">
-                            <div class="card">
-                                
-                                <!-- フォーカス時、画像に黒フィルタをかける -->
-                                <div class="img_wrap">
-                                    <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                                </div>
-                                
-                                <div class="card-body works_contents_box">
-                                    <h5 class="card-title works_contents_img_title">やりたいことを全てやったリノベーション</h5>
-                                    <p class="card-text">ルタンテラス福島</p>
-                                    <a href="frontWorksEditInit"><i class="bi bi-chevron-right float-end"></i></a>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-                        <!-- 施工事例：写真 -->
-                        <div class="col-12 col-md-12 col-lg-4 mb-4">
-                            <div class="card">
-                                
-                                <!-- フォーカス時、画像に黒フィルタをかける -->
-                                <div class="img_wrap">
-                                    <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                                </div>
-                                
-                                <div class="card-body works_contents_box">
-                                    <h5 class="card-title works_contents_img_title">やりたいことを全てやったリノベーション</h5>
-                                    <p class="card-text">ルタンテラス福島</p>
-                                    <a href="frontWorksEditInit"><i class="bi bi-chevron-right float-end"></i></a>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-                        <!-- 施工事例：写真 -->
-                        <div class="col-12 col-md-12 col-lg-4 mb-4">
-                            <div class="card">
-                                
-                                <!-- フォーカス時、画像に黒フィルタをかける -->
-                                <div class="img_wrap">
-                                    <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                                </div>
-                                
-                                <div class="card-body works_contents_box">
-                                    <h5 class="card-title works_contents_img_title">やりたいことを全てやったリノベーション</h5>
-                                    <p class="card-text">ルタンテラス福島</p>
-                                    <a href="frontWorksEditInit"><i class="bi bi-chevron-right float-end"></i></a>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-                        <!-- 施工事例：写真 -->
-                        <div class="col-12 col-md-12 col-lg-4 mb-4">
-                            <div class="card">
-                                
-                                <!-- フォーカス時、画像に黒フィルタをかける -->
-                                <div class="img_wrap">
-                                    <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                                </div>
-                                
-                                <div class="card-body">
-                                    <h5 class="card-title works_contents_title">やりたいことを全てやったリノベーション</h5>
-                                    <p class="card-text">ルタンテラス福島</p>
-                                    <a href="#"><i class="bi bi-chevron-right float-end"></i></a>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-                        <!-- 施工事例：写真 -->
-                        <div class="col-12 col-md-12 col-lg-4 mb-4">
-                            <div class="card">
-                                
-                                <!-- フォーカス時、画像に黒フィルタをかける -->
-                                <div class="img_wrap">
-                                    <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                                </div>
-                                
-                                <div class="card-body">
-                                    <h5 class="card-title works_contents_title">やりたいことを全てやったリノベーション</h5>
-                                    <p class="card-text">ルタンテラス福島</p>
-                                    <a href="#"><i class="bi bi-chevron-right float-end"></i></a>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-                        <!-- 施工事例：写真 -->
-                        <div class="col-12 col-md-12 col-lg-4 mb-4">
-                            <div class="card">
-                                
-                                <!-- フォーカス時、画像に黒フィルタをかける -->
-                                <div class="img_wrap">
-                                    <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                                </div>
-                                
-                                <div class="card-body">
-                                    <h5 class="card-title works_contents_title">やりたいことを全てやったリノベーション</h5>
-                                    <p class="card-text">ルタンテラス福島</p>
-                                    <a href="#"><i class="bi bi-chevron-right float-end"></i></a>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-                        <!-- 施工事例：写真 -->
-                        <div class="col-4 col-md-4 col-lg-4 mb-4">
-                            <div class="card">
-                                
-                                <!-- フォーカス時、画像に黒フィルタをかける -->
-                                <div class="img_wrap">
-                                    <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                                </div>
-                                
-                                <div class="card-body">
-                                    <h5 class="card-title works_contents_title">やりたいことを全てやったリノベーション</h5>
-                                    <p class="card-text">ルタンテラス福島</p>
-                                    <a href="#"><i class="bi bi-chevron-right float-end"></i></a>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-                        <!-- 施工事例：写真 -->
-                        <div class="col-12 col-md-12 col-lg-4 mb-4">
-                            <div class="card">
-                                
-                                <!-- フォーカス時、画像に黒フィルタをかける -->
-                                <div class="img_wrap">
-                                    <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                                </div>
-                                
-                                <div class="card-body">
-                                    <h5 class="card-title works_contents_title">やりたいことを全てやったリノベーション</h5>
-                                    <p class="card-text">ルタンテラス福島</p>
-                                    <a href="#"><i class="bi bi-chevron-right float-end"></i></a>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-                        <!-- 施工事例：写真 -->
-                        <div class="col-12 col-md-12 col-lg-4 mb-4">
-                            <div class="card">
-                                
-                                <!-- フォーカス時、画像に黒フィルタをかける -->
-                                <div class="img_wrap">
-                                    <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                                </div>
-                                
-                                <div class="card-body">
-                                    <h5 class="card-title works_contents_title">やりたいことを全てやったリノベーション</h5>
-                                    <p class="card-text">ルタンテラス福島</p>
-                                    <a href="#"><i class="bi bi-chevron-right float-end"></i></a>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-                        <!-- 施工事例：写真 -->
-                        <div class="col-12 col-md-12 col-lg-4 mb-4">
-                            <div class="card">
-                                
-                                <!-- フォーカス時、画像に黒フィルタをかける -->
-                                <div class="img_wrap">
-                                    <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                                </div>
-                                
-                                <div class="card-body">
-                                    <h5 class="card-title works_contents_title">やりたいことを全てやったリノベーション</h5>
-                                    <p class="card-text">ルタンテラス福島</p>
-                                    <a href="#"><i class="bi bi-chevron-right float-end"></i></a>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-                        <!-- 施工事例：写真 -->
-                        <div class="col-12 col-md-12 col-lg-4 mb-4">
-                            <div class="card">
-                                
-                                <!-- フォーカス時、画像に黒フィルタをかける -->
-                                <div class="img_wrap">
-                                    <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                                </div>
-                                
-                                <div class="card-body">
-                                    <h5 class="card-title works_contents_title">やりたいことを全てやったリノベーション</h5>
-                                    <p class="card-text">ルタンテラス福島</p>
-                                    <a href="#"><i class="bi bi-chevron-right float-end"></i></a>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-                        <!-- 施工事例：写真 -->
-                        <div class="col-12 col-md-12 col-lg-4 mb-4">
-                            <div class="card">
-                                
-                                <!-- フォーカス時、画像に黒フィルタをかける -->
-                                <div class="img_wrap">
-                                    <img src="./img/works_01.jpg" class="img-fluid" alt="...">
-                                </div>
-                                
-                                <div class="card-body">
-                                    <h5 class="card-title works_contents_title">やりたいことを全てやったリノベーション</h5>
-                                    <p class="card-text">ルタンテラス福島</p>
-                                    <a href="#"><i class="bi bi-chevron-right float-end"></i></a>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-                        <!-- 施工事：ボタン -->
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-12 col-md-12 col-lg-12">
-                                    <div class="row">
-                                        <!-- 施工事例：1 -->
-                                        <div class="col-12 col-md-12 col-lg-12 mt-3 fadeUpTrigger">
-                                            <a href="#" class="btn bgleft float-end"><span>VIEW ALL</span></a><br>
-                                        </div>
+                        @foreach($reform_list as $reform)
+                            <div id="reform_id_{{ $reform->reform_id }}" class="col-12 col-md-12 col-lg-4 click_class mb-4">
+                                <div class="card">
+                                    
+                                    <!-- フォーカス時、画像に黒フィルタをかける -->
+                                    <div class="img_wrap">
+                                        <img src="storage/{{ $reform->img_path }}" class="img-fluid" alt="...">
                                     </div>
+                                    
+                                    <div class="card-body works_contents_box">
+                                        <h5 class="card-title works_contents_img_title">{{ $reform->reform_title }}</h5>
+                                        <p class="card-text">{{ $reform->reform_sub_title }}</p>
+                                        <i class="bi bi-chevron-right float-end"></i>
+                                    </div>
+                                    
                                 </div>
                             </div>
-                        </div>  
-
+                        @endforeach
                     </div>
+                </div>
+            </div>
+        </div>
 
+        <!-- 施工事：ボタン -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-12">
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-lg-12 mt-3 fadeUpTrigger">
+                            <a href="" id="btn_view_more" class="btnDraw bgleft float-end"><span>VIEW MORE</span></a><br>
+                        </div>
+
+                        <div class="col-12 col-md-12 col-lg-12 mt-3 fadeUpTrigger">
+                            <!-- ofsetの値 -->
+                            <input type="hidden" name="ofset_id" id="ofset_id" value="9">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -300,7 +104,7 @@
         @endcomponent
         
         <!-- front_home -->
-        <script src="{{ asset('js/front/front_home.js') }}"></script>
+        <script src="{{ asset('js/front/front_works.js') }}"></script>
     </body>
 
 </html>

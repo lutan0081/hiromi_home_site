@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /*========= ナビゲーションのためのCSS ===============*/
+
 /*アクティブになったエリア*/
 #g-nav.panelactive{
     /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
@@ -38,7 +39,7 @@
     z-index: 999; 
     width: 100%;
     height: 100vh;
-    overflow: auto;
+    overflow: hidden;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -52,8 +53,8 @@
     /*ナビゲーション天地中央揃え※レイアウトによって調整してください。不必要なら削除*/
     position: absolute;
     z-index: 999;
-    top:50%;
-    left:50%;
+    /* top:50%; */
+    /* left:50%; */
     transform: translate(-50%,-50%);
 }
 
@@ -82,7 +83,7 @@ opacity: 1;
 
 /*リストのレイアウト設定*/
 #g-nav li{
-	text-align: center; 
+	/* text-align: center;  */
 	list-style: none;
 }
 
@@ -108,7 +109,7 @@ opacity: 1;
     height:50px;
 }
 	
-/*右上のボタン設定*/	
+/*×に変化*/	
 .openbtn span{
     display: inline-block;
     transition: all .4s;
@@ -116,7 +117,7 @@ opacity: 1;
     left: 14px;
     height: 3px;
     border-radius: 2px;
-	background-color: #808080;
+	background-color: #666;
   	width: 45%;
   }
 
@@ -150,6 +151,22 @@ opacity: 1;
     width: 30%;
 }
 
+
+/* memn_box親要素 */
+.parent_box{
+    height: 100vh;
+}
+
+/* memn_box子要素 */
+.chilled_box{
+    height: 30rem;
+    /* 余白の調整 */
+    padding-top: 25%;
+    padding-left: 10%;
+
+}
+
+
 /*========= top画面のロゴ要素設定 ===============*/
 /* ロゴの親要素設定 */
 .top_logo_box{
@@ -173,4 +190,13 @@ opacity: 1;
     .top_log_size{
         width: 7rem;
     }
+
+    .chilled_box{
+        padding-top: 45%;
+    }
+
+    .menu_bottm_mt{
+        margin-top: 2rem;
+    }
+    
 }
