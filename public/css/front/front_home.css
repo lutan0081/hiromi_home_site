@@ -274,6 +274,7 @@ video {
 /* 画像を親要素に設定 */
 .service_box{
     position: relative;
+    
 }
 
 /* コンテンツを子要素に設定 */
@@ -508,6 +509,11 @@ label.required:after {
 /* 施工事例の設定 */
 .click_reform_img{
     cursor: pointer;
+}
+
+/* 事業内容の画像の大きさ調整 */
+.colorfilter-image{
+    height: 17.5rem;
 }
 
 /*========= レスポンシブ ===============*/

@@ -85,6 +85,7 @@ class FrontWorksController extends Controller
             ."left join imgs "
             ."on imgs.reform_id = reforms.reform_id "
             ."where imgs.img_type_id = 1 "
+            ."and active_flag = 0 "
             ."order by img_id desc "
             ."limit 9 "
             ."offset 0 ";

@@ -1336,4 +1336,97 @@ class BackReformController extends Controller
         Log::debug('log_end:' .__FUNCTION__);
         return response()->json($response);
     }
+
+    /**
+     * 施工事例：公開・非公開分岐
+     */
+    public function backReformReleaseEntry(Request $request){
+        Log::debug('log_start:'.__FUNCTION__);
+
+        try {
+            // retrunの初期値
+            $response = [];
+            $response['status'] = true;
+
+            /**
+             * 値取得
+             */
+            // id
+            $reform_id = $request->input('reform_id');
+
+            // 公開フラグ
+            $active_id = $request->input('active_id');
+
+            $reform_info = $this->updateActiveData($request);
+
+            // js側での判定のステータス(true:OK/false:NG)
+            $response["status"] = $reform_info['status'];
+
+        // 例外処理
+        } catch (\Throwable $e) {
+
+            Log::debug(__FUNCTION__ .':' .$e);
+            $response['status'] = 0;
+
+        // status:OK=1/NG=0
+        } finally {
+
+            if($response['status'] == 1){
+                Log::debug('status:trueの処理');
+                $response['status'] = true;
+            }else{
+                Log::debug('status:falseの処理');
+                $response['status'] = false;
+            }
+
+            Log::debug('log_end:'.__FUNCTION__);
+            return response()->json($response);
+        }
+    }
+
+    /**
+     * 施工事例；公開・非公開
+     */
+    private function updateActiveData(Request $request){
+        Log::debug('log_start:' .__FUNCTION__);
+
+        try {
+            // returnの初期値
+            $ret=[];
+
+            // 値取得
+            $session_id = $request->session()->get('create_user_id');
+
+            // id
+            $reform_id = $request->input('reform_id');
+
+            // 公開フラグ
+            $active_id = $request->input('active_id');
+
+            $date = now() .'.000';
+
+            $str = "update reforms "
+            ."set "
+            ."active_flag = $active_id "
+            .",update_user_id = $session_id "
+            .",update_date = '$date' "
+            ."where "
+            ."reform_id = $reform_id ";
+            Log::debug('sql:'.$str);
+
+            // ok=1/ng=0
+            $ret['status'] = DB::update($str);
+
+        // 例外処理
+        } catch (\Throwable  $e) {
+
+            throw $e;
+
+        // status:OK=1/NG=0
+        } finally {
+        }
+
+        Log::debug('log_end:'.__FUNCTION__);
+        return $ret;
+    }
 }
