@@ -102,5 +102,8 @@ Route::post('backImgEditEntry', 'Back\Reform\BackReformController@backImgEditEnt
 // 施工事例画像：削除
 Route::post('backImgDeleteEntry', 'Back\Reform\BackReformController@backImgDeleteEntry')->middleware("post_auth");
 
+// ユーザ編集：表示
+Route::get('backUserEditInit', 'Back\User\BackUserController@backUserEditInit')->middleware("post_auth");
+
 
 

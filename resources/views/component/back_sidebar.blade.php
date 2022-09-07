@@ -79,7 +79,7 @@
                     <div class="sidebar-submenu">
                         <ul>
                             <li>
-                                <a href="backProfitInit">ユーザ</a>
+                                <a href="backUserEditInit">ログインユーザ</a>
                             </li>
                         </ul>
                     </div>

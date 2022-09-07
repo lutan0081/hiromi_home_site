@@ -37,3 +37,8 @@ body{
 
     cursor:pointer;
 }
+
+/* ダッシュボードのタイトル文字設定 */
+.dashboard_welcome_font{
+    font-size: 1.5rem;
+}

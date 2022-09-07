@@ -49,7 +49,7 @@
                             <div class="row">
                                 <div class="col-12 col-md-12 col-lg-12">
                                     <div class="mt-3">
-                                        <i class="bi bi-mailbox me-1"></i>投稿詳細
+                                        <i class="bi bi-mailbox me-1"></i><span class="s_13r">投稿詳細</span> 
                                     </div>
                                     <hr class="bar_blue">
                                 </div>

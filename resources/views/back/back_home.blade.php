@@ -60,7 +60,7 @@
 
                                                 <div class="col-12 col-md-12 col-lg-4 dashboard_step_box">
                                                     <b>初期設定<br></b>
-                                                    <a href="" target="_blank"><i class="bi bi-person-fill me-3"></i>ログインユーザを登録する<br></a>
+                                                    <a href="" target="_blank"><i class="bi bi-person-fill me-3"></i>ログインユーザの情報を編集する<br></a>
                                                 </div>
 
                                                 <div class="col-12 col-md-12 col-lg-4 dashboard_step_box">
@@ -91,7 +91,7 @@
                                                 </div>
 
                                                 <div class="col-12 col-md-12 col-lg-6">
-                                                    <i class="bi bi-chevron-right float-end"></i>
+                                                    <a href="backReformInit" target="_blank"><i class="bi bi-chevron-right float-end"></i></a>
                                                 </div>
 
                                                 <div class="col-12 col-md-12 col-lg-12">
@@ -101,7 +101,7 @@
                                                 <div class="col-12 col-md-12 col-lg-12">
                                                     <div class="overflow-auto" style="height:10.2rem;">
                                                         <div class="table-responsive">
-                                                            <table class="table table-hover table-condensed">
+                                                            <table class="table">
                                                                 <!-- テーブルヘッド -->
 
                                                                 <!-- テーブルボディ -->
@@ -136,7 +136,7 @@
                                                 </div>
 
                                                 <div class="col-12 col-md-12 col-lg-6">
-                                                    <i class="bi bi-chevron-right float-end"></i>
+                                                    <a href="backPostInit" target="_blank"><i class="bi bi-chevron-right float-end"></i></a>
                                                 </div>
 
                                                 <div class="col-12 col-md-12 col-lg-12">
@@ -175,12 +175,8 @@
                                         <div class="card-body">
                                             <div class="row">
 
-                                                <div class="col-12 col-md-12 col-lg-6">
+                                                <div class="col-12 col-md-12 col-lg-12">
                                                     <span class="font_bold"><i class="bi bi-bell me-3"></i>概要<br></span> 
-                                                </div>
-
-                                                <div class="col-12 col-md-12 col-lg-6">
-                                                    <i class="bi bi-chevron-right float-end"></i>
                                                 </div>
 
                                                 <div class="col-12 col-md-12 col-lg-6">
@@ -220,8 +216,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
 
                             </div>
                             
