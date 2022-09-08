@@ -112,6 +112,7 @@ $(function() {
              */
             processData : false,
             contentType : false,
+            // 画像複数アップロードの場合必要
             enctype: 'multipart/form-data',
 
         // trueの処理：完了アラート表示
@@ -618,5 +619,4 @@ $(function() {
             };
         });
     });
-        
 });

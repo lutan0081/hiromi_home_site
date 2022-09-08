@@ -62,8 +62,8 @@
                             <!-- ログインユーザ名 -->
                             <div class="col-12 col-md-12 col-lg-6 mb-3">
                                 <label class="s_required mb-1" for="textBox"><i class="bi bi-check-lg me-1"></i>ユーザ名</label>
-                                <input type="text" class="form-control" name="post_title" id="post_title" value="" placeholder="例：株式会社ルタン" required>
-                                <div class="invalid-feedback" id ="post_title_error">
+                                <input type="text" class="form-control" name="create_user_name" id="create_user_name" value="{{ $user_list->create_user_name }}" placeholder="例：株式会社ルタン" required>
+                                <div class="invalid-feedback" id ="create_user_name_error">
                                     ユーザ名は必須です。
                                 </div>
                             </div>
@@ -73,8 +73,8 @@
                             <!-- メールアドレス -->
                             <div class="col-12 col-md-12 col-lg-6 mb-3">
                                 <label class="s_required mb-1" for="textBox"><i class="bi bi-check-lg me-1"></i>メールアドレス</label>
-                                <input type="text" class="form-control" name="post_title" id="post_title" value="" placeholder="例：lutan0081.h@gmail.com" required>
-                                <div class="invalid-feedback" id ="post_title_error">
+                                <input type="text" class="form-control" name="create_user_mail" id="create_user_mail" value="{{ $user_list->create_user_mail }}" placeholder="例：lutan0081.h@gmail.com" required>
+                                <div class="invalid-feedback" id ="create_user_mail_error">
                                     メールアドレスは必須です。
                                 </div>
                             </div>
@@ -82,8 +82,8 @@
                             <!-- パスワード -->
                             <div class="col-12 col-md-12 col-lg-6 mb-4">
                                 <label class="s_required mb-1" for="textBox"><i class="bi bi-check-lg me-1"></i>パスワード</label>
-                                <input type="password" class="form-control" name="post_title" id="post_title" value="" placeholder="例：lutan0081" required>
-                                <div class="invalid-feedback" id ="post_title_error">
+                                <input type="password" class="form-control" name="create_user_password" id="create_user_password" value="{{ $user_list->create_user_password }}" placeholder="例：lutan0081" required>
+                                <div class="invalid-feedback" id ="create_user_password_error">
                                     パスワードは必須です。
                                 </div>
                             </div>
@@ -91,9 +91,9 @@
                             <!-- パスワード確認用 -->
                             <div class="col-12 col-md-12 col-lg-6 mb-4">
                                 <label class="s_required mb-1" for="textBox"><i class="bi bi-check-lg me-1"></i>パスワード確認用</label>
-                                <input type="password" class="form-control" name="post_title" id="post_title" value="" placeholder="例：lutan0081" required>
-                                <div class="invalid-feedback" id ="post_title_error">
-                                    パスワードは必須です。
+                                <input type="password" class="form-control" name="create_user_password_again" id="create_user_password_again" value="" placeholder="例：lutan0081" required>
+                                <div class="invalid-feedback" id ="create_user_password_again_error">
+                                    パスワード再確認は必須です。
                                 </div>
                             </div>
 
@@ -105,7 +105,7 @@
                             </div>
 
                             <!-- id -->
-                            <input type="hidden" name="post_id" id="post_id" value="">
+                            <input type="text" name="create_user_id" id="create_user_id" value="{{ $user_list->create_user_id }}">
 
                         </form>
                     </div>
@@ -119,7 +119,7 @@
         @endcomponent
 
 		<!-- 自作js -->
-        <script src="{{ asset('js/back/back_post_edit.js') }}"></script>
+        <script src="{{ asset('js/back/back_user_edit.js') }}"></script>
 		
 	</body>
 </html>

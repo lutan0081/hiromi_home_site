@@ -125,26 +125,17 @@
                                     <div class="tab-pane fade" id="nav-reform_picture" role="tabpanel" aria-labelledby="nav-reform_picture-tab">
                                         <div class="row">
 
-                                            <!-- 一括アップロードエリア -->
-                                            <div class="col-12 col-md-12 col-lg-12 mb-4">
-                                                <div class="card">
-                                                    <div class="card-body">
-
-                                                        <!-- ドラッグ&ドロップエリア -->
-                                                        <div id="image_upload_section">
-                                                            <div id="drop" class="uplode_box" ondragover="onDragOver(event)" ondrop="onDrop(event)">
-                                                                ファイルをドラッグ&ドロップしてください。複数ファイル同時も対応しています。
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
+                                            <!-- ファイルアップロード -->
+                                            <div class="col-12 col-md-12 col-lg-6 mb-4">
+                                                <input class="form-control" id="img_files" name="img_files[]" type="file" accept='image/*' multiple="multiple" onchange="loadImage(this);">
+                                                <div class="invalid-feedback" id ="img_files_error"></div>
                                             </div>
 
-                                            <!-- ファイルアップロード -->
-                                            <div class="col-12 col-md-12 col-lg-6 mb-3">
-                                                <input class="form-control" id="img_files" type="file" name="img_files[]" multiple />
-                                                <div class="invalid-feedback" id ="img_files_error"></div>
+                                            <div class="w-100"></div>
+                                            
+                                            <!-- 画面プレンビュー -->
+                                            <div class="row preview">
+                                                 
                                             </div>
 
                                             <!-- 罫線 -->
@@ -227,7 +218,7 @@
                                         </div>
 
                                         <!-- 画像id -->
-                                        <div class="col-12 col-md-12 col-lg-12 mb-3">
+                                        <div class="col-12 col-md-12 col-lg-12">
                                             <input type="hidden" class="form-control" name="img_id" id="img_id" value="{{ $reform_list->reform_title }}" placeholder="例：記事タイトル" required>
                                         </div>
 
@@ -359,6 +350,42 @@
                 });
 
                 return quill;
+            }
+        </script>
+
+        <script>
+            // 画像複数アップロード時のプレビュー
+            function loadImage(obj)
+            {
+                // クリックの後、題名表示
+                $('.preview').append('<p><i class="bi bi-gem me-2"></i>ファイルプレビュー</p>');
+
+                // 画像数のループ
+                for (i = 0; i < obj.files.length; i++) {
+                    var fileReader = new FileReader();
+                    fileReader.onload = (function (e) {
+                                                // img_box作成
+                        let img_box = $("<img>", {
+                            src: e.target.result,
+                            addClass: "img-fluid"
+                        });
+
+                        let img_title_box = $("<p>", {
+                            text: "アップロードファイル"
+                        });
+
+                        // col要素
+                        let col_box = $("<div></div>", {
+                            id: "reform_id_" + i,
+                            addClass: "col-12 col-md-12 col-lg-4 click_class mb-4",
+                        });
+
+                        $(col_box).append(img_box);
+                        $('.preview').append(col_box);
+                    });
+                    fileReader.readAsDataURL(obj.files[i]);
+                }
+
             }
         </script>
 
