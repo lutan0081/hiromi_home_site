@@ -31,6 +31,9 @@ $(function() {
         let create_user_password_again = $("#create_user_password_again").val();
         console.log('create_user_password_again:' + create_user_password_again);
 
+        let create_user_id = $("#create_user_id").val();
+        console.log('create_user_id:' + create_user_id);
+
         // validationフラグ初期値
         let v_check = true;
         
@@ -52,38 +55,32 @@ $(function() {
         if(create_user_password_again == ''){
             v_check = false;
         }
-
-        if(create_user_password == create_user_password_again){
+        
+        if(create_user_password !== create_user_password_again){
             v_check = false;
         }
 
         console.log('v_check:' + v_check);
 
         if (v_check === false) {
-
             // ローディング停止
             setTimeout(function(){
                 $("#overlay").fadeOut(300);
             },500);
 
             $('#editForm').addClass("was-validated");
-
             return false;
         }
-
-        return false;
 
         /**
          * 送信データ設定
          */
         var sendData = new FormData();
-        sendData.append('post_title', post_title);
-        sendData.append('post_type_id', post_type_id);
-        sendData.append('editor_input', editor_input);
-        sendData.append('post_id', post_id);
+        sendData.append('create_user_name', create_user_name);
+        sendData.append('create_user_mail', create_user_mail);
+        sendData.append('create_user_password', create_user_password);
+        sendData.append('create_user_id', create_user_id);
 
-        console.log('sendData' + JSON.stringify(sendData));
-        
         /**
          * ajaxの設定
          */

@@ -58,7 +58,7 @@
                 <div class="container">
                     <div class="row">
                         <form id="editForm" class="needs-validation" novalidate>
-                            
+
                             <!-- ログインユーザ名 -->
                             <div class="col-12 col-md-12 col-lg-6 mb-3">
                                 <label class="s_required mb-1" for="textBox"><i class="bi bi-check-lg me-1"></i>ユーザ名</label>
@@ -92,8 +92,8 @@
                             <div class="col-12 col-md-12 col-lg-6 mb-4">
                                 <label class="s_required mb-1" for="textBox"><i class="bi bi-check-lg me-1"></i>パスワード確認用</label>
                                 <input type="password" class="form-control" name="create_user_password_again" id="create_user_password_again" value="" placeholder="例：lutan0081" required>
-                                <div class="invalid-feedback" id ="create_user_password_again_error">
-                                    パスワード再確認は必須です。
+                                <div class="invalid-feedback" id="create_user_password_again_error">
+                                    パスワードを確認してください。
                                 </div>
                             </div>
 
@@ -106,7 +106,7 @@
 
                             <!-- id -->
                             <input type="text" name="create_user_id" id="create_user_id" value="{{ $user_list->create_user_id }}">
-
+                            
                         </form>
                     </div>
                 </div>
