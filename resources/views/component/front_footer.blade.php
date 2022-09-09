@@ -2,7 +2,7 @@
 <div class="container-fluid footer_box">
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
-            <div class="row delayScroll">
+            <div class="row">
 
                 <!-- 会社ロゴ -->
                 <div class="col-12 col-md-12 col-lg-4 footer_img_box">
@@ -10,7 +10,7 @@
                 </div>
 
                 <!-- HOME -->
-                <div class="col-12 col-md-12 col-lg-2 footer_contents_box box">
+                <div class="col-12 col-md-12 col-lg-2 footer_contents_box fadeDownTrigger">
 
                     <h4><i class="bi bi-house-door me-1"></i>HOME</h3>
                     <ul class= "ul_box">
@@ -23,7 +23,7 @@
                 </div>
 
                 <!-- Company -->
-                <div class="col-12 col-md-12 col-lg-2 footer_contents_box box">
+                <div class="col-12 col-md-12 col-lg-2 footer_contents_box fadeDownTrigger">
 
                     <h4><i class="bi bi-building me-1"></i>COMPANY</h4>
                     <ul class= "ul_box">
@@ -34,7 +34,7 @@
                 </div>
 
                 <!-- Service -->
-                <div class="col-12 col-md-12 col-lg-2 footer_contents_box box">
+                <div class="col-12 col-md-12 col-lg-2 footer_contents_box fadeDownTrigger">
 
                     <h4><i class="bi bi-gem me-1"></i>SERVICE</h4>
                     <ul class= "ul_box">
@@ -45,7 +45,7 @@
                 </div>
 
                 <!-- Recruit -->
-                <div class="col-12 col-md-12 col-lg-2 footer_contents_box box">
+                <div class="col-12 col-md-12 col-lg-2 footer_contents_box fadeDownTrigger">
 
                     <h4><i class="bi bi-search me-1"></i>RECRUIT</h4>
                     <ul class= "ul_box">

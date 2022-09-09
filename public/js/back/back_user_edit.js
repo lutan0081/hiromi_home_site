@@ -38,7 +38,7 @@ $(function() {
         let v_check = true;
         
         /**
-         * 必須項目が空白の時、v_check = falseになり、modalFormにwas-validatedを付与、エラー文字の表示
+         * 必須項目が空白の時、v_check = falseになり、formにwas-validatedを付与、エラー文字の表示
          */
         if(create_user_name == ''){
             v_check = false;
@@ -55,10 +55,11 @@ $(function() {
         if(create_user_password_again == ''){
             v_check = false;
         }
-        
+
         if(create_user_password !== create_user_password_again){
             v_check = false;
-        }
+            $('#create_user_password_again_error').text('パスワードが異なります。').show();
+        };
 
         console.log('v_check:' + v_check);
 
@@ -79,6 +80,7 @@ $(function() {
         sendData.append('create_user_name', create_user_name);
         sendData.append('create_user_mail', create_user_mail);
         sendData.append('create_user_password', create_user_password);
+        sendData.append('create_user_password_again', create_user_password_again);
         sendData.append('create_user_id', create_user_id);
 
         /**
@@ -91,7 +93,7 @@ $(function() {
 
         $.ajax({
             type: 'post',
-            url: 'backPostEntry',
+            url: 'backUserEditEntry',
             dataType: 'json',
             data: sendData,
             // ★以下は画像送信の際に必要★
@@ -128,7 +130,7 @@ $(function() {
                 swal(options)
                     .then(function(val) {
                     if (val == 'OK' || val == null) {
-                        location.href = 'backPostInit';
+                        location.reload();
                     };
                 });
             };

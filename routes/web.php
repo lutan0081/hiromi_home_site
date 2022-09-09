@@ -105,5 +105,8 @@ Route::post('backImgDeleteEntry', 'Back\Reform\BackReformController@backImgDelet
 // ユーザ編集：表示
 Route::get('backUserEditInit', 'Back\User\BackUserController@backUserEditInit')->middleware("post_auth");
 
+// ユーザ登録：登録・編集
+Route::post('backUserEditEntry', 'Back\User\BackUserController@backUserEditEntry')->middleware("post_auth");
+
 
 

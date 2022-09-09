@@ -84,7 +84,7 @@
                                 <label class="s_required mb-1" for="textBox"><i class="bi bi-check-lg me-1"></i>パスワード</label>
                                 <input type="password" class="form-control" name="create_user_password" id="create_user_password" value="{{ $user_list->create_user_password }}" placeholder="例：lutan0081" required>
                                 <div class="invalid-feedback" id ="create_user_password_error">
-                                    パスワードは必須です。
+                                    パスワードを確認してください。
                                 </div>
                             </div>
 
@@ -105,7 +105,7 @@
                             </div>
 
                             <!-- id -->
-                            <input type="text" name="create_user_id" id="create_user_id" value="{{ $user_list->create_user_id }}">
+                            <input type="hidden" name="create_user_id" id="create_user_id" value="{{ $user_list->create_user_id }}">
                             
                         </form>
                     </div>

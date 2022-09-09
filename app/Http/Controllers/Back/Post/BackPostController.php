@@ -520,7 +520,7 @@ class BackPostController extends Controller
     }
 
     /**
-     * 投稿詳細；新規登録（sql）
+     * 投稿詳細；編集登録（sql）
      */
     private function updatePost(Request $request){
         Log::debug('log_start:' .__FUNCTION__);
