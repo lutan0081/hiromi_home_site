@@ -5,10 +5,10 @@
         <title>HIROMI HOME</title>
 
         <!-- 説明 -->
-        <meta name="description" content="「株式会社広末ホーム」は、テキストテキストテキストテキストテキストテキストテキストテキスト" />
+        <meta name="description" content="株式会社広未ホームは鶴見区を拠点とする改装工事・リノベーション・原状回復・入居者対応を行う工事業者として創業いたしましました。会社一丸となりお客様のため、自分のために日々成長しながら楽しく業務を行なっております。" />
         
         <!-- SEO -->
-        <meta name="keywords"  content="テキスト,テキスト,テキスト,テキスト,テキスト,テキスト,テキスト" />
+        <meta name="keywords"  content="改装工事,リフォーム,リノベーション,外壁工事,入居者対応" />
 
         <!-- css -->
         @component('component.front_head')
@@ -32,7 +32,7 @@
     <body>
         <!-- 初回ローディング画面 -->
         <div id="splash">
-            <div id="splash-logo">読み込み中...</div>
+            <div id="splash-logo">LOADING...</div>
         </div>
 
         <div class="splashbg"></div>
