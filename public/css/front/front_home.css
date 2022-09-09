@@ -572,8 +572,8 @@ label.required:after {
     /* 会社概要 */
     .about_us_box{
         height: 42rem;
-        background-position: -200px 0px; 
-        background-attachment:inherit;
+        /* background-position: -200px 0px;  */
+        background-size: cover;
     }
 
     /* 画像フィルタ */
