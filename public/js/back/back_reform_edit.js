@@ -278,7 +278,7 @@ $(function() {
                         title: "削除が完了しました。",
                         icon: "success",
                         buttons: {
-                            ok: true
+                            OK: true
                         }
                     };
     

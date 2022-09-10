@@ -75,7 +75,7 @@ class FrontHomeController extends Controller
             // sql
             $str = "select * from posts "
             ."where post_type_id = 1 "
-            ."and Active_flag = 0 "
+            ."and active_flag = 0 "
             ."order by post_id desc "
             ."LIMIT 4; ";
             Log::debug('str:' .$str);
@@ -150,9 +150,9 @@ class FrontHomeController extends Controller
             ."reforms "
             ."left join imgs on "
             ."reforms.reform_id = imgs.reform_id "
-            ."and imgs.img_type_id = 1 "
             ."where "
             ."reforms.active_flag = 0 "
+            ."and imgs.img_type_id = 1 "
             ."order by "
             ."reforms.reform_id desc "
             ."limit 8; ";
