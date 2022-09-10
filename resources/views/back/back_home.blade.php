@@ -72,7 +72,8 @@
                                                 <div class="col-12 col-md-12 col-lg-4 dashboard_step_box">
                                                     <b>その他の操作<br></b>
                                                     <i class="bi bi-chat-dots me-3"></i>お問い合わせ内容を表示<br>
-                                                    <i class="bi bi-pc-display-horizontal me-3"></i>サイトを表示<br>
+                                                    
+                                                    <a href="https://hiromi-home.net/" target="_blank"><i class="bi bi-pc-display-horizontal me-3"></i>サイトを表示<br></a>
                                                 </div>
                                             </div>
 
