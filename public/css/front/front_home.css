@@ -608,7 +608,7 @@ label.required:after {
         font-size: 1rem;
     }
 
-    /* 新着情報コンテンツの上部padding */
+    /* 新着情報コンテンツの上部パーディング */
     .information_contents_inner_pt{
         padding-top: 1.5rem;
     }
