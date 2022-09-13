@@ -394,6 +394,7 @@ video {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    padding: 2rem 0rem 2rem 0rem;
 }
 
 /* お知らせラベル要素 */
@@ -607,4 +608,8 @@ label.required:after {
         font-size: 1rem;
     }
 
+    /* 新着情報コンテンツの上部padding */
+    .information_contents_inner_pt{
+        padding-top: 1.5rem;
+    }
 }

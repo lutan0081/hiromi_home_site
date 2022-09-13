@@ -90,7 +90,7 @@
                         <div class="row delayScroll">
                             <!-- 施工事例：1 -->
                             @foreach($reform_img_list as $reform_img)
-                                <div class="col-12 col-md-12 col-lg-3 mt-4 box">
+                                <div class="col-12 col-md-6 col-lg-3 mt-4 box">
                                     <img src="storage/{{ $reform_img->img_path }}" style="height:17rem;" id="reform_id_{{ $reform_img->reform_id }}" class="img-fluid click_reform_img" alt="...">
                                 </div>
                             @endforeach
@@ -131,7 +131,7 @@
                         <div class="row delayScroll">
                         
                             <!-- 事業内容：1 -->
-                            <div class="col-12 col-md-12 col-lg-4 mt-3 box">
+                            <div class="col-12 col-md-4 col-lg-4 mt-3 box">
                                 <a href="frontReformInit" target="_blank">
                                     <div class="colorfilter-base service_box">
                                         <img src="./img/service_01.jpg" class="img-fluid colorfilter-image" alt="...">
@@ -144,7 +144,7 @@
                             </div>
 
                             <!-- 事業内容：2 -->
-                            <div class="col-12 col-md-12 col-lg-4 mt-3 box">
+                            <div class="col-12 col-md-4 col-lg-4 mt-3 box">
                                 <a href="frontRenovationInit" target="_blank">
                                     <div class="colorfilter-base service_box">
                                         <img src="./img/service_02.jpg" class="img-fluid colorfilter-image" alt="...">
@@ -157,7 +157,7 @@
                             </div>
 
                             <!-- 入居者対応 -->
-                            <div class="col-12 col-md-12 col-lg-4 mt-3 box">
+                            <div class="col-12 col-md-4 col-lg-4 mt-3 box">
                                 <a href="frontSupportInit" target="_blank">
                                     <div class="colorfilter-base service_box">
                                         <img src="./img/service_03.jpg" class="img-fluid colorfilter-image" alt="...">
@@ -224,19 +224,21 @@
             <div class="container fadeUpTrigger">
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-12 mt-3">
-                        <div class="row">
+                       
                             @foreach($information_list as $information)
-                                <div class="col-4 col-md-4 col-lg-2 py-4 information_contents">
+                            <div class="row information_contents">
+                                <div class="col-4 col-md-4 col-lg-2">
                                     {{ Common::format_date_hy($information->entry_date) }}
                                 </div>
-                                <div class="col-5 col-md-5 col-lg-2 py-4 information_contents">
+                                <div class="col-5 col-md-5 col-lg-2">
                                     <label class="required" for="textBox"></label>
                                 </div>
-                                <div class="col-12 col-md-12 col-lg-8 py-4 information_contents">
+                                <div class="col-12 col-md-12 col-lg-8 information_contents_inner_pt">
                                     {{ $information->post_title }}
                                 </div>
+                            </div>
                             @endforeach
-                        </div>
+                        
                     </div>
                 </div>
             </div> 

@@ -54,7 +54,7 @@
 
                                             <div class="row">
                                                 <div class="col-12 col-md-12 col-lg-12">
-                                                    <span class="dashboard_welcome_font">POSTへようこそ！<br></span> 
+                                                    <span class="dashboard_welcome_font">Welcome to the POST!<br></span>  
                                                     <span class="dashboard_welcome_sub_font">初めての方に便利なリンク集めました。</span>
                                                 </div>
 
@@ -189,12 +189,16 @@
                                                     <i class="bi bi-pin-fill me-2"></i>その他の投稿：{{ $post_count->count_post_id }}件<br>
                                                 </div>
 
-                                                <div class="col-12 col-md-12 col-lg-6 mt-3">
+                                                <div class="col-12 col-md-12 col-lg-12 mt-3">
                                                     サイト累計情報
                                                 </div>
 
                                                 <div class="col-12 col-md-12 col-lg-12 mt-2">
-                                                    <i class="bi bi-pin-fill me-2"></i>累計PVの件数：{{ $post_count->count_post_id }}pv<br>
+                                                <i class="bi bi-calendar-check-fill me-2"></i>累計PVの件数：{{ $access_total_count->count_access_id }}pv<br>
+                                                </div>
+
+                                                <div class="col-12 col-md-12 col-lg-12 mt-2">
+                                                    <i class="bi bi-calendar-month-fill me-2"></i>月間PVの件数：{{ $post_count->count_post_id }}pv<br>
                                                 </div>
 
                                             </div>

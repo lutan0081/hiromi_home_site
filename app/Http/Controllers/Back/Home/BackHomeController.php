@@ -40,6 +40,13 @@ class BackHomeController extends Controller
             // access数取得
             $access_count = $this->getAccessCount($request);
 
+            // access合計数取得
+            $access_total_count = $this->getAccessTotalCount($request);
+
+            // access月間数取得
+            $access_month_count = $this->getAccessMonthCount($request);
+            dd($access_month_count);
+
             // 施工事例：登録件数
             $reform_count = $this->getReformCount($request);
 
@@ -63,7 +70,7 @@ class BackHomeController extends Controller
 
         // compctは代入名=キーになる
         // キーに名前をつけるときはwith()にする
-        return view('back.back_home', compact('reform_count','post_count', 'reform_list', 'post_list', 'access_count'));
+        return view('back.back_home', compact('reform_count','post_count', 'reform_list', 'post_list', 'access_count', 'access_total_count'));
     }
 
     /**
@@ -136,6 +143,81 @@ class BackHomeController extends Controller
         // 配列デバック
         $arrString = print_r($ret , true);
         Log::debug('messages:'.$arrString);
+
+        Log::debug('log_end:' .__FUNCTION__);
+
+        return $ret;
+    }
+
+    /**
+     * アクセス数合計：sql
+     *
+     * @param Request $request
+     * @return void
+     */
+    private function getAccessTotalCount(Request $request){
+
+        Log::debug('log_start:' .__FUNCTION__);
+
+        // 本日の日付を取得
+        $nowDate = date("Y-m-d");
+        Log::debug('nowDate:'.$nowDate);
+
+        $start_date = date("Y-m-d", strtotime("-6 day". $nowDate));
+        Log::debug('start_date:'.$start_date);
+
+        $ret = [];
+
+        $str = "select "
+        ."count(access_id) as count_access_id "
+        ."from "
+        ."accesses ";
+        Log::debug('str:' .$str);
+        
+        // selectで返却の値はオブジェクト（複数件のオブジェクト）
+        // その為、ループが必要
+        // [0]を指定した場合、ループが不要
+        $ret = DB::select($str)[0];
+
+        Log::debug('log_end:' .__FUNCTION__);
+
+        return $ret;
+    }
+
+    /**
+     * アクセス数月間：sql
+     *
+     * @param Request $request
+     * @return void
+     */
+    private function getAccessMonthCount(Request $request){
+
+        Log::debug('log_start:' .__FUNCTION__);
+
+        // 本日の日付を取得
+        $nowDate = date("Y-m-d");
+        Log::debug('nowDate:'.$nowDate);
+
+        $start_date = date("Y-m-d", strtotime("first day of". $nowDate));
+        Log::debug('start_date:'.$start_date);
+
+        $end_date = date("Y-m-d", strtotime("last day of". $nowDate));
+        Log::debug('end_date:'.$end_date);
+
+        $ret = [];
+
+        $str = "select "
+        ."count(*) as row_count, "
+        ."date_format(entry_date,'%Y-%m-%d') as format_entry_date "
+        ."from accesses "
+        ."where "
+        ."date_format(entry_date,'%Y-%m-%d') between '$start_date' and '$end_date' ";
+        Log::debug('str_month:'.$str);
+
+        // selectで返却の値はオブジェクト（複数件のオブジェクト）
+        // その為、ループが必要
+        // [0]を指定した場合、ループが不要
+        $ret = DB::select($str)[0];
 
         Log::debug('log_end:' .__FUNCTION__);
 
