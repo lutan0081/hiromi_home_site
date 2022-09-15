@@ -44,8 +44,8 @@ class BackHomeController extends Controller
             $access_total_count = $this->getAccessTotalCount($request);
 
             // access月間数取得
-            $access_month_count = $this->getAccessMonthCount($request);
-            dd($access_month_count);
+            // $access_month_count = $this->getAccessMonthCount($request);
+            // dd($access_month_count);
 
             // 施工事例：登録件数
             $reform_count = $this->getReformCount($request);

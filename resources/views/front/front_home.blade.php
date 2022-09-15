@@ -83,7 +83,6 @@
             </div> 
 
             <!-- 施工事例：コンテンツ -->
-            
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-12 mt-3">
@@ -98,7 +97,6 @@
                     </div>
                 </div>
             </div>
-           
                 
             <!-- 施工事：ボタン -->
             <div class="container-fluid">
