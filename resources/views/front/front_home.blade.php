@@ -10,6 +10,9 @@
         <!-- SEO -->
         <meta name="keywords"  content="改装工事,リフォーム,リノベーション,外壁工事,入居者対応" />
 
+        <!-- google -->
+        <meta name="google-site-verification" content="tbATaODowLQ-yon62oPfGMsVzjDLmjQIRKS2IE1lKAk" />
+
         <!-- css -->
         @component('component.front_head')
         @endcomponent

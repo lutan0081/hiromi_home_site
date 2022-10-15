@@ -59,7 +59,24 @@
         background-attachment: inherit;
         background-position: 45% 0%;
     }
+
+    .privacy_title_box_en {
+        font-size: 2rem;
+    }
+
+/* スマホ */
+@media (max-width: 768px) {
+
+    .privacy_top_box{
+        background-attachment: inherit;
+        background-position: 45% 0%;
+    }
+
+    .privacy_title_box_en {
+        font-size: 2rem;
+    }
+
+    
 }
 
-
-
+}

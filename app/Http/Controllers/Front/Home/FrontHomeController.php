@@ -125,10 +125,9 @@ class FrontHomeController extends Controller
     }
     
     /**
-     * 施工事例画像一覧
+     * 自社物件画像一覧
      */
-    private function getReformImgList(Request $request)
-    {
+    private function getReformImgList(Request $request){
 
         Log::debug('log_start:'.__FUNCTION__);
 
