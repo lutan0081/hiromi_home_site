@@ -1,4 +1,8 @@
 <?php
+/**
+ * site_map
+ */
+Route::get('/sitemap.xml','SitemapController@index');
 
 /**
  * front
