@@ -40,3 +40,13 @@
 
 <!-- fadeAnimation -->
 <link rel="stylesheet" href="{{ asset('fadeAnimation/css/fadeAnimation.css') }}">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZY7BBFQ9SN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZY7BBFQ9SN');
+</script>

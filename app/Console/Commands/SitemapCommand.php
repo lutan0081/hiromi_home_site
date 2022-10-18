@@ -43,12 +43,23 @@ class SitemapCommand extends Command
         $start_content = '<?xml version="1.0" encoding="UTF-8"?>'
         .'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
         \File::put($file,$start_content);
-
+        
+        // ｰｰｰｰｰｰｰｰｰｰｰｰｰURL欄ｰｰｰｰｰｰｰｰｰｰｰｰｰ
+        // url_1
         $content = "<url>
             <loc>".route('/')."</loc>
             <lastmod>2021-06-02</lastmod>
             </url>";
         \File::append($file,$content);
+
+        // 追加する場合は以下から
+        // $content = "<url>
+        // <loc>".route('/')."</loc>
+        // <lastmod>2021-06-02</lastmod>
+        // </url>";
+        // \File::append($file,$content);
+
+        // ｰｰｰｰｰｰｰｰｰｰｰｰｰURL欄ｰｰｰｰｰｰｰｰｰｰｰｰｰ
 
         //最後閉じタグが必要
         $end_content = '</urlset>';
