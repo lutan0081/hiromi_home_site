@@ -42,7 +42,7 @@
 
                 <!-- タイトル -->
                 <div class="col-12 col-md-12 col-lg-12 reform_contents_title_box">
-                    <span class="reform_contents_title">壁紙・床・防水・外壁など工事に関して全て対応可能です。</span>
+                    <span class="reform_contents_title">壁紙・床・防水・外壁など工事は広未ホームにお任せください。</span>
                     <hr class="bar_red"> 
                 </div>
 
@@ -96,11 +96,11 @@
 
                 <!-- コンテンツ：説明 -->
                 <div class="col-12 col-md-12 col-lg-6 reform_contents order-xl-1">
-                    <span class="reform_contents_sub_title"><span class="text_pink">「外壁塗装・防水工事」</span>低価格でもっとデザイン性と便利さを。</span><br><br>
-                    テキストテキストテキストテキストテキストテキストテキストテキスト<br>
-                    テキストテキストテキステキストテキストテキストテキスト<br>
-                    テキストテキストテキストテキストテキストテキストテキストテキスト<br>
-                    テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                    <span class="reform_contents_sub_title"><span class="text_pink">「外壁塗装・家のメンテナンス」</span>低価格で耐久性と便利さの追求。</span><br><br>
+                    外壁塗装を後回しにしていませんか？<br>
+                    外壁は年々劣化していき、水漏れなどの原因になります。<br>
+                    塗料を塗ることで塗膜を作り、雨風や紫外線等から守ることが出来ます。<br>
+                    「せっかくやるならおしゃれにしよう。」外壁塗装時のデザインなど広未ホームにお任せください。
                 </div>
 
             </div>

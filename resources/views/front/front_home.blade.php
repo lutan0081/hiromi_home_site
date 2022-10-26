@@ -8,7 +8,7 @@
         <meta name="description" content="株式会社広未ホームは鶴見区を拠点とする改装工事・リノベーション・原状回復・入居者対応を行う工事業者として創業いたしましました。会社一丸となりお客様のため、自分のために日々成長しながら楽しく業務を行なっております。" />
         
         <!-- SEO -->
-        <meta name="keywords"  content="改装工事,リフォーム,リノベーション,外壁工事,入居者対応" />
+        <meta name="keywords"  content="原状回復工事,リフォーム,リノベーション,広未ホーム,鶴見区,入居者対応,室内改装工事" />
 
         <!-- google -->
         <meta name="google-site-verification" content="tbATaODowLQ-yon62oPfGMsVzjDLmjQIRKS2IE1lKAk" />
@@ -188,9 +188,9 @@
                                         「住みたい空間」<br class="br-sp">「したい暮らし」<br class="br-sp">を創造する。
                                     </div>
                                     <div class="about_us_text">
-                                        弊社、広末ホームのコーポレートサイトを閲覧いただきありがとうございます。<br>
-                                        空間に対するこだわりは、十人十色。<br class="br-sp">デザインの美学や、理想の暮らしは人によって異なります。<br> だからこそ、シンプルでミニマルなものを私たちは追求します。<br>
-                                        ディティールを生かす意匠、シンプルな形状は、 あなたの個性を自由に演出することができるからです。<br> 思わず誰かを招きたくなるような、スタイリッシュなデザインは、 見る人の感性を刺激し、創造力を高めてくれます。<br>
+                                        弊社、広未ホームのコーポレートサイトを閲覧いただきありがとうございます。<br>
+                                        空間に対するこだわりは、十人十色。<br class="br-sp">デザインや、理想の暮らしは人によって異なります。<br> だからこそ、シンプルでオシャレなものを広未ホームは追求します。<br>
+                                        ディティールを生かすシンプルな形状は、 あなたの個性を自由に演出することができるからです。<br> 思わず誰かを招きたくなるような、オシャレなデザインは、 見る人の感性を刺激し、創造力を高めてくれます。<br>
                                         毎日を、自分らしく、豊かに生きる。 そんな幸せがある空間の創造を、お手伝いいたします。
                                     </div>
                                 </div>
@@ -226,20 +226,19 @@
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-12 mt-3">
                        
-                            @foreach($information_list as $information)
-                            <div class="row information_contents">
-                                <div class="col-4 col-md-4 col-lg-2">
-                                    {{ Common::format_date_hy($information->entry_date) }}
-                                </div>
-                                <div class="col-5 col-md-5 col-lg-2">
-                                    <label class="required" for="textBox"></label>
-                                </div>
-                                <div class="col-12 col-md-12 col-lg-8 information_contents_inner_pt">
-                                    {{ $information->post_title }}
-                                </div>
+                        @foreach($information_list as $information)
+                        <div class="row information_contents">
+                            <div class="col-4 col-md-4 col-lg-2">
+                                {{ Common::format_date_hy($information->entry_date) }}
                             </div>
-                            @endforeach
-                        
+                            <div class="col-5 col-md-5 col-lg-2">
+                                <label class="required" for="textBox"></label>
+                            </div>
+                            <div class="col-12 col-md-12 col-lg-8 information_contents_inner_pt">
+                                {{ $information->post_title }}
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div> 
