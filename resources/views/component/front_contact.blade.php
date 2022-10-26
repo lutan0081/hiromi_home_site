@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="contact_tel_box">
-                            <i class="bi bi-phone-vibrate me-2"></i>06-1111-1111<br>
+                            <i class="bi bi-phone-vibrate me-2"></i>06-6913-6600<br>
                         </div>
 
                         <!-- 営業時間 -->
