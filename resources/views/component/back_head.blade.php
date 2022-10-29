@@ -20,17 +20,11 @@
 <!-- bootstrap-datepicker-1.9.0-dist -->
 <link rel="stylesheet" href="{{ asset('bootstrap-datepicker-1.9.0-dist/css/bootstrap-datepicker.min.css') }}">
 
-<!-- bootstrap-icon -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-
 <!-- common -->
 <link rel="stylesheet" href="{{ asset('common/css/common.css') }}">
 
 <!-- loading -->
 <link rel="stylesheet" href="{{ asset('loading/css/loading.css') }}">
-
-<!-- サイドメニューのアイコン -->
-<script src="https://kit.fontawesome.com/33bf6d5577.js" crossorigin="anonymous"></script>
 
 <!-- サイドバー -->
 <link rel="stylesheet" href="{{ asset('css/back/back_sidebar.css') }}">
@@ -40,3 +34,9 @@
 
 <!-- fadeAnimation -->
 <link rel="stylesheet" href="{{ asset('fadeAnimation/css/fadeAnimation.css') }}">
+
+<!-- fontawesome-free-6.2.0(サイドメニューのアイコン) -->
+<link rel="stylesheet" href="{{ asset('css/fontawesome-free-6.2.0/css/all.min.css') }}">
+
+<!-- bootstrap-icon -->
+<link rel="stylesheet" href="{{ asset('css/bootstrap-icons/bootstrap-icons.css') }}">

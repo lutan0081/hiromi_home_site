@@ -8,8 +8,8 @@
 <script src="{{ asset('bootstrap-datepicker-1.9.0-dist/js/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ asset('bootstrap-datepicker-1.9.0-dist/locales/bootstrap-datepicker.ja.min.js') }}"></script>
 
-<!-- sweetalert(ダイアログ)-->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- sweetalert -->
+<script src="{{ asset('js/sweetalert/sweetalert.min.js') }}"></script>
 
 <!-- プルダウンメニュー -->
 <script src="{{ asset('js/front/front_menu.js') }}"></script>

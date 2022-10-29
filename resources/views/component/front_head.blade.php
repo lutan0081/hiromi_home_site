@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="{{ asset('bootstrap-datepicker-1.9.0-dist/css/bootstrap-datepicker.min.css') }}">
 
 <!-- bootstrap-icon -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+<link rel="stylesheet" href="{{ asset('css/bootstrap-icons/bootstrap-icons.css') }}">
 
 <!-- common -->
 <link rel="stylesheet" href="{{ asset('common/css/common.css') }}">
